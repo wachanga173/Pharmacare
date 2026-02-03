@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Online Pharmacy</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/pages/product-detail.css">
+</head>
+<body>
+    <div id="app">
+        <header id="header"></header>
+        
+        <main class="container">
+            <section style="padding: 2rem 0;">
+                <div id="product-detail-container">
+                    <p>Loading...</p>
+                </div>
+            </section>
+        </main>
+        
+        <footer id="footer"></footer>
+    </div>
+
+    <div id="toast-container"></div>
+    
+    <script src="../js/config.js"></script>
+    <script type="module">
+        import { initHeader } from '../js/components/header.js';
+        import { initFooter } from '../js/components/footer.js';
+        import { getProductById } from '../js/services/products.js';
+        import { addToCart } from '../js/services/cart.js';
+        import { showSuccess } from '../js/components/toast.js';
+        import { updateCartBadge } from '../js/components/header.js';
+        import { getQueryParam } from '../js/utils/helpers.js';
+        
+        document.addEventListener('DOMContentLoaded', async () => {
+            initHeader();
+            initFooter();
+            
+            const productId = getQueryParam('id');
+            const container = document.getElementById('product-detail-container');
+            
+            if (!productId) {
+                container.innerHTML = '<p>Product not found</p>';
+                return;
+            }
+            
+            const product = await getProductById(productId);
+            
+            if (!product) {
+                container.innerHTML = '<p>Product not found</p>';
+                return;
+            }
+            
+            container.innerHTML = `
+                <div class="grid grid-2">
+                    <div>
+                        <img src="${product.image || '../assets/images/products/placeholder.png'}" 
+                             alt="${product.name}" 
+                             style="width: 100%; border-radius: 0.5rem;"
+                             onerror="this.src='../assets/images/products/placeholder.png'">
+                    </div>
+                    <div>
+                        <h1>${product.name}</h1>
+                        <p class="product-price" style="font-size: 2rem; margin: 1rem 0;">
+                            ${CONFIG.CURRENCY}${product.price.toFixed(2)}
+                        </p>
+                        <p>${product.description || 'No description available'}</p>
+                        <p><strong>Category:</strong> ${product.category || 'N/A'}</p>
+                        <p><strong>Stock:</strong> ${product.stock > 0 ? product.stock + ' available' : 'Out of stock'}</p>
+                        
+                        ${product.stock > 0 ? `
+                            <button class="btn btn-primary" id="add-to-cart-detail" style="margin-top: 2rem;">
+                                Add to Cart
+                            </button>
+                        ` : '<p class="text-danger">Currently out of stock</p>'}
+                    </div>
+                </div>
+            `;
+            
+            const addBtn = document.getElementById('add-to-cart-detail');
+            if (addBtn) {
+                addBtn.addEventListener('click', () => {
+                    addToCart(product.id);
+                    showSuccess(`${product.name} added to cart!`);
+                    updateCartBadge();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

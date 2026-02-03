@@ -1,0 +1,15 @@
+/* Login & Register Page Styles */
+
+.auth-container {
+    max-width: 400px;
+    margin: 3rem auto;
+}
+
+.auth-form {
+    margin-top: 2rem;
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 1rem;
+}

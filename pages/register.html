@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Online Pharmacy</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/pages/auth.css">
+</head>
+<body>
+    <div id="app">
+        <header id="header"></header>
+        
+        <main class="container">
+            <section style="padding: 3rem 0;">
+                <div style="max-width: 400px; margin: 0 auto;">
+                    <h1 class="text-center">Register</h1>
+                    
+                    <form id="register-form" style="margin-top: 2rem;">
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Confirm Password</label>
+                            <input type="password" name="confirmPassword" class="form-control" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            Register
+                        </button>
+                        
+                        <p class="text-center mt-2">
+                            Already have an account? <a href="login.html">Login here</a>
+                        </p>
+                    </form>
+                </div>
+            </section>
+        </main>
+        
+        <footer id="footer"></footer>
+    </div>
+
+    <div id="toast-container"></div>
+    
+    <script src="../js/config.js"></script>
+    <script type="module">
+        import { initHeader } from '../js/components/header.js';
+        import { initFooter } from '../js/components/footer.js';
+        import { register } from '../js/services/auth.js';
+        import { validateRegisterForm } from '../js/utils/validation.js';
+        import { showSuccess, showError } from '../js/components/toast.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            initHeader();
+            initFooter();
+            
+            const form = document.getElementById('register-form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+                
+                const validation = validateRegisterForm(data);
+                if (!validation.isValid) {
+                    showError(validation.errors.join(', '));
+                    return;
+                }
+                
+                const result = register(data);
+                if (result.success) {
+                    showSuccess('Registration successful!');
+                    setTimeout(() => {
+                        window.location.href = '../index.html';
+                    }, 1000);
+                } else {
+                    showError(result.error);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

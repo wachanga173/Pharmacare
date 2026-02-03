@@ -1,0 +1,15 @@
+/* Product Detail Page Styles */
+
+.product-detail-image {
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.product-detail-info {
+    padding: 1rem 0;
+}
+
+.product-detail-price {
+    font-size: 2rem;
+    margin: 1rem 0;
+}

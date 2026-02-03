@@ -1,0 +1,15 @@
+/* Profile Page Styles */
+
+.profile-info {
+    background: var(--light-color);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.profile-info p {
+    margin-bottom: 1rem;
+}
+
+.profile-info strong {
+    color: var(--dark-color);
+}

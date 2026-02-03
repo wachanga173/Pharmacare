@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Online Pharmacy</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/pages/profile.css">
+</head>
+<body>
+    <div id="app">
+        <header id="header"></header>
+        
+        <main class="container">
+            <section style="padding: 2rem 0;">
+                <h1>My Profile</h1>
+                
+                <div class="grid grid-2" style="margin-top: 2rem;">
+                    <div>
+                        <h2>Profile Information</h2>
+                        <div id="profile-info">
+                            <p>Loading...</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h2>Order History</h2>
+                        <div id="order-history">
+                            <p>No orders yet</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer id="footer"></footer>
+    </div>
+
+    <div id="toast-container"></div>
+    
+    <script src="../js/config.js"></script>
+    <script type="module">
+        import { initHeader } from '../js/components/header.js';
+        import { initFooter } from '../js/components/footer.js';
+        import { isLoggedIn, getCurrentUser } from '../js/services/auth.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            initHeader();
+            initFooter();
+            
+            if (!isLoggedIn()) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            const user = getCurrentUser();
+            const profileInfo = document.getElementById('profile-info');
+            
+            if (profileInfo) {
+                profileInfo.innerHTML = `
+                    <p><strong>Name:</strong> ${user.name}</p>
+                    <p><strong>Email:</strong> ${user.email}</p>
+                    <p><strong>Account Type:</strong> ${user.isAdmin ? 'Admin' : 'Customer'}</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

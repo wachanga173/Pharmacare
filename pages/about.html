@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Online Pharmacy</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/pages/about.css">
+</head>
+<body>
+    <div id="app">
+        <header id="header"></header>
+        
+        <main>
+            <!-- Hero Section -->
+            <section class="about-hero">
+                <div class="container">
+                    <h1>About Us</h1>
+                    <p style="font-size: 1.25rem;">Your trusted partner in health and wellness</p>
+                </div>
+            </section>
+
+            <!-- Company Overview -->
+            <section class="container about-section">
+                <h2 class="text-center">Who We Are</h2>
+                <p style="max-width: 800px; margin: 1.5rem auto; text-align: center; font-size: 1.1rem;">
+                    We are a leading online pharmacy committed to providing quality healthcare products and services 
+                    to our community. With years of experience and a dedicated team of professionals, we ensure that 
+                    every customer receives the best care and authentic medications at competitive prices.
+                </p>
+                
+                <div class="mission-vision">
+                    <div class="mission-card">
+                        <h3>Our Mission</h3>
+                        <p>To make healthcare accessible, affordable, and convenient for everyone by providing 
+                        quality pharmaceutical products and exceptional customer service through innovative digital solutions.</p>
+                    </div>
+                    <div class="mission-card">
+                        <h3>Our Vision</h3>
+                        <p>To become the most trusted online pharmacy, recognized for our commitment to quality, 
+                        customer satisfaction, and advancing healthcare accessibility in the digital age.</p>
+                    </div>
+                    <div class="mission-card">
+                        <h3>Our Values</h3>
+                        <p>Integrity, Quality, Customer Focus, Innovation, and Compassion guide everything we do. 
+                        We believe in building lasting relationships with our customers based on trust and excellence.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Leadership Section -->
+            <section class="container about-section">
+                <h2 class="text-center">Our Leadership</h2>
+                <p style="max-width: 800px; margin: 1.5rem auto; text-align: center; font-size: 1.1rem;">
+                    Our organization is guided by a dedicated board of 11 distinguished directors who bring 
+                    decades of combined experience in healthcare, pharmaceuticals, technology, and business 
+                    management. Their expertise and vision shape our strategic direction and ensure we maintain 
+                    the highest standards of quality and service.
+                </p>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="directors.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                        Learn About Our Directors →
+                    </a>
+                </div>
+            </section>
+
+            <!-- Why Choose Us -->
+            <section class="container about-section" style="background: var(--light-color); padding: 3rem; border-radius: 0.5rem;">
+                <h2 class="text-center">Why Choose Us</h2>
+                <div class="grid grid-3" style="margin-top: 2rem;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">✓</div>
+                        <h3>Certified & Licensed</h3>
+                        <p>All our pharmacists are licensed professionals, and we comply with all regulatory requirements.</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">⚡</div>
+                        <h3>Fast Delivery</h3>
+                        <p>Quick and reliable delivery service ensures you get your medications when you need them.</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">💯</div>
+                        <h3>Quality Guaranteed</h3>
+                        <p>We source all medications from certified manufacturers and guarantee authenticity.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer id="footer"></footer>
+    </div>
+
+    <div id="toast-container"></div>
+    
+    <script src="../js/config.js"></script>
+    <script type="module">
+        import { initHeader } from '../js/components/header.js';
+        import { initFooter } from '../js/components/footer.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            initHeader();
+            initFooter();
+            
+            // Smooth scroll to directors section if hash is present
+            if (window.location.hash === '#directors') {
+                setTimeout(() => {
+                    document.getElementById('directors').scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        });
+    </script>
+</body>
+</html>

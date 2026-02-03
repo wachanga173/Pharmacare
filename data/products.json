@@ -1,0 +1,146 @@
+[
+  {
+    "id": 1,
+    "name": "Aspirin 100mg",
+    "description": "Pain reliever and fever reducer",
+    "category": "medicine",
+    "price": 8.99,
+    "stock": 150,
+    "image": "assets/images/products/aspirin.png"
+  },
+  {
+    "id": 2,
+    "name": "Vitamin C 1000mg",
+    "description": "Immune system support supplement",
+    "category": "supplement",
+    "price": 12.99,
+    "stock": 200,
+    "image": "assets/images/products/vitamin-c.png"
+  },
+  {
+    "id": 3,
+    "name": "Ibuprofen 200mg",
+    "description": "Anti-inflammatory pain reliever",
+    "category": "medicine",
+    "price": 10.99,
+    "stock": 180,
+    "image": "assets/images/products/ibuprofen.png"
+  },
+  {
+    "id": 4,
+    "name": "Multivitamin Daily",
+    "description": "Complete daily vitamin supplement",
+    "category": "supplement",
+    "price": 15.99,
+    "stock": 120,
+    "image": "assets/images/products/multivitamin.png"
+  },
+  {
+    "id": 5,
+    "name": "Hand Sanitizer 500ml",
+    "description": "Antibacterial hand sanitizer gel",
+    "category": "personal-care",
+    "price": 6.99,
+    "stock": 300,
+    "image": "assets/images/products/sanitizer.png"
+  },
+  {
+    "id": 6,
+    "name": "Omega-3 Fish Oil",
+    "description": "Heart and brain health support",
+    "category": "supplement",
+    "price": 18.99,
+    "stock": 95,
+    "image": "assets/images/products/omega3.png"
+  },
+  {
+    "id": 7,
+    "name": "Allergy Relief 24hr",
+    "description": "Non-drowsy allergy medication",
+    "category": "medicine",
+    "price": 14.99,
+    "stock": 75,
+    "image": "assets/images/products/allergy.png"
+  },
+  {
+    "id": 8,
+    "name": "Probiotic Complex",
+    "description": "Digestive health support",
+    "category": "supplement",
+    "price": 22.99,
+    "stock": 60,
+    "image": "assets/images/products/probiotic.png"
+  },
+  {
+    "id": 9,
+    "name": "Digital Thermometer",
+    "description": "Fast and accurate temperature reading",
+    "category": "personal-care",
+    "price": 9.99,
+    "stock": 45,
+    "image": "assets/images/products/thermometer.png"
+  },
+  {
+    "id": 10,
+    "name": "Cough Syrup 200ml",
+    "description": "Relief from cough and cold symptoms",
+    "category": "medicine",
+    "price": 11.99,
+    "stock": 110,
+    "image": "assets/images/products/cough-syrup.png"
+  },
+  {
+    "id": 11,
+    "name": "Calcium + Vitamin D",
+    "description": "Bone health supplement",
+    "category": "supplement",
+    "price": 13.99,
+    "stock": 85,
+    "image": "assets/images/products/calcium.png"
+  },
+  {
+    "id": 12,
+    "name": "First Aid Kit",
+    "description": "Complete emergency first aid kit",
+    "category": "personal-care",
+    "price": 24.99,
+    "stock": 35,
+    "image": "assets/images/products/first-aid.png"
+  },
+  {
+    "id": 13,
+    "name": "Pain Relief Cream",
+    "description": "Topical pain relief for muscles and joints",
+    "category": "medicine",
+    "price": 16.99,
+    "stock": 90,
+    "image": "assets/images/products/pain-cream.png"
+  },
+  {
+    "id": 14,
+    "name": "Melatonin 5mg",
+    "description": "Sleep support supplement",
+    "category": "supplement",
+    "price": 9.99,
+    "stock": 140,
+    "image": "assets/images/products/melatonin.png"
+  },
+  {
+    "id": 15,
+    "name": "Blood Pressure Monitor",
+    "description": "Digital arm blood pressure monitor",
+    "category": "personal-care",
+    "price": 34.99,
+    "stock": 25,
+    "image": "assets/images/products/bp-monitor.png"
+  },
+  {
+    "id": 16,
+    "name": "Antacid Tablets",
+    "description": "Fast relief from heartburn and indigestion",
+    "category": "medicine",
+    "price": 7.99,
+    "stock": 160,
+    "image": "assets/images/products/antacid.png"
+  }
+]
