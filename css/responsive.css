@@ -1,0 +1,104 @@
+/* Responsive Design */
+
+/* Tablet devices (768px and below) */
+@media (max-width: 768px) {
+    /* Grid adjustments */
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Header */
+    .header-nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    /* Hero */
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Typography */
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.25rem; }
+    
+    /* Modal */
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+}
+
+/* Mobile devices (480px and below) */
+@media (max-width: 480px) {
+    /* Container */
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* Grid adjustments */
+    .grid-4,
+    .grid-3,
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Buttons */
+    .btn {
+        width: 100%;
+        display: block;
+    }
+    
+    .product-actions {
+        flex-direction: column;
+    }
+    
+    /* Hero */
+    .hero {
+        padding: 2rem 0;
+    }
+    
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+    
+    /* Toast */
+    .toast {
+        right: 1rem;
+        left: 1rem;
+        bottom: 1rem;
+        min-width: auto;
+    }
+    
+    /* Nav links */
+    .nav-links {
+        font-size: 0.9rem;
+    }
+    
+    /* Sections */
+    section {
+        padding: 2rem 0;
+    }
+}
+
+/* Large screens (1200px and above) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1400px;
+    }
+}

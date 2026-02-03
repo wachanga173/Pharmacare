@@ -1,0 +1,39 @@
+/* Admin Page Styles */
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.admin-table th {
+    background-color: var(--light-color);
+    font-weight: 600;
+}
+
+.admin-table button {
+    margin-right: 0.5rem;
+}
+
+.admin-table tbody tr:hover {
+    background-color: var(--light-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .admin-table {
+        font-size: 0.875rem;
+    }
+    
+    .admin-table th,
+    .admin-table td {
+        padding: 0.5rem;
+    }
+}

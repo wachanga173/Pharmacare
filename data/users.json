@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Admin User",
+    "email": "admin@pharmacy.com",
+    "password": "admin123",
+    "isAdmin": true,
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "password123",
+    "isAdmin": false,
+    "createdAt": "2024-01-15T00:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "name": "Jane Smith",
+    "email": "jane@example.com",
+    "password": "password123",
+    "isAdmin": false,
+    "createdAt": "2024-02-01T00:00:00.000Z"
+  }
+]
