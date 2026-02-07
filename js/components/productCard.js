@@ -9,14 +9,14 @@ export function createProductCard(product) {
     card.dataset.productId = product.id;
     
     card.innerHTML = `
-        <img src="${product.image || 'assets/images/products/placeholder.png'}" 
+        <img src="${product.image_url || product.image || 'assets/images/products/placeholder.png'}" 
              alt="${product.name}" 
              class="product-image"
              onerror="this.src='assets/images/products/placeholder.png'">
         <div class="product-body">
             <h3 class="product-title">${product.name}</h3>
             <p class="product-description">${product.description || ''}</p>
-            <p class="product-price">${CONFIG.CURRENCY}${product.price.toFixed(2)}</p>
+            <p class="product-price">${window.CONFIG.CURRENCY}${product.price.toFixed(2)}</p>
             ${product.stock > 0 ? `
                 <div class="product-actions">
                     <button class="btn btn-primary add-to-cart-btn" data-id="${product.id}">

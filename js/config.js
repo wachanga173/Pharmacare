@@ -1,7 +1,13 @@
 // Application configuration
 const CONFIG = {
-    APP_NAME: 'Online Pharmacy',
+    APP_NAME: 'Pharmacare',
     VERSION: '1.0.0',
+    
+    // Supabase Configuration
+    SUPABASE: {
+        URL: 'https://hegzpymtsmcsngpesidr.supabase.co',
+        ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhlZ3pweW10c21jc25ncGVzaWRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAyMDM0ODUsImV4cCI6MjA4NTc3OTQ4NX0.PeFuKMvdAaFvhW_1vPlIHI7pwkGDsyaJ6DY4efcNjy4'
+    },
     
     // Storage keys
     STORAGE_KEYS: {
@@ -33,6 +39,11 @@ const CONFIG = {
     SHIPPING_COST: 5.99,
     FREE_SHIPPING_THRESHOLD: 50
 };
+
+// Make CONFIG available globally for browser
+if (typeof window !== 'undefined') {
+    window.CONFIG = CONFIG;
+}
 
 // Export for ES modules
 if (typeof module !== 'undefined' && module.exports) {

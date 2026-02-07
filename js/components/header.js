@@ -16,31 +16,78 @@ function renderHeader() {
     const loggedIn = isLoggedIn();
     const user = getCurrentUser();
     
+    // Detect if we're in the pages folder or root based on pathname
+    const currentPath = window.location.pathname;
+    const isInPagesFolder = currentPath.includes('/pages/') || currentPath.endsWith('.html') && !currentPath.endsWith('index.html');
+    
+    // Set paths based on current location
+    let homePath, productsPath, aboutPath, contactPath, profilePath, adminPath, loginPath, registerPath, cartPath, directorsPath;
+    
+    if (isInPagesFolder && !currentPath.endsWith('index.html')) {
+        // We're inside pages folder
+        homePath = '../index.html';
+        productsPath = 'products.html';
+        aboutPath = 'about.html';
+        contactPath = 'contact.html';
+        directorsPath = 'directors.html';
+        profilePath = 'profile.html';
+        adminPath = 'admin.html';
+        loginPath = 'login.html';
+        registerPath = 'register.html';
+        cartPath = 'cart.html';
+    } else {
+        // We're on homepage
+        homePath = 'index.html';
+        productsPath = 'pages/products.html';
+        aboutPath = 'pages/about.html';
+        contactPath = 'pages/contact.html';
+        directorsPath = 'pages/directors.html';
+        profilePath = 'pages/profile.html';
+        adminPath = 'pages/admin.html';
+        loginPath = 'pages/login.html';
+        registerPath = 'pages/register.html';
+        cartPath = 'pages/cart.html';
+    }
+    
     return `
         <nav class="header">
             <div class="container">
                 <div class="header-nav">
-                    <a href="index.html" class="logo">${CONFIG.APP_NAME}</a>
+                    <a href="${homePath}" class="logo">
+                        <span class="logo-icon">💊</span>
+                        ${window.CONFIG.APP_NAME}
+                    </a>
                     
                     <ul class="nav-links">
-                        <li><a href="index.html" class="nav-link">Home</a></li>
-                        <li><a href="pages/products.html" class="nav-link">Products</a></li>
-                        <li><a href="pages/about.html" class="nav-link">About Us</a></li>
+                        <li><a href="${homePath}" class="nav-link">Home</a></li>
+                        <li><a href="${productsPath}" class="nav-link">Products</a></li>
+                        <li><a href="${aboutPath}" class="nav-link">About</a></li>
+                        <li><a href="${contactPath}" class="nav-link">Contact</a></li>
+                    </ul>
+
+                    <ul class="nav-links-right">
                         ${loggedIn ? `
-                            <li><a href="pages/profile.html" class="nav-link">Profile</a></li>
-                            ${user?.isAdmin ? '<li><a href="pages/admin.html" class="nav-link">Admin</a></li>' : ''}
+                            <li><a href="${profilePath}" class="nav-link">👤 Profile</a></li>
+                            ${user?.isAdmin ? `<li><a href="${adminPath}" class="nav-link">⚙️ Admin</a></li>` : ''}
                             <li><a href="#" class="nav-link" id="logout-btn">Logout</a></li>
                         ` : `
-                            <li><a href="pages/login.html" class="nav-link">Login</a></li>
-                            <li><a href="pages/register.html" class="nav-link">Register</a></li>
+                            <li><a href="${loginPath}" class="nav-link">Login</a></li>
+                            <li><a href="${registerPath}" class="nav-link btn-register">Sign Up</a></li>
                         `}
                         <li>
-                            <a href="pages/cart.html" class="nav-link cart-icon">
-                                Cart
+                            <a href="${cartPath}" class="nav-link cart-link">
+                                🛒 Cart
                                 ${cartCount > 0 ? `<span class="cart-badge" id="cart-badge">${cartCount}</span>` : ''}
                             </a>
                         </li>
                     </ul>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
             </div>
         </nav>
