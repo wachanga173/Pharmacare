@@ -1,0 +1,389 @@
+/* ===================================
+   Directors Page Styles
+   =================================== */
+
+/* Hero Section */
+.directors-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 5rem 0 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.directors-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.directors-hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.directors-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.directors-hero p {
+    font-size: 1.25rem;
+    opacity: 0.95;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+/* Directors Grid */
+.directors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+    padding: 2rem 0;
+}
+
+/* Director Card */
+.director-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.director-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.director-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.12), 0 8px 12px rgba(0, 0, 0, 0.08);
+}
+
+.director-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Director Avatar */
+.director-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.director-avatar::before {
+    content: attr(data-icon);
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 1.8rem;
+    background: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border: 3px solid #667eea;
+    transition: all 0.3s ease;
+}
+
+.director-card:hover .director-avatar {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 12px 24px rgba(102, 126, 234, 0.4);
+}
+
+.director-card:hover .director-avatar::before {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.director-avatar::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.director-card:hover .director-avatar::after {
+    opacity: 0.3;
+    animation: pulse 2s infinite;
+}
+
+/* Director Name */
+.director-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+/* Director Title */
+.director-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #667eea;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    min-height: 3em;
+}
+
+/* Director Bio */
+.director-bio {
+    font-size: 0.95rem;
+    color: #4a5568;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* View Profile Button */
+.director-card .btn {
+    margin-top: auto;
+    min-width: 150px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.director-card .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.director-card .btn:hover::before {
+    left: 100%;
+}
+
+.director-card .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
+}
+
+/* Intro Paragraph */
+.container > p {
+    animation: fadeIn 1s ease-out;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.5;
+    }
+}
+
+/* Card Stagger Animation */
+.director-card {
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+.director-card:nth-child(1) { animation-delay: 0.1s; }
+.director-card:nth-child(2) { animation-delay: 0.2s; }
+.director-card:nth-child(3) { animation-delay: 0.3s; }
+.director-card:nth-child(4) { animation-delay: 0.4s; }
+.director-card:nth-child(5) { animation-delay: 0.5s; }
+.director-card:nth-child(6) { animation-delay: 0.6s; }
+.director-card:nth-child(7) { animation-delay: 0.7s; }
+.director-card:nth-child(8) { animation-delay: 0.8s; }
+.director-card:nth-child(9) { animation-delay: 0.9s; }
+.director-card:nth-child(10) { animation-delay: 1s; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .directors-hero {
+        padding: 3rem 0 2.5rem;
+    }
+
+    .directors-hero h1 {
+        font-size: 2rem;
+    }
+
+    .directors-hero p {
+        font-size: 1rem;
+    }
+
+    .directors-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 1rem 0;
+    }
+
+    .director-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .director-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 1.5rem;
+    }
+
+    .director-name {
+        font-size: 1.25rem;
+    }
+
+    .director-title {
+        font-size: 0.9rem;
+        min-height: auto;
+    }
+
+    .director-bio {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .directors-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (min-width: 1025px) {
+    .directors-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .directors-hero {
+        background: #667eea;
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+
+    .director-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .director-card .btn {
+        display: none;
+    }
+}
+
+/* Call to Action Section */
+.container > div[style*="linear-gradient"] a {
+    display: inline-block;
+}
+
+.container > div[style*="linear-gradient"] a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.container > div[style*="linear-gradient"] a:first-of-type:hover {
+    background: #f7fafc !important;
+}
+
+.container > div[style*="linear-gradient"] a:last-of-type:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Stats Section Enhancement */
+.container > div[style*="grid-template-columns"] > div {
+    transition: transform 0.3s ease;
+}
+
+.container > div[style*="grid-template-columns"] > div:hover {
+    transform: translateY(-5px);
+}
