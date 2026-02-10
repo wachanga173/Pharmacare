@@ -9,7 +9,7 @@ const carouselState = {
     shownProductIds: new Set(),
     currentProducts: [],
     currentIndex: 0,
-    productsPerView: 3,
+    productsPerView: 2,
     autoPlayInterval: null,
     autoPlayEnabled: true,
     timerInterval: null,
@@ -137,10 +137,8 @@ function updateCarouselPosition(animate = true) {
     
     const { currentIndex, productsPerView } = carouselState;
     
-    // Calculate the offset
-    const cardWidth = 300; // min-width of card
-    const gap = 32; // 2rem gap
-    const offset = currentIndex * (cardWidth + gap);
+    // Calculate the offset based on percentage
+    const offset = currentIndex * 100;
     
     if (animate) {
         track.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
@@ -148,13 +146,12 @@ function updateCarouselPosition(animate = true) {
         track.style.transition = 'none';
     }
     
-    track.style.transform = `translateX(-${offset}px)`;
+    track.style.transform = `translateX(-${offset}%)`;
 }
 
 function setupCarouselNavigation() {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
-    const autoPlayBtn = document.getElementById('autoPlayBtn');
     
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
@@ -168,10 +165,6 @@ function setupCarouselNavigation() {
             if (carouselState.isTransitioning) return;
             navigateNext();
         });
-    }
-    
-    if (autoPlayBtn) {
-        autoPlayBtn.addEventListener('click', toggleAutoPlay);
     }
 }
 
@@ -275,27 +268,8 @@ function stopAutoPlay() {
 }
 
 function resetTimer() {
-    if (carouselState.autoPlayEnabled) {
-        stopAutoPlay();
-        startAutoPlay();
-    }
-}
-
-function toggleAutoPlay() {
-    carouselState.autoPlayEnabled = !carouselState.autoPlayEnabled;
-    
-    const btn = document.getElementById('autoPlayBtn');
-    const playIcon = btn.querySelector('.play-icon');
-    
-    if (carouselState.autoPlayEnabled) {
-        btn.classList.add('active');
-        playIcon.textContent = '⏸';
-        startAutoPlay();
-    } else {
-        btn.classList.remove('active');
-        playIcon.textContent = '▶';
-        stopAutoPlay();
-    }
+    stopAutoPlay();
+    startAutoPlay();
 }
 
 function handleResponsiveView() {
@@ -303,10 +277,8 @@ function handleResponsiveView() {
     
     if (width < 768) {
         carouselState.productsPerView = 1;
-    } else if (width < 1024) {
-        carouselState.productsPerView = 2;
     } else {
-        carouselState.productsPerView = 3;
+        carouselState.productsPerView = 2;
     }
     
     updateCarouselPosition(false);
