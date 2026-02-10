@@ -1,0 +1,13 @@
+/* Custom styles for Wachanga's profile page */
+
+.subtitle {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.director-content {
+    margin-top: 2rem;
+}
+
+/* Add your custom styles below */

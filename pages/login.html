@@ -62,27 +62,66 @@
             initFooter();
             
             const form = document.getElementById('login-form');
-            form.addEventListener('submit', (e) => {
+            const submitBtn = form.querySelector('button[type="submit"]');
+            
+            form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
                 const formData = new FormData(form);
                 const data = Object.fromEntries(formData);
                 
+                // Validate form
                 const validation = validateLoginForm(data);
                 if (!validation.isValid) {
                     showError(validation.errors.join(', '));
                     return;
                 }
                 
-                const result = login(data.email, data.password);
-                if (result.success) {
-                    showSuccess('Login successful!');
-                    const redirect = getQueryParam('redirect') || '../index.html';
-                    setTimeout(() => {
-                        window.location.href = redirect;
-                    }, 1000);
-                } else {
-                    showError(result.error);
+                // Disable submit button
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Logging in...';
+                
+                try {
+                    // Login with async function
+                    const result = await login(data.email, data.password);
+                    
+                    if (result.success) {
+                        showSuccess('Login successful!');
+                        
+                        // Redirect to previous page or home
+                        const redirect = getQueryParam('redirect') || '../index.html';
+                        setTimeout(() => {
+                            window.location.href = redirect;
+                        }, 1000);
+                    } else {
+                        showError(result.error);
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Login';
+                    }
+                } catch (error) {
+                    showError('Login failed. Please try again.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Login';
+                }
+            });
+            
+            // Add "Forgot Password" link
+            const forgotLink = document.createElement('p');
+            forgotLink.className = 'text-center mt-1';
+            forgotLink.innerHTML = '<a href="#" id="forgot-password">Forgot Password?</a>';
+            form.appendChild(forgotLink);
+            
+            document.getElementById('forgot-password')?.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const email = prompt('Enter your email address:');
+                if (email) {
+                    const { resetPassword } = await import('../js/services/auth.js');
+                    const result = await resetPassword(email);
+                    if (result.success) {
+                        showSuccess(result.message);
+                    } else {
+                        showError(result.error);
+                    }
                 }
             });
         });

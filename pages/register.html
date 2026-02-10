@@ -71,26 +71,46 @@
             initFooter();
             
             const form = document.getElementById('register-form');
-            form.addEventListener('submit', (e) => {
+            const submitBtn = form.querySelector('button[type="submit"]');
+            
+            form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
                 const formData = new FormData(form);
                 const data = Object.fromEntries(formData);
                 
+                // Validate form
                 const validation = validateRegisterForm(data);
                 if (!validation.isValid) {
                     showError(validation.errors.join(', '));
                     return;
                 }
                 
-                const result = register(data);
-                if (result.success) {
-                    showSuccess('Registration successful!');
-                    setTimeout(() => {
-                        window.location.href = '../index.html';
-                    }, 1000);
-                } else {
-                    showError(result.error);
+                // Disable submit button
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Creating account...';
+                
+                try {
+                    // Register with async function
+                    const result = await register(data);
+                    
+                    if (result.success) {
+                        showSuccess(result.message || 'Registration successful!');
+                        
+                        // Redirect to home or login
+                        setTimeout(() => {
+                            window.location.href = '../index.html';
+                        }, 2000);
+                    } else {
+                        showError(result.error);
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Register';
+                    }
+                } catch (error) {
+                    console.error('Registration error:', error);
+                    showError('Registration failed. Please try again.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Register';
                 }
             });
         });

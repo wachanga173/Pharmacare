@@ -2,19 +2,19 @@
 import { getCartItemCount } from '../services/cart.js';
 import { isLoggedIn, getCurrentUser, logout } from '../services/auth.js';
 
-export function initHeader() {
+export async function initHeader() {
     const headerElement = document.getElementById('header');
     if (!headerElement) return;
     
-    headerElement.innerHTML = renderHeader();
+    headerElement.innerHTML = await renderHeader();
     attachHeaderEventListeners();
     updateCartBadge();
 }
 
-function renderHeader() {
+async function renderHeader() {
     const cartCount = getCartItemCount();
-    const loggedIn = isLoggedIn();
-    const user = getCurrentUser();
+    const loggedIn = await isLoggedIn();
+    const user = loggedIn ? await getCurrentUser() : null;
     
     // Detect if we're in the pages folder or root based on pathname
     const currentPath = window.location.pathname;
@@ -97,9 +97,9 @@ function renderHeader() {
 function attachHeaderEventListeners() {
     const logoutBtn = document.getElementById('logout-btn');
     if (logoutBtn) {
-        logoutBtn.addEventListener('click', (e) => {
+        logoutBtn.addEventListener('click', async (e) => {
             e.preventDefault();
-            logout();
+            await logout();
             window.location.reload();
         });
     }
