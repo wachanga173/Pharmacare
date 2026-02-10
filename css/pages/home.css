@@ -79,8 +79,22 @@
     padding: 1.2rem 3rem;
     font-size: 1.1rem;
     font-weight: 600;
-    border-radius: 50px;
+    border-radius: 8px;
     transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background: white;
+    color: #10b981;
+}
+
+.btn-primary:hover {
+    background: #f0fdf4;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .btn-outline {
@@ -90,8 +104,9 @@
 }
 
 .btn-outline:hover {
-    background: white;
-    color: #2563eb;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* Hero Stats */
