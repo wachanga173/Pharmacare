@@ -6,9 +6,8 @@ import { showToast } from '../components/toast.js';
 // Carousel State Management
 const carouselState = {
     allProducts: [],
-    shownProductIds: new Set(),
+    availableProducts: [],
     currentProducts: [],
-    currentIndex: 0,
     productsPerView: 2,
     autoPlayInterval: null,
     autoPlayEnabled: true,
@@ -45,6 +44,7 @@ async function loadAllProducts() {
     try {
         const products = await getProducts();
         carouselState.allProducts = products || [];
+        carouselState.availableProducts = [...(products || [])];
         
         if (carouselState.allProducts.length === 0) {
             document.getElementById('carouselTrack').innerHTML = 
@@ -61,39 +61,46 @@ function initCarousel() {
     
     // Load first batch of products
     loadNextProducts();
+    
+    // Update indicators
+    updateIndicators();
 }
 
 function loadNextProducts() {
-    const { allProducts, shownProductIds, productsPerView } = carouselState;
+    const { availableProducts, productsPerView } = carouselState;
     
-    // Get available products (not yet shown)
-    const availableProducts = allProducts.filter(p => !shownProductIds.has(p.id));
-    
-    // If all products have been shown, reset the tracking
+    // If no products available, reset from all products
     if (availableProducts.length === 0) {
-        carouselState.shownProductIds.clear();
-        carouselState.currentProducts = [];
-        loadNextProducts();
-        return;
+        carouselState.availableProducts = [...carouselState.allProducts];
+        
+        // If still no products, nothing to show
+        if (carouselState.availableProducts.length === 0) {
+            return;
+        }
     }
     
-    // Randomly select products from available ones
+    // Randomly select products from available pool
+    const numToSelect = Math.min(productsPerView, carouselState.availableProducts.length);
     const selectedProducts = [];
-    const numToSelect = Math.min(productsPerView, availableProducts.length);
-    
-    const shuffled = [...availableProducts].sort(() => Math.random() - 0.5);
     
     for (let i = 0; i < numToSelect; i++) {
-        const product = shuffled[i];
+        // Pick random index from available products
+        const randomIndex = Math.floor(Math.random() * carouselState.availableProducts.length);
+        const product = carouselState.availableProducts[randomIndex];
+        
         selectedProducts.push(product);
-        carouselState.shownProductIds.add(product.id);
+        
+        // Remove from available pool
+        carouselState.availableProducts.splice(randomIndex, 1);
     }
     
-    // Add to current products
-    carouselState.currentProducts.push(...selectedProducts);
+    // Replace current products with new selection
+    carouselState.currentProducts = selectedProducts;
     
     // Render products
     renderProducts();
+    
+    // Update indicators to show progress
     updateIndicators();
 }
 
@@ -103,61 +110,51 @@ function renderProducts() {
     
     const { currentProducts } = carouselState;
     
-    track.innerHTML = currentProducts.map((product, index) => `
-        <div class="carousel-product-card" data-index="${index}" style="animation-delay: ${index * 0.1}s">
-            <div class="carousel-product-image">
-                <img src="${product.image_url || 'assets/images/placeholder.png'}" 
-                     alt="${product.name}"
-                     onerror="this.src='assets/images/placeholder.png'">
-                ${product.stock < 10 ? '<span class="product-badge">Low Stock</span>' : ''}
-                ${product.stock === 0 ? '<span class="product-badge" style="background: #e53e3e;">Out of Stock</span>' : ''}
-            </div>
-            <div class="carousel-product-info">
-                <div class="carousel-product-category">${product.category || 'General'}</div>
-                <h3 class="carousel-product-name">${product.name}</h3>
-                <div class="carousel-product-price">$${parseFloat(product.price).toFixed(2)}</div>
-                <div class="carousel-product-actions">
-                    <button class="btn btn-primary" onclick="window.homePageActions.addToCartHandler('${product.id}')" 
-                            ${product.stock === 0 ? 'disabled' : ''}>
-                        ${product.stock === 0 ? 'Out of Stock' : 'Add to Cart'}
-                    </button>
-                    <a href="pages/product-detail.html?id=${product.id}" class="btn btn-secondary">View</a>
+    // Fade out current products
+    track.style.opacity = '0';
+    
+    setTimeout(() => {
+        track.innerHTML = currentProducts.map((product, index) => `
+            <div class="carousel-product-card" data-index="${index}" style="animation-delay: ${index * 0.1}s">
+                <div class="carousel-product-image">
+                    <img src="${product.image_url || 'assets/images/placeholder.png'}" 
+                         alt="${product.name}"
+                         onerror="this.src='assets/images/placeholder.png'">
+                    ${product.stock < 10 ? '<span class="product-badge">Low Stock</span>' : ''}
+                    ${product.stock === 0 ? '<span class="product-badge" style="background: #e53e3e;">Out of Stock</span>' : ''}
+                </div>
+                <div class="carousel-product-info">
+                    <div class="carousel-product-category">${product.category || 'General'}</div>
+                    <h3 class="carousel-product-name">${product.name}</h3>
+                    <div class="carousel-product-price">$${parseFloat(product.price).toFixed(2)}</div>
+                    <div class="carousel-product-actions">
+                        <button class="btn btn-primary" onclick="window.homePageActions.addToCartHandler('${product.id}')" 
+                                ${product.stock === 0 ? 'disabled' : ''}>
+                            ${product.stock === 0 ? 'Out of Stock' : 'Add to Cart'}
+                        </button>
+                        <a href="pages/product-detail.html?id=${product.id}" class="btn btn-secondary">View</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    `).join('');
-    
-    // Update carousel position
-    updateCarouselPosition(false);
+        `).join('');
+        
+        // Fade in new products
+        track.style.opacity = '1';
+    }, 300);
 }
 
 function updateCarouselPosition(animate = true) {
-    const track = document.getElementById('carouselTrack');
-    if (!track) return;
-    
-    const { currentIndex, productsPerView } = carouselState;
-    
-    // Calculate the offset based on percentage
-    const offset = currentIndex * 100;
-    
-    if (animate) {
-        track.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-    } else {
-        track.style.transition = 'none';
-    }
-    
-    track.style.transform = `translateX(-${offset}%)`;
+    // Not needed anymore since we replace products instead of sliding
+    // Keeping for compatibility
 }
 
 function setupCarouselNavigation() {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     
+    // Hide prev button since we're showing random products
     if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            if (carouselState.isTransitioning) return;
-            navigatePrevious();
-        });
+        prevBtn.style.display = 'none';
     }
     
     if (nextBtn) {
@@ -169,55 +166,40 @@ function setupCarouselNavigation() {
 }
 
 function navigatePrevious() {
-    const { currentIndex } = carouselState;
-    
-    if (currentIndex > 0) {
-        carouselState.currentIndex--;
-        updateCarouselPosition(true);
-        updateIndicators();
-        resetTimer();
-    }
+    // Not used in random selection mode
 }
 
 function navigateNext() {
-    const { currentIndex, currentProducts, productsPerView } = carouselState;
-    const maxIndex = currentProducts.length - productsPerView;
+    // Load new random products
+    carouselState.isTransitioning = true;
     
-    if (currentIndex < maxIndex) {
-        carouselState.currentIndex++;
-        updateCarouselPosition(true);
-        updateIndicators();
-        resetTimer();
-    } else {
-        // Load more products
-        loadNextProducts();
-        carouselState.currentIndex++;
-        updateIndicators();
-        resetTimer();
-    }
+    loadNextProducts();
+    resetTimer();
+    
+    setTimeout(() => {
+        carouselState.isTransitioning = false;
+    }, 600);
 }
 
 function updateIndicators() {
-    const indicatorsContainer = document.getElementById('carouselIndicators');
-    if (!indicatorsContainer) return;
+    // Update indicators to show progress through product pool
+    const indicators = document.getElementById('carouselIndicators');
+    if (!indicators) return;
     
-    const { currentProducts, productsPerView, currentIndex } = carouselState;
-    const numIndicators = Math.ceil(currentProducts.length / productsPerView);
+    const { allProducts, availableProducts } = carouselState;
+    const totalProducts = allProducts.length;
+    const shownProducts = totalProducts - availableProducts.length;
     
-    indicatorsContainer.innerHTML = Array.from({ length: numIndicators }, (_, i) => {
-        const isActive = Math.floor(currentIndex / productsPerView) === i;
-        return `<button class="indicator-dot ${isActive ? 'active' : ''}" 
-                        data-index="${i}" 
-                        onclick="window.homePageActions.goToSlide(${i})"></button>`;
-    }).join('');
+    // Show how many products viewed out of total
+    indicators.innerHTML = `
+        <div style="text-align: center; color: #64748b; font-size: 0.9rem; padding: 0.5rem;">
+            Showing ${Math.min(shownProducts + carouselState.productsPerView, totalProducts)} of ${totalProducts} products
+        </div>
+    `;
 }
 
 function goToSlide(slideIndex) {
-    const { productsPerView } = carouselState;
-    carouselState.currentIndex = slideIndex * productsPerView;
-    updateCarouselPosition(true);
-    updateIndicators();
-    resetTimer();
+    // Not used in random selection mode
 }
 
 function startAutoPlay() {
