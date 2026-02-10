@@ -6,7 +6,7 @@
 .hero-modern {
     position: relative;
     min-height: 600px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -83,7 +83,7 @@
 
 .btn-outline:hover {
     background: white;
-    color: #667eea;
+    color: #2563eb;
 }
 
 /* Hero Stats */
@@ -215,7 +215,7 @@
     position: absolute;
     top: 12px;
     right: 12px;
-    background: #667eea;
+    background: #2563eb;
     color: white;
     padding: 0.4rem 0.8rem;
     border-radius: 20px;
@@ -229,7 +229,7 @@
 
 .carousel-product-category {
     font-size: 0.85rem;
-    color: #667eea;
+    color: #2563eb;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -251,7 +251,7 @@
 .carousel-product-price {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #667eea;
+    color: #2563eb;
     margin-bottom: 1rem;
 }
 
@@ -285,13 +285,13 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
     z-index: 10;
-    color: #667eea;
+    color: #2563eb;
 }
 
 .carousel-btn:hover {
-    background: #667eea;
+    background: #2563eb;
     color: white;
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
     transform: translateY(-50%) scale(1.1);
 }
 
@@ -325,11 +325,11 @@
 .indicator-dot.active {
     width: 30px;
     border-radius: 5px;
-    background: #667eea;
+    background: #2563eb;
 }
 
 .indicator-dot:hover {
-    background: #667eea;
+    background: #2563eb;
     transform: scale(1.2);
 }
 
@@ -357,14 +357,14 @@
 }
 
 .toggle-btn:hover {
-    border-color: #667eea;
-    color: #667eea;
+    border-color: #2563eb;
+    color: #2563eb;
 }
 
 .toggle-btn.active {
-    background: #667eea;
+    background: #2563eb;
     color: white;
-    border-color: #667eea;
+    border-color: #2563eb;
 }
 
 .play-icon {
@@ -382,7 +382,7 @@
 
 .timer-bar {
     height: 100%;
-    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(90deg, #2563eb 0%, #10b981 100%);
     width: 0%;
     transition: width 0.1s linear;
 }
@@ -440,7 +440,7 @@
 /* CTA Section */
 .cta-section {
     padding: 5rem 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
 }
 
 .cta-content {
@@ -462,7 +462,7 @@
 
 .btn-light {
     background: white;
-    color: #667eea;
+    color: #2563eb;
 }
 
 .btn-light:hover {
