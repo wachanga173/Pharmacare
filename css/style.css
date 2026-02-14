@@ -54,6 +54,14 @@ a:hover {
     color: #0056b3;
 }
 
+/* Back Button */
+.btn-back:hover {
+    background: #f3f4f6 !important;
+    border-color: #007bff !important;
+    color: #007bff !important;
+    transform: translateX(-2px);
+}
+
 /* Buttons */
 .btn {
     display: inline-block;

@@ -120,6 +120,14 @@
     transition: all 0.3s;
 }
 
+/* Back Button Hover */
+.btn-back:hover {
+    background: #f3f4f6 !important;
+    border-color: #007bff !important;
+    color: #007bff !important;
+    transform: translateX(-2px);
+}
+
 /* Responsive Navigation */
 @media (max-width: 968px) {
     .nav-links {
