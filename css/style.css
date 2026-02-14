@@ -1,7 +1,7 @@
 /* Global Styles */
 :root {
     --primary-color: #007bff;
-    --secondary-color: #10b981;
+    --secondary-color: #17a2b8;
     --danger-color: #ef4444;
     --warning-color: #f59e0b;
     --dark-color: #1f2937;
@@ -90,7 +90,7 @@ a:hover {
 }
 
 .btn-secondary:hover {
-    background-color: #059669;
+    background-color: #138496;
 }
 
 .btn-danger {
