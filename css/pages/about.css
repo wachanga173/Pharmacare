@@ -1,7 +1,7 @@
 /* About Us Page Styles */
 
 .about-hero {
-    background: linear-gradient(135deg, var(--primary-color), #1d4ed8);
+    background: linear-gradient(135deg, var(--primary-color), #0056b3);
     color: white;
     padding: 4rem 0;
     text-align: center;
