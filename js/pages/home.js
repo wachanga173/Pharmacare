@@ -126,7 +126,7 @@ function renderProducts() {
                 <div class="carousel-product-info">
                     <div class="carousel-product-category">${product.category || 'General'}</div>
                     <h3 class="carousel-product-name">${product.name}</h3>
-                    <div class="carousel-product-price">$${parseFloat(product.price).toFixed(2)}</div>
+                    <div class="carousel-product-price">${CONFIG.CURRENCY}${parseFloat(product.price).toFixed(2)}</div>
                     <div class="carousel-product-actions">
                         <button class="btn btn-primary" onclick="window.homePageActions.addToCartHandler('${product.id}')" 
                                 ${product.stock === 0 ? 'disabled' : ''}>
