@@ -122,6 +122,14 @@
 
 /* Back Button Hover */
 .btn-back:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    color: white !important;
+    transform: translateX(-2px);
+}
+
+/* Back Button on white background */
+.btn-back-light:hover {
     background: #f3f4f6 !important;
     border-color: #007bff !important;
     color: #007bff !important;

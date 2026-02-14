@@ -140,8 +140,15 @@
 }
 
 .stat-icon {
-    font-size: 3rem;
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stat-icon svg {
+    color: white;
+    stroke: white;
 }
 
 .stat-number {
