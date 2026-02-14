@@ -30,7 +30,7 @@ const CONFIG = {
     TOAST_DURATION: 3000,
     
     // Currency
-    CURRENCY: '$',
+    CURRENCY: 'KSh ',
     
     // Tax rate (percentage)
     TAX_RATE: 0.08,

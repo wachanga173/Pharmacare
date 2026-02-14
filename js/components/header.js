@@ -18,12 +18,25 @@ async function renderHeader() {
     
     // Detect if we're in the pages folder or root based on pathname
     const currentPath = window.location.pathname;
+    const isInDirectorsFolder = currentPath.includes('/pages/directors/');
     const isInPagesFolder = currentPath.includes('/pages/') || currentPath.endsWith('.html') && !currentPath.endsWith('index.html');
     
     // Set paths based on current location
     let homePath, productsPath, aboutPath, contactPath, profilePath, adminPath, loginPath, registerPath, cartPath, directorsPath;
     
-    if (isInPagesFolder && !currentPath.endsWith('index.html')) {
+    if (isInDirectorsFolder) {
+        // We're inside pages/directors folder
+        homePath = '../../index.html';
+        productsPath = '../products.html';
+        aboutPath = '../about.html';
+        contactPath = '../contact.html';
+        directorsPath = '../directors.html';
+        profilePath = '../profile.html';
+        adminPath = '../admin.html';
+        loginPath = '../login.html';
+        registerPath = '../register.html';
+        cartPath = '../cart.html';
+    } else if (isInPagesFolder && !currentPath.endsWith('index.html')) {
         // We're inside pages folder
         homePath = '../index.html';
         productsPath = 'products.html';
