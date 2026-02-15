@@ -1,5 +1,27 @@
 // Cart service - manages shopping cart operations
 import { getFromStorage, saveToStorage } from "../utils/storage.js";
+// Lodash integration for cart tasks
+// Make sure Lodash is loaded globally (via CDN or npm)
+
+// Debounced updateQuantity function
+export const debouncedUpdateQuantity = _.debounce((productId, newQuantity) => {
+    updateQuantity(productId, newQuantity);
+}, 300); // 300ms debounce
+
+// Calculate cart total using _.sumBy
+export function calculateCartTotal(cartItems) {
+    return _.sumBy(cartItems, item => item.product.price * item.quantity);
+}
+
+// Deep clone cart state
+export function cloneCart(cart) {
+    return _.cloneDeep(cart);
+}
+
+// Find medicine by ID
+export function findMedicineById(medicines, id) {
+    return _.find(medicines, { id });
+}
 
 // Ensure CONFIG is available in module scope
 const CONFIG =
