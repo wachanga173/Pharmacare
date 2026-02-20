@@ -20,6 +20,11 @@ function renderFooter() {
     const aboutPath = isInPagesFolder ? 'about.html' : 'pages/about.html';
     const contactPath = isInPagesFolder ? 'contact.html' : 'pages/contact.html';
     const directorsPath = isInPagesFolder ? 'directors.html' : 'pages/directors.html';
+    const faqPath = isInPagesFolder ? 'faq.html' : 'pages/faq.html';
+    const shippingPath = isInPagesFolder ? 'shipping.html' : 'pages/shipping.html';
+    const returnsPath = isInPagesFolder ? 'returns.html' : 'pages/returns.html';
+    const privacyPath = isInPagesFolder ? 'privacy.html' : 'pages/privacy.html';
+    const termsPath = isInPagesFolder ? 'terms.html' : 'pages/terms.html';
     
     return `
         <footer class="footer">
@@ -48,11 +53,11 @@ function renderFooter() {
                     <div class="footer-section">
                         <h3>Customer Service</h3>
                         <ul class="footer-links">
-                            <li><a href="#">Help & FAQ</a></li>
-                            <li><a href="#">Shipping Information</a></li>
-                            <li><a href="#">Returns & Refunds</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="${faqPath}">Help & FAQ</a></li>
+                            <li><a href="${shippingPath}">Shipping Information</a></li>
+                            <li><a href="${returnsPath}">Returns & Refunds</a></li>
+                            <li><a href="${privacyPath}">Privacy Policy</a></li>
+                            <li><a href="${termsPath}">Terms & Conditions</a></li>
                         </ul>
                     </div>
                 </div>
