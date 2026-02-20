@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions - Pharmacare</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/pages/about.css">
+    <style>
+        .legal-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .legal-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .legal-section h2 {
+            color: #007bff;
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .legal-section h3 {
+            color: #1a202c;
+            margin: 2rem 0 1rem;
+            font-size: 1.25rem;
+        }
+        .legal-section h4 {
+            color: #2d3748;
+            margin: 1.5rem 0 0.75rem;
+            font-size: 1.1rem;
+        }
+        .legal-section p {
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .legal-section ul, .legal-section ol {
+            margin: 1rem 0 1rem 1.5rem;
+        }
+        .legal-section li {
+            color: #4a5568;
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        .highlight-box.info {
+            background: #f0f7ff;
+            border-left-color: #007bff;
+        }
+        .highlight-box.danger {
+            background: #f8d7da;
+            border-left-color: #dc3545;
+        }
+        .highlight-box p {
+            margin: 0;
+            color: #1a202c;
+        }
+        .last-updated {
+            background: #f7fafc;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            color: #4a5568;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        .toc {
+            background: #f7fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        .toc h3 {
+            color: #1a202c;
+            margin-bottom: 1rem;
+        }
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            column-count: 2;
+            column-gap: 2rem;
+        }
+        .toc li {
+            margin-bottom: 0.5rem;
+            break-inside: avoid;
+        }
+        .toc a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .toc ul {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header id="header"></header>
+        
+        <main>
+            <!-- Hero Section -->
+            <section class="about-hero">
+                <div class="container">
+                    <button onclick="window.history.back()" class="btn-back" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); border-radius: 0.375rem; color: white; cursor: pointer; transition: all 0.3s; margin-bottom: 1rem;">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Back
+                    </button>
+                    <h1>Terms & Conditions</h1>
+                    <p style="font-size: 1.25rem;">Please read these terms carefully before using our services</p>
+                </div>
+            </section>
+
+            <section class="container" style="padding: 3rem 0;">
+                <div class="legal-container">
+                    
+                    <div class="last-updated">
+                        <strong>Last Updated:</strong> February 21, 2026<br>
+                        <strong>Effective Date:</strong> February 21, 2026
+                    </div>
+
+                    <!-- Table of Contents -->
+                    <div class="toc">
+                        <h3>Table of Contents</h3>
+                        <ul>
+                            <li><a href="#acceptance">1. Acceptance of Terms</a></li>
+                            <li><a href="#eligibility">2. Eligibility</a></li>
+                            <li><a href="#account">3. User Accounts</a></li>
+                            <li><a href="#prescriptions">4. Prescriptions & Orders</a></li>
+                            <li><a href="#pricing">5. Pricing & Payment</a></li>
+                            <li><a href="#shipping">6. Shipping & Delivery</a></li>
+                            <li><a href="#returns">7. Returns & Refunds</a></li>
+                            <li><a href="#pharmacy-services">8. Pharmacy Services</a></li>
+                            <li><a href="#intellectual-property">9. Intellectual Property</a></li>
+                            <li><a href="#prohibited">10. Prohibited Uses</a></li>
+                            <li><a href="#disclaimers">11. Disclaimers</a></li>
+                            <li><a href="#limitation">12. Limitation of Liability</a></li>
+                            <li><a href="#indemnification">13. Indemnification</a></li>
+                            <li><a href="#termination">14. Termination</a></li>
+                            <li><a href="#governing-law">15. Governing Law</a></li>
+                            <li><a href="#changes">16. Changes to Terms</a></li>
+                            <li><a href="#contact">17. Contact Information</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Acceptance -->
+                    <div class="legal-section" id="acceptance">
+                        <h2>1. Acceptance of Terms</h2>
+                        
+                        <p>Welcome to Pharmacare. These Terms and Conditions ("Terms") govern your use of our website, mobile applications, and pharmacy services (collectively, the "Services"). By accessing or using our Services, you agree to be bound by these Terms.</p>
+
+                        <div class="highlight-box danger">
+                            <p><strong>Important:</strong> If you do not agree to these Terms, you may not access or use our Services. By creating an account or placing an order, you confirm that you have read, understood, and agree to be bound by these Terms and our Privacy Policy.</p>
+                        </div>
+
+                        <p>These Terms constitute a legally binding agreement between you and Pharmacare Limited, a licensed pharmacy operating in Kenya.</p>
+                    </div>
+
+                    <!-- Eligibility -->
+                    <div class="legal-section" id="eligibility">
+                        <h2>2. Eligibility</h2>
+                        
+                        <h3>2.1 Age Requirements</h3>
+                        <ul>
+                            <li>You must be at least 18 years old to create an account and use our Services</li>
+                            <li>Minors may use the Services only through a parent or legal guardian's account</li>
+                            <li>By using our Services, you represent that you meet these age requirements</li>
+                        </ul>
+
+                        <h3>2.2 Geographic Restrictions</h3>
+                        <ul>
+                            <li>Our Services are currently available only to residents of Kenya</li>
+                            <li>Delivery is limited to locations within Kenya where we can legally dispense medications</li>
+                            <li>You must provide a valid Kenyan address for prescription delivery</li>
+                        </ul>
+
+                        <h3>2.3 Legal Capacity</h3>
+                        <ul>
+                            <li>You must have the legal capacity to enter into binding contracts</li>
+                            <li>You are not prohibited by law from receiving pharmaceutical products</li>
+                            <li>You will comply with all applicable laws when using our Services</li>
+                        </ul>
+                    </div>
+
+                    <!-- Account -->
+                    <div class="legal-section" id="account">
+                        <h2>3. User Accounts</h2>
+                        
+                        <h3>3.1 Account Creation</h3>
+                        <p>To use certain features of our Services, you must create an account by providing:</p>
+                        <ul>
+                            <li>Accurate and complete personal information</li>
+                            <li>A valid email address and phone number</li>
+                            <li>Delivery address information</li>
+                            <li>Payment method details</li>
+                        </ul>
+
+                        <h3>3.2 Account Security</h3>
+                        <p>You are responsible for:</p>
+                        <ul>
+                            <li>Maintaining the confidentiality of your password</li>
+                            <li>All activities that occur under your account</li>
+                            <li>Notifying us immediately of any unauthorized access</li>
+                            <li>Ensuring your account information remains accurate and current</li>
+                        </ul>
+
+                        <h3>3.3 Account Restrictions</h3>
+                        <ul>
+                            <li>One account per person</li>
+                            <li>You may not transfer or share your account</li>
+                            <li>We reserve the right to suspend or terminate accounts that violate these Terms</li>
+                            <li>You may not create an account if previously banned from our Services</li>
+                        </ul>
+
+                        <h3>3.4 Account Termination</h3>
+                        <p>You may close your account at any time by contacting customer service. Upon termination:</p>
+                        <ul>
+                            <li>Your access to Services will be revoked</li>
+                            <li>Some prescription records will be retained as required by law</li>
+                            <li>Pending orders will be processed unless cancelled</li>
+                            <li>Account credits or rewards may be forfeited</li>
+                        </ul>
+                    </div>
+
+                    <!-- Prescriptions -->
+                    <div class="legal-section" id="prescriptions">
+                        <h2>4. Prescriptions & Orders</h2>
+                        
+                        <h3>4.1 Valid Prescriptions</h3>
+                        <p>For prescription medications:</p>
+                        <ul>
+                            <li>You must provide a valid prescription from a licensed healthcare provider</li>
+                            <li>Prescriptions must be current and not expired</li>
+                            <li>We verify all prescriptions with the prescribing provider</li>
+                            <li>Falsifying prescriptions is illegal and grounds for immediate account termination and legal action</li>
+                        </ul>
+
+                        <div class="highlight-box danger">
+                            <p><strong>⚠️ Warning:</strong> It is illegal to obtain prescription medications without a valid prescription. Attempting to do so may result in criminal penalties.</p>
+                        </div>
+
+                        <h3>4.2 Prescription Submission</h3>
+                        <p>You may submit prescriptions by:</p>
+                        <ul>
+                            <li>Uploading during checkout</li>
+                            <li>Emailing to prescriptions@pharmacare.com</li>
+                            <li>Having your doctor send directly to us</li>
+                            <li>Mailing the original prescription</li>
+                        </ul>
+
+                        <h3>4.3 Pharmacist Review</h3>
+                        <p>All prescriptions are reviewed by our licensed pharmacists who may:</p>
+                        <ul>
+                            <li>Contact your prescriber for clarification</li>
+                            <li>Recommend generic alternatives</li>
+                            <li>Identify potential drug interactions</li>
+                            <li>Refuse to fill prescriptions for safety or legal reasons</li>
+                        </ul>
+
+                        <h3>4.4 Order Acceptance</h3>
+                        <ul>
+                            <li>Placing an order is an offer to purchase</li>
+                            <li>We reserve the right to accept or reject any order</li>
+                            <li>Order confirmation does not guarantee product availability</li>
+                            <li>We may cancel orders if prescriptions cannot be verified</li>
+                        </ul>
+
+                        <h3>4.5 Controlled Substances</h3>
+                        <p>For controlled medications (narcotics, stimulants, etc.):</p>
+                        <ul>
+                            <li>Original prescriptions may be required</li>
+                            <li>ID verification may be necessary upon delivery</li>
+                            <li>Quantity limitations may apply</li>
+                            <li>Additional regulatory requirements must be met</li>
+                        </ul>
+                    </div>
+
+                    <!-- Pricing -->
+                    <div class="legal-section" id="pricing">
+                        <h2>5. Pricing & Payment</h2>
+                        
+                        <h3>5.1 Prices</h3>
+                        <ul>
+                            <li>All prices are in Kenyan Shillings (KSh) unless otherwise stated</li>
+                            <li>Prices are subject to change without notice</li>
+                            <li>The price charged is the price displayed at time of order</li>
+                            <li>We are not responsible for pricing errors - obviously incorrect prices may be cancelled</li>
+                        </ul>
+
+                        <h3>5.2 Payment Methods</h3>
+                        <p>We accept:</p>
+                        <ul>
+                            <li>Credit and debit cards</li>
+                            <li>Mobile money (M-Pesa, Airtel Money)</li>
+                            <li>Bank transfers</li>
+                            <li>Insurance (with prior verification)</li>
+                        </ul>
+
+                        <h3>5.3 Payment Processing</h3>
+                        <ul>
+                            <li>Payment is due at time of order</li>
+                            <li>We use secure, encrypted payment processing</li>
+                            <li>You authorize us to charge your payment method</li>
+                            <li>Failed payments may result in order cancellation</li>
+                        </ul>
+
+                        <h3>5.4 Insurance Claims</h3>
+                        <p>If using insurance:</p>
+                        <ul>
+                            <li>You are responsible for verifying coverage</li>
+                            <li>You pay the copay amount at checkout</li>
+                            <li>Insurance rejection may result in full price billing</li>
+                            <li>We will assist with claims but cannot guarantee approval</li>
+                        </ul>
+
+                        <h3>5.5 Taxes and Fees</h3>
+                        <ul>
+                            <li>Applicable taxes (VAT) will be added to your order</li>
+                            <li>Shipping fees may apply</li>
+                            <li>All fees are displayed before final checkout</li>
+                        </ul>
+                    </div>
+
+                    <!-- Shipping -->
+                    <div class="legal-section" id="shipping">
+                        <h2>6. Shipping & Delivery</h2>
+                        
+                        <h3>6.1 Delivery Times</h3>
+                        <p>Estimated delivery times are approximate and not guaranteed. Delays may occur due to:</p>
+                        <ul>
+                            <li>Prescription verification requirements</li>
+                            <li>Weather or natural disasters</li>
+                            <li>Courier service delays</li>
+                            <li>Incorrect or incomplete delivery information</li>
+                        </ul>
+
+                        <h3>6.2 Delivery Requirements</h3>
+                        <ul>
+                            <li>Physical street address required (no P.O. boxes)</li>
+                            <li>Signature may be required for controlled substances</li>
+                            <li>ID verification may be necessary</li>
+                            <li>Someone must be available to receive temperature-sensitive items</li>
+                        </ul>
+
+                        <h3>6.3 Failed Deliveries</h3>
+                        <p>If delivery fails due to:</p>
+                        <ul>
+                            <li>Incorrect address: Reshipment fees may apply</li>
+                            <li>Recipient unavailable: Courier will make additional attempts</li>
+                            <li>Refused delivery: Standard return policies apply</li>
+                        </ul>
+
+                        <p>See our full <a href="shipping.html" style="color: #007bff;">Shipping Information</a> page for details.</p>
+                    </div>
+
+                    <!-- Returns -->
+                    <div class="legal-section" id="returns">
+                        <h2>7. Returns & Refunds</h2>
+                        
+                        <p>Due to health and safety regulations, returns are limited. Please review our complete <a href="returns.html" style="color: #007bff;">Returns & Refunds Policy</a>.</p>
+
+                        <h3>Summary:</h3>
+                        <ul>
+                            <li><strong>Unopened items:</strong> May be returned within 30 days</li>
+                            <li><strong>Opened medications:</strong> Cannot be returned for safety reasons</li>
+                            <li><strong>Wrong or damaged items:</strong> Full refund or replacement</li>
+                            <li><strong>Our errors:</strong> We cover all return shipping costs</li>
+                        </ul>
+
+                        <div class="highlight-box info">
+                            <p><strong>Health & Safety:</strong> Once a medication has been opened, it cannot be returned or resold in compliance with pharmaceutical regulations.</p>
+                        </div>
+                    </div>
+
+                    <!-- Pharmacy Services -->
+                    <div class="legal-section" id="pharmacy-services">
+                        <h2>8. Pharmacy Services</h2>
+                        
+                        <h3>8.1 Licensed Pharmacy</h3>
+                        <ul>
+                            <li>Pharmacare is licensed by the Pharmacy and Poisons Board of Kenya</li>
+                            <li>All medications are dispensed by licensed pharmacists</li>
+                            <li>We comply with all pharmaceutical regulations and standards</li>
+                        </ul>
+
+                        <h3>8.2 Pharmacist Consultations</h3>
+                        <p>Our pharmacists are available to:</p>
+                        <ul>
+                            <li>Answer medication questions</li>
+                            <li>Provide dosing information</li>
+                            <li>Discuss potential drug interactions</li>
+                            <li>Offer medication counseling</li>
+                        </ul>
+                        <p><strong>Note:</strong> Pharmacist consultations do not replace medical advice from your doctor.</p>
+
+                        <h3>8.3 Not Medical Advice</h3>
+                        <div class="highlight-box danger">
+                            <p><strong>⚠️ Disclaimer:</strong> Our Services do not provide medical diagnosis or treatment. Always consult with a qualified healthcare provider for medical advice. In case of emergency, call emergency services or visit the nearest hospital.</p>
+                        </div>
+
+                        <h3>8.4 Product Information</h3>
+                        <ul>
+                            <li>Product descriptions are provided for informational purposes</li>
+                            <li>Always read medication labels and patient information leaflets</li>
+                            <li>We make reasonable efforts to ensure accuracy but cannot guarantee completeness</li>
+                            <li>Report any product concerns to our pharmacy team immediately</li>
+                        </ul>
+                    </div>
+
+                    <!-- Intellectual Property -->
+                    <div class="legal-section" id="intellectual-property">
+                        <h2>9. Intellectual Property</h2>
+                        
+                        <h3>9.1 Our Content</h3>
+                        <p>All content on our Services, including:</p>
+                        <ul>
+                            <li>Text, graphics, logos, images</li>
+                            <li>Software and code</li>
+                            <li>Design and layout</li>
+                            <li>Data compilations</li>
+                        </ul>
+                        <p>...is owned by Pharmacare or our licensors and protected by copyright and trademark laws.</p>
+
+                        <h3>9.2 Limited License</h3>
+                        <p>We grant you a limited, non-exclusive, non-transferable license to:</p>
+                        <ul>
+                            <li>Access and use our Services for personal, non-commercial purposes</li>
+                            <li>Download and print materials for personal reference</li>
+                        </ul>
+
+                        <h3>9.3 Restrictions</h3>
+                        <p>You may NOT:</p>
+                        <ul>
+                            <li>Reproduce, duplicate, or copy any part of our Services</li>
+                            <li>Use our content for commercial purposes</li>
+                            <li>Modify or create derivative works</li>
+                            <li>Remove copyright or trademark notices</li>
+                            <li>Reverse engineer our software or systems</li>
+                        </ul>
+                    </div>
+
+                    <!-- Prohibited Uses -->
+                    <div class="legal-section" id="prohibited">
+                        <h2>10. Prohibited Uses</h2>
+                        
+                        <p>You agree NOT to:</p>
+
+                        <h3>10.1 Illegal Activities</h3>
+                        <ul>
+                            <li>Use our Services for any illegal purpose</li>
+                            <li>Violate any local, national, or international laws</li>
+                            <li>Obtain medications without valid prescriptions</li>
+                            <li>Falsify or forge prescriptions or medical records</li>
+                            <li>Resell medications obtained through our Services</li>
+                        </ul>
+
+                        <h3>10.2 Abuse and Misconduct</h3>
+                        <ul>
+                            <li>Harass, abuse, or harm others</li>
+                            <li>Impersonate any person or entity</li>
+                            <li>Provide false or misleading information</li>
+                            <li>Engage in fraudulent activities</li>
+                        </ul>
+
+                        <h3>10.3 Technical Abuse</h3>
+                        <ul>
+                            <li>Attempt to gain unauthorized access to our systems</li>
+                            <li>Interfere with the operation of our Services</li>
+                            <li>Use automated systems (bots, scrapers) without permission</li>
+                            <li>Introduce viruses or malicious code</li>
+                            <li>Overwhelm our systems with excessive requests</li>
+                        </ul>
+
+                        <h3>10.4 Consequences</h3>
+                        <p>Violating these prohibitions may result in:</p>
+                        <ul>
+                            <li>Immediate termination of your account</li>
+                            <li>Legal action and prosecution</li>
+                            <li>Liability for damages</li>
+                            <li>Reporting to law enforcement authorities</li>
+                        </ul>
+                    </div>
+
+                    <!-- Disclaimers -->
+                    <div class="legal-section" id="disclaimers">
+                        <h2>11. Disclaimers</h2>
+                        
+                        <h3>11.1 "As Is" Basis</h3>
+                        <p>OUR SERVICES ARE PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED.</p>
+
+                        <h3>11.2 No Warranty</h3>
+                        <p>We do not warrant that:</p>
+                        <ul>
+                            <li>Our Services will be uninterrupted or error-free</li>
+                            <li>Defects will be corrected</li>
+                            <li>Our Services are free of viruses or harmful components</li>
+                            <li>Results from use will meet your requirements</li>
+                        </ul>
+
+                        <h3>11.3 Third-Party Products</h3>
+                        <ul>
+                            <li>Medications are manufactured by third parties</li>
+                            <li>We are not responsible for manufacturing defects</li>
+                            <li>Manufacturer warranties (if any) apply to products</li>
+                            <li>We dispense products in good faith based on available information</li>
+                        </ul>
+
+                        <h3>11.4 No Medical Relationship</h3>
+                        <p>Use of our Services does not create a doctor-patient relationship. We provide pharmacy services only. Consult your physician for medical advice.</p>
+                    </div>
+
+                    <!-- Limitation of Liability -->
+                    <div class="legal-section" id="limitation">
+                        <h2>12. Limitation of Liability</h2>
+                        
+                        <div class="highlight-box">
+                            <p><strong>IMPORTANT LEGAL NOTICE:</strong></p>
+                        </div>
+
+                        <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW:</p>
+
+                        <h3>12.1 Exclusion of Damages</h3>
+                        <p>PHARMACARE SHALL NOT BE LIABLE FOR:</p>
+                        <ul>
+                            <li>Indirect, incidental, or consequential damages</li>
+                            <li>Loss of profits, revenue, or data</li>
+                            <li>Business interruption</li>
+                            <li>Personal injury or property damage</li>
+                            <li>Damages arising from third-party products or services</li>
+                        </ul>
+
+                        <h3>12.2 Limitation Amount</h3>
+                        <p>Our total liability for any claim arising from or related to our Services shall not exceed the amount you paid for the specific product or service giving rise to the claim, or KSh 10,000, whichever is less.</p>
+
+                        <h3>12.3 Exclusions</h3>
+                        <p>This limitation does not apply to:</p>
+                        <ul>
+                            <li>Our gross negligence or willful misconduct</li>
+                            <li>Death or personal injury caused by our negligence</li>
+                            <li>Fraud or fraudulent misrepresentation</li>
+                            <li>Any liability that cannot be excluded by law</li>
+                        </ul>
+                    </div>
+
+                    <!-- Indemnification -->
+                    <div class="legal-section" id="indemnification">
+                        <h2>13. Indemnification</h2>
+                        
+                        <p>You agree to indemnify, defend, and hold harmless Pharmacare, its officers, directors, employees, agents, and affiliates from any claims, damages, losses, liabilities, and expenses (including legal fees) arising from:</p>
+                        <ul>
+                            <li>Your use or misuse of our Services</li>
+                            <li>Your violation of these Terms</li>
+                            <li>Your violation of any law or rights of third parties</li>
+                            <li>Unauthorized use of your account</li>
+                            <li>False information provided by you</li>
+                        </ul>
+                    </div>
+
+                    <!-- Termination -->
+                    <div class="legal-section" id="termination">
+                        <h2>14. Termination</h2>
+                        
+                        <h3>14.1 Termination by You</h3>
+                        <p>You may stop using our Services at any time by closing your account.</p>
+
+                        <h3>14.2 Termination by Us</h3>
+                        <p>We may suspend or terminate your access to our Services immediately, without notice, for:</p>
+                        <ul>
+                            <li>Violation of these Terms</li>
+                            <li>Fraudulent or illegal activity</li>
+                            <li>Providing false information</li>
+                            <li>Abuse of our Services or staff</li>
+                            <li>Non-payment</li>
+                            <li>Any reason or no reason, at our sole discretion</li>
+                        </ul>
+
+                        <h3>14.3 Effect of Termination</h3>
+                        <p>Upon termination:</p>
+                        <ul>
+                            <li>Your right to use our Services immediately ceases</li>
+                            <li>We may delete your account data (except as required by law)</li>
+                            <li>You remain liable for all pending orders and payments</li>
+                            <li>Provisions that by nature should survive termination will survive</li>
+                        </ul>
+                    </div>
+
+                    <!-- Governing Law -->
+                    <div class="legal-section" id="governing-law">
+                        <h2>15. Governing Law & Dispute Resolution</h2>
+                        
+                        <h3>15.1 Governing Law</h3>
+                        <p>These Terms shall be governed by and construed in accordance with the laws of the Republic of Kenya, without regard to conflict of law principles.</p>
+
+                        <h3>15.2 Jurisdiction</h3>
+                        <p>You agree to submit to the exclusive jurisdiction of the courts of Kenya for resolution of any disputes.</p>
+
+                        <h3>15.3 Dispute Resolution Process</h3>
+                        <p>Before filing any legal action, you agree to:</p>
+                        <ol>
+                            <li>Contact our customer service to attempt informal resolution</li>
+                            <li>Participate in good faith negotiations for 30 days</li>
+                            <li>Consider mediation or arbitration if informal resolution fails</li>
+                        </ol>
+
+                        <h3>15.4 Class Action Waiver</h3>
+                        <p>You agree to bring claims only in your individual capacity and not as part of any class action or representative proceeding.</p>
+                    </div>
+
+                    <!-- Changes to Terms -->
+                    <div class="legal-section" id="changes">
+                        <h2>16. Changes to These Terms</h2>
+                        
+                        <p>We reserve the right to modify these Terms at any time.</p>
+
+                        <h3>16.1 Notification</h3>
+                        <ul>
+                            <li>Material changes: 30 days advance notice via email</li>
+                            <li>Minor changes: Posted on website with updated date</li>
+                            <li>You will be required to accept new Terms to continue using Services</li>
+                        </ul>
+
+                        <h3>16.2 Your Options</h3>
+                        <p>If you disagree with changes:</p>
+                        <ul>
+                            <li>Stop using our Services</li>
+                            <li>Close your account before changes take effect</li>
+                            <li>Continued use after effective date constitutes acceptance</li>
+                        </ul>
+
+                        <h3>16.3 Previous Versions</h3>
+                        <p>Previous versions of these Terms are available upon request.</p>
+                    </div>
+
+                    <!-- General Provisions -->
+                    <div class="legal-section">
+                        <h2>Additional Provisions</h2>
+                        
+                        <h3>Severability</h3>
+                        <p>If any provision of these Terms is found to be unenforceable, the remaining provisions will remain in full force and effect.</p>
+
+                        <h3>Waiver</h3>
+                        <p>Our failure to enforce any right or provision of these Terms shall not constitute a waiver of such right or provision.</p>
+
+                        <h3>Entire Agreement</h3>
+                        <p>These Terms, together with our Privacy Policy and any other legal notices, constitute the entire agreement between you and Pharmacare regarding our Services.</p>
+
+                        <h3>Assignment</h3>
+                        <p>You may not assign or transfer these Terms. We may assign our rights and obligations without restriction.</p>
+
+                        <h3>Force Majeure</h3>
+                        <p>We are not liable for delays or failures due to circumstances beyond our reasonable control, including natural disasters, war, terrorism, pandemic, or government actions.</p>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="legal-section" id="contact">
+                        <h2>17. Contact Information</h2>
+                        
+                        <p>For questions about these Terms, please contact us:</p>
+
+                        <h3>Pharmacare Limited</h3>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li><strong>Address:</strong> P.O. Box 12345, Nairobi, Kenya</li>
+                            <li><strong>Email:</strong> legal@pharmacare.com</li>
+                            <li><strong>Phone:</strong> +254 700 000 000</li>
+                            <li><strong>Business Hours:</strong> Monday-Saturday, 8:00 AM - 8:00 PM EAT</li>
+                        </ul>
+
+                        <h3>Pharmacy License</h3>
+                        <p>Licensed by the Pharmacy and Poisons Board of Kenya<br>
+                        License Number: PP/XXXX/XXXX</p>
+                    </div>
+
+                    <!-- Acknowledgment -->
+                    <div class="highlight-box">
+                        <p><strong>By using Pharmacare's Services, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions.</strong></p>
+                    </div>
+
+                    <!-- CTA -->
+                    <div style="background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); color: white; padding: 3rem 2rem; border-radius: 12px; text-align: center; margin-top: 2rem;">
+                        <h2 style="color: white; margin-bottom: 1rem;">Questions About Our Terms?</h2>
+                        <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.95;">Our legal team is available to answer any questions you may have.</p>
+                        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                            <a href="contact.html" class="btn" style="background: white; color: #007bff; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600;">Contact Us</a>
+                            <a href="faq.html" class="btn" style="background: rgba(255,255,255,0.2); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; border: 2px solid white;">View FAQ</a>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+        
+        <footer id="footer"></footer>
+    </div>
+
+    <div id="toast-container"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config.js"></script>
+    <script type="module">
+        import { initHeader } from '../js/components/header.js';
+        import { initFooter } from '../js/components/footer.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            initHeader();
+            initFooter();
+
+            // Smooth scroll for TOC links
+            document.querySelectorAll('.toc a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
