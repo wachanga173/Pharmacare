@@ -67,7 +67,7 @@
             container.innerHTML = `
                 <div class="grid grid-2">
                     <div>
-                        <img src="${product.image || '../assets/images/products/placeholder.png'}" 
+                        <img src="${product.image_url || product.image || '../assets/images/products/placeholder.png'}" 
                              alt="${product.name}" 
                              style="width: 100%; border-radius: 0.5rem;"
                              onerror="this.src='../assets/images/products/placeholder.png'">
@@ -75,7 +75,7 @@
                     <div>
                         <h1>${product.name}</h1>
                         <p class="product-price" style="font-size: 2rem; margin: 1rem 0;">
-                            ${CONFIG.CURRENCY}${product.price.toFixed(2)}
+                            ${CONFIG.CURRENCY}${parseFloat(product.price).toFixed(2)}
                         </p>
                         <p>${product.description || 'No description available'}</p>
                         <p><strong>Category:</strong> ${product.category || 'N/A'}</p>
