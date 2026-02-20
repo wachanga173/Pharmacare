@@ -424,9 +424,9 @@ SKILLS
 
 /* 5. Assign Widths and Colors based on your HTML structure */
 .skill-item:nth-child(1) .skill-fill { width: 95%; background: var(--grad-primary); }
-.skill-item:nth-child(2) .skill-fill { width: 90%; background: var(--grad-secondary); }
-.skill-item:nth-child(3) .skill-fill { width: 88%; background: linear-gradient(135deg,#007bff 0%,#17a2b8 100%); }
-.skill-item:nth-child(4) .skill-fill { width: 92%; background: linear-gradient(135deg,#0056b3 0%,#007bff 100%); }
+.skill-item:nth-child(2) .skill-fill { width: 90%; background: var(--grad-primary); }
+.skill-item:nth-child(3) .skill-fill { width: 88%; background: var(--grad-primary); }
+.skill-item:nth-child(4) .skill-fill { width: 92%; background: var(--grad-primary); }
 .skill-item:nth-child(5) .skill-fill { width: 93%; background: var(--grad-primary); }
 
 
