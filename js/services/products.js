@@ -69,6 +69,7 @@ export async function getProductById(id) {
     const products = await getProducts();
     // Handle both string UUIDs and integer IDs
     return products.find(p => p.id == id || p.id === parseInt(id));
+}
 
 export function searchProducts(products, query) {
     if (!query || query.trim() === '') {
