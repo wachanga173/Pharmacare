@@ -92,10 +92,10 @@
             
             const addBtn = document.getElementById('add-to-cart-detail');
             if (addBtn) {
-                addBtn.addEventListener('click', () => {
-                    addToCart(product.id);
+                addBtn.addEventListener('click', async () => {
+                    await addToCart(product.id);
                     showSuccess(`${product.name} added to cart!`);
-                    updateCartBadge();
+                    await updateCartBadge();
                 });
             }
         });

@@ -4,28 +4,28 @@ import { isLoggedIn } from '../services/auth.js';
 import { showSuccess, showError } from '../components/toast.js';
 import { validateCheckoutForm } from '../utils/validation.js';
 
-export function initCheckoutPage() {
+export async function initCheckoutPage() {
     // Check if user is logged in
-    if (!isLoggedIn()) {
+    if (!await isLoggedIn()) {
         window.location.href = 'login.html?redirect=checkout.html';
         return;
     }
     
-    const cart = getCart();
+    const cart = await getCart();
     if (cart.items.length === 0) {
         window.location.href = 'cart.html';
         return;
     }
     
-    renderOrderSummary();
+    await renderOrderSummary();
     setupCheckoutForm();
 }
 
-function renderOrderSummary() {
+async function renderOrderSummary() {
     const container = document.getElementById('order-summary');
     if (!container) return;
     
-    const cart = getCart();
+    const cart = await getCart();
     const subtotal = cart.total;
     const shipping = subtotal >= CONFIG.FREE_SHIPPING_THRESHOLD ? 0 : CONFIG.SHIPPING_COST;
     const tax = subtotal * CONFIG.TAX_RATE;

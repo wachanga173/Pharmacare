@@ -9,13 +9,13 @@ export function initCartPage() {
     setupCartHandlers();
 }
 
-function renderCart() {
+async function renderCart() {
     const container = document.getElementById('cart-container');
     const summaryContainer = document.getElementById('cart-summary');
     
     if (!container) return;
     
-    const cart = getCart();
+    const cart = await getCart();
     
     if (cart.items.length === 0) {
         container.innerHTML = `
@@ -103,7 +103,7 @@ function setupCartHandlers() {
             if (confirmed) {
                 removeFromCart(productId);
                 showSuccess('Item removed from cart');
-                renderCart();
+                await renderCart();
                 updateCartBadge();
             }
         }
@@ -112,14 +112,14 @@ function setupCartHandlers() {
         if (target.classList.contains('btn-quantity')) {
             const productId = parseInt(target.dataset.id);
             const action = target.dataset.action;
-            const cart = getCart();
-            const item = cart.items.find(i => i.product.id === productId);
+            const cart = await getCart();
+            const item = cart.items.find(i => i.product.id == productId);
             
             if (item) {
                 const newQuantity = action === 'increase' ? item.quantity + 1 : item.quantity - 1;
                 if (newQuantity > 0) {
                     updateQuantity(productId, newQuantity);
-                    renderCart();
+                    await renderCart();
                     updateCartBadge();
                 }
             }

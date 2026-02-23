@@ -33,10 +33,10 @@ export function createProductCard(product) {
     // Event listeners
     const addToCartBtn = card.querySelector('.add-to-cart-btn');
     if (addToCartBtn) {
-        addToCartBtn.addEventListener('click', () => {
-            addToCart(product.id);
+        addToCartBtn.addEventListener('click', async () => {
+            await addToCart(product.id);
             showSuccess(`${product.name} added to cart!`);
-            updateCartBadge();
+            await updateCartBadge();
         });
     }
     

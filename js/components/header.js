@@ -12,7 +12,7 @@ export async function initHeader() {
 }
 
 async function renderHeader() {
-    const cartCount = getCartItemCount();
+    const cartCount = await getCartItemCount();
     const loggedIn = await isLoggedIn();
     const user = loggedIn ? await getCurrentUser() : null;
     
@@ -118,9 +118,9 @@ function attachHeaderEventListeners() {
     }
 }
 
-export function updateCartBadge() {
+export async function updateCartBadge() {
     const badge = document.getElementById('cart-badge');
-    const cartCount = getCartItemCount();
+    const cartCount = await getCartItemCount();
     
     if (badge) {
         badge.textContent = cartCount;
