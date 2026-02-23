@@ -111,7 +111,7 @@ function setupCartHandlers() {
 
     // Remove item
     if (target.classList.contains("remove-item")) {
-      const productId = parseInt(target.dataset.id);
+      const productId = target.dataset.id; // Use as string
       const confirmed = await confirmModal(
         "Remove Item",
         "Are you sure you want to remove this item?",
@@ -119,7 +119,7 @@ function setupCartHandlers() {
       if (confirmed) {
         removeFromCart(productId);
         showSuccess("Item removed from cart");
-        await renderCart();
+        await renderCart(); // Refresh cart UI
         updateCartBadge();
       }
     }
