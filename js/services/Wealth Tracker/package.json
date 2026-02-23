@@ -1,0 +1,16 @@
+{
+  "name": "wealth-tracker",
+  "version": "1.0.0",
+  "description": "30-Year Wealth Tracker MVP for student investors.",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "firebase": "^10.7.1",
+    "firebase-admin": "^11.10.1",
+    "dotenv": "^16.4.5"
+  }
+}

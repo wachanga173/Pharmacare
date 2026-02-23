@@ -1,0 +1,70 @@
+/*
+  main.css - Fintech dark mode, emerald green accents
+*/
+body {
+  background: #10151a;
+  color: #e0e6ed;
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+}
+
+:root {
+  --emerald: #10b981;
+  --emerald-dark: #059669;
+  --card-bg: #18222c;
+  --border: #233040;
+}
+
+#app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px #0003;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.progress-bar {
+  background: #233040;
+  border-radius: 1rem;
+  overflow: hidden;
+  height: 1.25rem;
+  margin: 0.5rem 0 1rem 0;
+}
+.progress {
+  background: linear-gradient(90deg, var(--emerald), var(--emerald-dark));
+  height: 100%;
+  transition: width 0.4s;
+}
+.button {
+  background: var(--emerald);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.2s;
+}
+.button:hover {
+  background: var(--emerald-dark);
+}
+input,
+select {
+  background: #1a2532;
+  color: #e0e6ed;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  font-size: 1rem;
+}
