@@ -77,8 +77,10 @@ export async function addToCart(productId, quantity = 1) {
 export function removeFromCart(productId) {
   const cart = getCartRaw();
   cart.items = cart.items.filter((item) => {
-    // Always compare using productId only
-    return String(item.productId) !== String(productId);
+    // Extract the ID from either property, just like in updateQuantity
+    const itemProductId = item.productId || item.product?.id;
+    // Keep the item only if the IDs do NOT match
+    return String(itemProductId) !== String(productId);
   });
   saveToStorage(CONFIG.STORAGE_KEYS.CART, cart);
 }
