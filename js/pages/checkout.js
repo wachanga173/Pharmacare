@@ -105,6 +105,17 @@ function setupCheckoutForm() {
       return;
     }
 
+    // If M-Pesa, simulate USSD password prompt
+    if (data.paymentMethod === "mpesa") {
+      const password = prompt(
+        "M-Pesa Payment: Enter your M-Pesa PIN to complete the payment (simulated USSD prompt)",
+      );
+      if (!password || password.trim().length < 4) {
+        showError("Payment cancelled or invalid PIN.");
+        return;
+      }
+    }
+
     // Process order
     try {
       await processOrder(data);
