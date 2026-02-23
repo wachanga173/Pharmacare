@@ -53,19 +53,19 @@ export async function addToCart(productId, quantity = 1) {
     return false;
   }
 
-  const existingItem = cart.items.find((item) => {
-    const itemProductId = item.productId || item.product?.id;
-    return itemProductId == productId;
-  });
+  const normalizedId = String(productId);
+  const existingItem = cart.items.find(
+    (item) => String(item.productId) === normalizedId,
+  );
 
   if (existingItem) {
     existingItem.quantity += quantity;
-    existingItem.productId = productId;
+    existingItem.productId = normalizedId;
     existingItem.product = product;
   } else {
     cart.items.push({
-      productId: productId,
-      product: product,
+      productId: normalizedId,
+      product,
       quantity,
     });
   }
@@ -76,12 +76,10 @@ export async function addToCart(productId, quantity = 1) {
 
 export function removeFromCart(productId) {
   const cart = getCartRaw();
-  cart.items = cart.items.filter((item) => {
-    // Extract the ID from either property, just like in updateQuantity
-    const itemProductId = item.productId || item.product?.id;
-    // Keep the item only if the IDs do NOT match
-    return String(itemProductId) !== String(productId);
-  });
+  const normalizedId = String(productId);
+  cart.items = cart.items.filter(
+    (item) => String(item.productId) !== normalizedId,
+  );
   saveToStorage(CONFIG.STORAGE_KEYS.CART, cart);
 }
 
