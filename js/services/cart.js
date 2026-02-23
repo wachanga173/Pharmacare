@@ -19,6 +19,7 @@ export async function getCart() {
 
     if (currentProduct) {
       itemsWithCurrentData.push({
+        productId: productId,
         product: currentProduct,
         quantity: item.quantity,
       });

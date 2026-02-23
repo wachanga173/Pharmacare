@@ -46,25 +46,25 @@ function renderCartItems(items) {
   return items
     .map(
       (item) => `
-        <div class="cart-item" data-id="${item.product.id}">
-            <img src="${sanitizeHTML(item.product.image || "assets/images/products/placeholder.png")}" 
-                 alt="${sanitizeHTML(item.product.name)}" 
-                 class="cart-item-image">
-            <div class="cart-item-details">
-                <h3>${sanitizeHTML(item.product.name)}</h3>
-                <p>${CONFIG.CURRENCY}${item.product.price.toFixed(2)}</p>
-            </div>
-            <div class="cart-item-quantity">
-                <button class="btn-quantity" data-action="decrease" data-id="${item.product.id}">-</button>
-                <input type="number" value="${item.quantity}" min="1" class="quantity-input" 
-                       data-id="${item.product.id}">
-                <button class="btn-quantity" data-action="increase" data-id="${item.product.id}">+</button>
-            </div>
-            <div class="cart-item-total">
-                ${CONFIG.CURRENCY}${(item.product.price * item.quantity).toFixed(2)}
-            </div>
-            <button class="btn btn-danger remove-item" data-id="${item.product.id}">Remove</button>
+      <div class="cart-item" data-id="${item.productId}">
+        <img src="${sanitizeHTML(item.product.image || "assets/images/products/placeholder.png")}" 
+           alt="${sanitizeHTML(item.product.name)}" 
+           class="cart-item-image">
+        <div class="cart-item-details">
+          <h3>${sanitizeHTML(item.product.name)}</h3>
+          <p>${CONFIG.CURRENCY}${item.product.price.toFixed(2)}</p>
         </div>
+        <div class="cart-item-quantity">
+          <button class="btn-quantity" data-action="decrease" data-id="${item.productId}">-</button>
+          <input type="number" value="${item.quantity}" min="1" class="quantity-input" 
+               data-id="${item.productId}">
+          <button class="btn-quantity" data-action="increase" data-id="${item.productId}">+</button>
+        </div>
+        <div class="cart-item-total">
+          ${CONFIG.CURRENCY}${(item.product.price * item.quantity).toFixed(2)}
+        </div>
+        <button class="btn btn-danger remove-item" data-id="${item.productId}">Remove</button>
+      </div>
     `,
     )
     .join("");
