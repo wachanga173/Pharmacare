@@ -3,6 +3,7 @@ import { getCart, updateQuantity, removeFromCart, clearCart } from '../services/
 import { showSuccess, showError } from '../components/toast.js';
 import { confirmModal } from '../components/modal.js';
 import { updateCartBadge } from '../components/header.js';
+import { sanitizeHTML } from '../utils/helpers.js';
 
 export function initCartPage() {
     renderCart();
@@ -37,11 +38,11 @@ async function renderCart() {
 function renderCartItems(items) {
     return items.map(item => `
         <div class="cart-item" data-id="${item.product.id}">
-            <img src="${item.product.image || 'assets/images/products/placeholder.png'}" 
-                 alt="${item.product.name}" 
+            <img src="${sanitizeHTML(item.product.image || 'assets/images/products/placeholder.png')}" 
+                 alt="${sanitizeHTML(item.product.name)}" 
                  class="cart-item-image">
             <div class="cart-item-details">
-                <h3>${item.product.name}</h3>
+                <h3>${sanitizeHTML(item.product.name)}</h3>
                 <p>${CONFIG.CURRENCY}${item.product.price.toFixed(2)}</p>
             </div>
             <div class="cart-item-quantity">

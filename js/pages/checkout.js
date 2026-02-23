@@ -3,6 +3,7 @@ import { getCart } from '../services/cart.js';
 import { isLoggedIn } from '../services/auth.js';
 import { showSuccess, showError } from '../components/toast.js';
 import { validateCheckoutForm } from '../utils/validation.js';
+import { sanitizeHTML } from '../utils/helpers.js';
 
 export async function initCheckoutPage() {
     // Check if user is logged in
@@ -35,7 +36,7 @@ async function renderOrderSummary() {
         <h3>Order Summary</h3>
         ${cart.items.map(item => `
             <div class="summary-item">
-                <span>${item.product.name} x ${item.quantity}</span>
+                <span>${sanitizeHTML(item.product.name)} x ${item.quantity}</span>
                 <span>${CONFIG.CURRENCY}${(item.product.price * item.quantity).toFixed(2)}</span>
             </div>
         `).join('')}

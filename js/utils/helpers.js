@@ -85,3 +85,31 @@ export function isElementInView(element) {
         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
 }
+
+/**
+ * Sanitize HTML to prevent XSS attacks
+ * Escapes dangerous characters that could be used for script injection
+ * @param {string} str - The string to sanitize
+ * @returns {string} - Sanitized string safe for innerHTML
+ */
+export function sanitizeHTML(str) {
+    if (typeof str !== 'string') return '';
+    
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+/**
+ * Simple hash function for password storage (SHA-256)
+ * Note: For production, use a proper backend hashing like bcrypt
+ * @param {string} password - Password to hash
+ * @returns {Promise<string>} - Hashed password
+ */
+export async function hashPassword(password) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}

@@ -139,6 +139,7 @@
 
 // Authentication service - manages user authentication with Supabase
 import { getFromStorage, saveToStorage } from '../utils/storage.js';
+import { hashPassword } from '../utils/helpers.js';
 
 // Get Supabase client
 function getSupabaseClient() {
@@ -471,9 +472,10 @@ export function onAuthStateChange(callback) {
 
 // ============ LocalStorage Fallback Functions ============
 
-function localStorageLogin(email, password) {
+async function localStorageLogin(email, password) {
     const users = getFromStorage(CONFIG.STORAGE_KEYS.USER + 's') || [];
-    const user = users.find(u => u.email === email && u.password === password);
+    const hashedPassword = await hashPassword(password);
+    const user = users.find(u => u.email === email && u.password === hashedPassword);
     
     if (user) {
         const userSession = {
@@ -489,16 +491,20 @@ function localStorageLogin(email, password) {
     return { success: false, error: 'Invalid email or password' };
 }
 
-function localStorageRegister(userData) {
+async function localStorageRegister(userData) {
     const users = getFromStorage(CONFIG.STORAGE_KEYS.USER + 's') || [];
     
     if (users.find(u => u.email === userData.email)) {
         return { success: false, error: 'Email already registered' };
     }
     
+    // Hash password before storing
+    const hashedPassword = await hashPassword(userData.password);
+    
     const newUser = {
         id: Math.max(...users.map(u => u.id), 0) + 1,
         ...userData,
+        password: hashedPassword,  // Store hashed password
         isAdmin: false,
         createdAt: new Date().toISOString()
     };

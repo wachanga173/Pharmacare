@@ -117,15 +117,15 @@ function renderProducts() {
         track.innerHTML = currentProducts.map((product, index) => `
             <div class="carousel-product-card" data-index="${index}" style="animation-delay: ${index * 0.1}s">
                 <div class="carousel-product-image">
-                    <img src="${product.image_url || 'assets/images/placeholder.png'}" 
-                         alt="${product.name}"
+                    <img src="${sanitizeHTML(product.image_url || 'assets/images/placeholder.png')}" 
+                         alt="${sanitizeHTML(product.name)}"
                          onerror="this.src='assets/images/placeholder.png'">
                     ${product.stock < 10 ? '<span class="product-badge">Low Stock</span>' : ''}
                     ${product.stock === 0 ? '<span class="product-badge" style="background: #e53e3e;">Out of Stock</span>' : ''}
                 </div>
                 <div class="carousel-product-info">
-                    <div class="carousel-product-category">${product.category || 'General'}</div>
-                    <h3 class="carousel-product-name">${product.name}</h3>
+                    <div class="carousel-product-category">${sanitizeHTML(product.category || 'General')}</div>
+                    <h3 class="carousel-product-name">${sanitizeHTML(product.name)}</h3>
                     <div class="carousel-product-price">${CONFIG.CURRENCY}${parseFloat(product.price).toFixed(2)}</div>
                     <div class="carousel-product-actions">
                         <button class="btn btn-primary" onclick="window.homePageActions.addToCartHandler('${product.id}')" 

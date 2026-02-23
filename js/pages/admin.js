@@ -3,11 +3,14 @@ import { isLoggedIn, getCurrentUser } from '../services/auth.js';
 import { getProducts, addProduct, updateProduct, deleteProduct } from '../services/products.js';
 import { showSuccess, showError } from '../components/toast.js';
 import { showModal, confirmModal } from '../components/modal.js';
+import { sanitizeHTML } from '../utils/helpers.js';
 
-export function initAdminPage() {
-    const user = getCurrentUser();
+export async function initAdminPage() {
+    // Check authentication and authorization
+    const loggedIn = await isLoggedIn();
+    const user = await getCurrentUser();
     
-    if (!isLoggedIn() || !user?.isAdmin) {
+    if (!loggedIn || !user?.isAdmin) {
         window.location.href = 'login.html';
         return;
     }
@@ -45,9 +48,9 @@ function renderProductsTable(products) {
             <tbody>
                 ${products.map(product => `
                     <tr>
-                        <td>${product.id}</td>
-                        <td>${product.name}</td>
-                        <td>${product.category}</td>
+                        <td>${sanitizeHTML(String(product.id))}</td>
+                        <td>${sanitizeHTML(product.name)}</td>
+                        <td>${sanitizeHTML(product.category)}</td>
                         <td>${CONFIG.CURRENCY}${product.price.toFixed(2)}</td>
                         <td>${product.stock}</td>
                         <td>

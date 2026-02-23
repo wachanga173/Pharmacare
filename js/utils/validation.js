@@ -123,3 +123,47 @@ export function validateProductForm(data) {
         errors
     };
 }
+
+/**
+ * Validate phone number format
+ * @param {string} phone 
+ * @returns {boolean}
+ */
+export function validatePhone(phone) {
+    // Allow various phone formats
+    const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+    return phoneRegex.test(phone);
+}
+
+/**
+ * Check for potentially malicious input patterns
+ * @param {string} input 
+ * @returns {boolean}
+ */
+export function validateSafeInput(input) {
+    // Detect common XSS patterns
+    const dangerousPatterns = [
+        /<script/i,
+        /javascript:/i,
+        /on\w+\s*=/i,  // event handlers like onclick=
+        /<iframe/i,
+        /eval\(/i,
+        /expression\(/i
+    ];
+    
+    return !dangerousPatterns.some(pattern => pattern.test(input));
+}
+
+/**
+ * Validate URL format
+ * @param {string} url 
+ * @returns {boolean}
+ */
+export function validateURL(url) {
+    try {
+        new URL(url);
+        return true;
+    } catch {
+        return false;
+    }
+}

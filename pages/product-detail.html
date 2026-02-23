@@ -43,7 +43,7 @@
         import { addToCart } from '../js/services/cart.js';
         import { showSuccess } from '../js/components/toast.js';
         import { updateCartBadge } from '../js/components/header.js';
-        import { getQueryParam } from '../js/utils/helpers.js';
+        import { getQueryParam, sanitizeHTML } from '../js/utils/helpers.js';
         
         document.addEventListener('DOMContentLoaded', async () => {
             initHeader();
@@ -67,18 +67,18 @@
             container.innerHTML = `
                 <div class="grid grid-2">
                     <div>
-                        <img src="${product.image_url || product.image || '../assets/images/products/placeholder.png'}" 
-                             alt="${product.name}" 
+                        <img src="${sanitizeHTML(product.image_url || product.image || '../assets/images/products/placeholder.png')}" 
+                             alt="${sanitizeHTML(product.name)}" 
                              style="width: 100%; border-radius: 0.5rem;"
                              onerror="this.src='../assets/images/products/placeholder.png'">
                     </div>
                     <div>
-                        <h1>${product.name}</h1>
+                        <h1>${sanitizeHTML(product.name)}</h1>
                         <p class="product-price" style="font-size: 2rem; margin: 1rem 0;">
                             ${CONFIG.CURRENCY}${parseFloat(product.price).toFixed(2)}
                         </p>
-                        <p>${product.description || 'No description available'}</p>
-                        <p><strong>Category:</strong> ${product.category || 'N/A'}</p>
+                        <p>${sanitizeHTML(product.description || 'No description available')}</p>
+                        <p><strong>Category:</strong> ${sanitizeHTML(product.category || 'N/A')}</p>
                         <p><strong>Stock:</strong> ${product.stock > 0 ? product.stock + ' available' : 'Out of stock'}</p>
                         
                         ${product.stock > 0 ? `
