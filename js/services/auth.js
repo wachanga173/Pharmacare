@@ -146,7 +146,12 @@ function getSupabaseClient() {
     if (typeof window !== 'undefined' && window.supabase && window.CONFIG) {
         return window.supabase.createClient(
             window.CONFIG.SUPABASE.URL, 
-            window.CONFIG.SUPABASE.ANON_KEY
+            window.CONFIG.SUPABASE.ANON_KEY,
+            {
+                auth: {
+                    redirectTo: window.CONFIG.SITE_URL || 'https://wachanga173.github.io/Pharmacare'
+                }
+            }
         );
     }
     return null;

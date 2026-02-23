@@ -3,6 +3,9 @@ const CONFIG = {
     APP_NAME: 'Pharmacare',
     VERSION: '1.0.0',
     
+    // Site URL
+    SITE_URL: 'https://wachanga173.github.io/Pharmacare',
+    
     // Supabase Configuration
     SUPABASE: {
         URL: 'https://hegzpymtsmcsngpesidr.supabase.co',

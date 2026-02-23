@@ -308,7 +308,12 @@ async function loadUserOrders() {
     // Get Supabase client
     const supabase = window.supabase?.createClient(
         window.CONFIG.SUPABASE.URL,
-        window.CONFIG.SUPABASE.ANON_KEY
+        window.CONFIG.SUPABASE.ANON_KEY,
+        {
+            auth: {
+                redirectTo: window.CONFIG.SITE_URL || 'https://wachanga173.github.io/Pharmacare'
+            }
+        }
     );
     
     if (!supabase) {
