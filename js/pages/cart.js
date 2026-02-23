@@ -126,10 +126,12 @@ function setupCartHandlers() {
 
     // Increase/decrease quantity
     if (target.classList.contains("btn-quantity")) {
-      const productId = parseInt(target.dataset.id);
+      const productId = target.dataset.id; // Use as string
       const action = target.dataset.action;
       const cart = await getCart();
-      const item = cart.items.find((i) => i.product.id == productId);
+      const item = cart.items.find(
+        (i) => String(i.productId) === String(productId),
+      );
 
       if (item) {
         const newQuantity =
