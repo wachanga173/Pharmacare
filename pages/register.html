@@ -25,6 +25,9 @@
 
                 <div style="max-width: 400px; margin: 0 auto;">
                     <h1 class="text-center">Register</h1>
+                    <div id="register-notice" style="display:none; margin-top:1rem; margin-bottom:1rem; background:#e0f7fa; color:#00796b; padding:0.75rem 1rem; border-radius:6px; text-align:center; font-size:1rem;">
+                        Registration successful! Please check your email to verify your account.
+                    </div>
                     
                     <form id="register-form" style="margin-top: 2rem;">
                         <div class="form-group">
@@ -100,14 +103,15 @@
                 try {
                     // Register with async function
                     const result = await register(data);
-                    
                     if (result.success) {
+                        // Show visible notice
+                        document.getElementById('register-notice').style.display = 'block';
+                        // Optionally also show toast
                         showSuccess(result.message || 'Registration successful!');
-                        
                         // Redirect to home or login
                         setTimeout(() => {
                             window.location.href = '../index.html';
-                        }, 2000);
+                        }, 3500);
                     } else {
                         showError(result.error);
                         submitBtn.disabled = false;
