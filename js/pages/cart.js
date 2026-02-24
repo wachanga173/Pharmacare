@@ -22,6 +22,7 @@ async function renderCart() {
   if (!container) return;
 
   const cart = await getCart();
+  console.log("Cart contents:", cart.items);
 
   // Always clear container before rendering
   container.innerHTML = "";
