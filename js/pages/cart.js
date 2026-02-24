@@ -17,96 +17,68 @@ export function initCartPage() {
   setupCartHandlers();
 }
 
-async function renderCart() {
-  const container = document.getElementById("cart-container");
-  const summaryContainer = document.getElementById("cart-summary");
-
-  if (!container) return;
+export async function renderCart() {
+  const cartContainer = document.getElementById("cart-container");
+  const totalPriceElem = document.getElementById("cart-total");
+  if (!cartContainer) return;
+  cartContainer.innerHTML = "";
 
   // Force-populate local products from products.json if needed
   await ensureLocalProductsPopulated();
   const cart = await getCart();
   console.log("Cart contents:", cart.items);
 
-  // Always clear container before rendering
-  container.innerHTML = "";
-  if (cart.items.length === 0) {
-    container.innerHTML = `
-      <div class="cart-empty">
-        <img src="../assets/images/products/cart-placeholder.png" class="cart-empty-img" />
-        <h2>Your cart is empty</h2>
-        <p>Looks like you haven't added anything yet</p>
-        <a href="../products.html" class="shop-now-btn" style="text-decoration: none;">Shop Now</a>
-      </div>
-    `;
-    if (summaryContainer) summaryContainer.innerHTML = "";
+  if (!cart.items.length) {
+    cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+    if (totalPriceElem) totalPriceElem.textContent = "";
     return;
   }
 
-  container.innerHTML = renderCartItems(cart.items);
-  if (summaryContainer) {
-    summaryContainer.innerHTML = renderCartSummary(cart);
-  }
-}
+  // Build table
+  const table = document.createElement("table");
+  table.className = "cart-table";
+  table.innerHTML = `
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${cart.items
+        .map(
+          (item) => `
+        <tr>
+          <td><img src="${item.product.image}" alt="${item.product.name}" class="cart-img" /></td>
+          <td>${item.product.name}</td>
+          <td>${item.quantity}</td>
+          <td>$${(item.product.price * item.quantity).toFixed(2)}</td>
+          <td>
+            <button class="remove-btn" data-id="${item.productId}">Remove</button>
+          </td>
+        </tr>
+      `,
+        )
+        .join("")}
+    </tbody>
+  `;
+  cartContainer.appendChild(table);
 
-function renderCartItems(items) {
-  return items
-    .map(
-      (item) => `
-      <div class="cart-item" data-id="${item.productId}">
-        <img src="${sanitizeHTML(item.product.image || "../assets/images/products/cart-placeholder.png")}" 
-           alt="${sanitizeHTML(item.product.name)}" 
-           class="cart-item-image">
-        <div class="cart-item-details">
-          <h3>${sanitizeHTML(item.product.name)}</h3>
-          <p>${CONFIG.CURRENCY}${item.product.price.toFixed(2)}</p>
-        </div>
-        <div class="cart-item-quantity">
-          <button class="btn-quantity" data-action="decrease" data-id="${item.productId}">-</button>
-          <input type="number" value="${item.quantity}" min="1" class="quantity-input" 
-               data-id="${item.productId}">
-          <button class="btn-quantity" data-action="increase" data-id="${item.productId}">+</button>
-        </div>
-        <div class="cart-item-total">
-          ${CONFIG.CURRENCY}${(item.product.price * item.quantity).toFixed(2)}
-        </div>
-        <button class="btn btn-danger remove-item" data-id="${item.productId}">Remove</button>
-      </div>
-    `,
-    )
-    .join("");
-}
+  // Display total price
+  if (totalPriceElem)
+    totalPriceElem.textContent = `Total: $${cart.total.toFixed(2)}`;
 
-function renderCartSummary(cart) {
-  const subtotal = cart.total;
-  const shipping =
-    subtotal >= CONFIG.FREE_SHIPPING_THRESHOLD ? 0 : CONFIG.SHIPPING_COST;
-  const tax = subtotal * CONFIG.TAX_RATE;
-  const total = subtotal + shipping + tax;
-
-  return `
-        <h3>Order Summary</h3>
-        <div class="summary-row">
-            <span>Subtotal:</span>
-            <span>${CONFIG.CURRENCY}${subtotal.toFixed(2)}</span>
-        </div>
-        <div class="summary-row">
-            <span>Shipping:</span>
-            <span>${shipping === 0 ? "FREE" : CONFIG.CURRENCY + shipping.toFixed(2)}</span>
-        </div>
-        <div class="summary-row">
-            <span>Tax:</span>
-            <span>${CONFIG.CURRENCY}${tax.toFixed(2)}</span>
-        </div>
-        <hr>
-        <div class="summary-row summary-total">
-            <span>Total:</span>
-            <span>${CONFIG.CURRENCY}${total.toFixed(2)}</span>
-        </div>
-        <a href="checkout.html" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
-            Proceed to Checkout
-        </a>
-    `;
+  // Bind remove buttons
+  cartContainer.querySelectorAll(".remove-btn").forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      const id = btn.getAttribute("data-id");
+      removeFromCart(id);
+      renderCart();
+    });
+  });
 }
 
 function setupCartHandlers() {
@@ -152,3 +124,5 @@ function setupCartHandlers() {
     }
   });
 }
+
+document.addEventListener("DOMContentLoaded", renderCart);
