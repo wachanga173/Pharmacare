@@ -1,4 +1,69 @@
 /* ================================================================
+    titus.css  —  Titus Ondeu Portfolio  v4.0
+    Primary   : #007bff → #0056b3
+    Secondary : #17a2b8 → #138496
+    All sections have colour. Contact = Wachanga frosted-glass style.
+    ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+/* ─────────────────────────────────────────────────────────────────
+    DESIGN TOKENS
+───────────────────────────────────────────────────────────────── */
+:root {
+     --primary:         #007bff;
+     --primary-dark:    #0056b3;
+     --secondary:       #17a2b8;
+     --secondary-dark:  #138496;
+     --dark:            #1f2937;
+     --body-text:       #4b5563;
+     --muted:           #6b7280;
+     --white:           #ffffff;
+     --blue-50:         #f0f7ff;
+     --blue-100:        #dbeafe;
+     --blue-200:        #bfdbfe;
+     /* Section backgrounds */
+     --bg-hero:            linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+     --bg-about:           #f0f7ff;
+     --bg-resp:            linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+     --bg-tech:            #e8f4fd;
+     --bg-achieve:         linear-gradient(135deg, #0056b3 0%, #17a2b8 100%);
+     --bg-skills:          #f0f7ff;
+     --bg-contact:         linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+     /* Gradient tokens */
+     --grad-primary:    linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+     --grad-secondary:  linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+     --grad-red:        linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+     --grad-purple:     linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+     --grad-github:     linear-gradient(135deg, #24292e 0%, #40474f 100%);
+     --grad-linkedin:   linear-gradient(135deg, #0077b5 0%, #005983 100%);
+     --grad-instagram:  linear-gradient(135deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+     --grad-facebook:   linear-gradient(135deg, #1877f2 0%, #0d5db5 100%);
+     --grad-whatsapp:   linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+     /* Shadows */
+     --shadow-sm:       0 2px 6px rgba(0,123,255,.10);
+     --shadow-card:     0 4px 16px rgba(0,123,255,.12), 0 2px 4px rgba(0,0,0,.06);
+     --shadow-hover:    0 20px 40px rgba(0,123,255,.20), 0 8px 16px rgba(0,0,0,.08);
+     --shadow-frosted:  0 8px 32px rgba(0,0,0,.18);
+     --shadow-lift:     0 20px 48px rgba(0,0,0,.24);
+     /* Misc */
+     --radius:       16px;
+     --radius-sm:    10px;
+     --radius-pill:  25px;
+     --ease:         cubic-bezier(0.4, 0, 0.2, 1);
+     --t:            all 0.3s var(--ease);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+    FOOTER
+───────────────────────────────────────────────────────────────── */
+.site-footer {
+     background:var(--dark); color:#9ca3af;
+     text-align:center; padding:2rem; font-size:.875rem;
+}
+.site-footer strong { color:#f9fafb; }
+
+/* Add your custom styles below */
+/* ================================================================
    titus.css  —  Titus Ondeu Portfolio  v4.0
    Primary   : #007bff → #0056b3
    Secondary : #17a2b8 → #138496
