@@ -90,7 +90,7 @@ body {
 }
 
 /* Typography */
-h1,
+h1{
   margin-bottom: 1rem;
   font-weight: 600;
   color: var(--dark-color);
@@ -143,7 +143,7 @@ a:hover {
   box-shadow: 0 4px 16px rgba(0,0,0,0.12);
   transform: translateY(-2px) scale(1.03);
 }
-}
+
 
 .btn-primary {
   background-color: var(--primary-color);
@@ -170,6 +170,84 @@ a:hover {
 
 .btn-danger:hover {
   background-color: #dc2626;
+}
+
+
+@media (max-width: 768px) {
+  /* Ensure container doesn’t overflow */
+  .hero-content {
+    padding: 0 1rem;          /* reduce horizontal padding */
+    box-sizing: border-box;   /* include padding in width */
+    overflow-x: hidden;       /* prevent horizontal scroll */
+  }
+
+  /* Make hero text fit screen */
+  .hero-text {
+    text-align: center;       /* optional: center text */
+    max-width: 100%;          /* prevent exceeding screen width */
+    word-wrap: break-word;    /* wrap long words or buttons */
+  }
+
+  /* Buttons stay side by side but shrink if needed */
+  .hero-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0 1rem;               /* space from screen edges */
+    flex-wrap: wrap;           /* wrap if really narrow */
+  }
+
+  .hero-actions .btn {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    flex: 1 1 auto;           /* allow shrinking */
+    min-width: 120px;         /* optional: minimum size to avoid squishing too much */
+    text-align: center;
+  }
+
+  /* Hero subtitle wrapping */
+  .hero-subtitle {
+    font-size: 0.9rem;        /* smaller text */
+    line-height: 1.3rem;      /* reduce spacing */
+  }
+}
+
+/* Mobile adjustments for Hero Section */
+@media (max-width: 768px) {
+
+    /* Hero title adjustments */
+    .hero-title {
+        font-size: 2rem;          /* Smaller font so it fits */
+        line-height: 1.3;         /* Reduce line spacing */
+        text-align: left;         /* Align to left to prevent overlap */
+        margin: 0 1rem 1rem 1rem; /* Add space from screen edges */
+        word-wrap: break-word;    /* Break long words if needed */
+        font-size: 50px;
+    }
+
+    /* Hero subtitle adjustments */
+    .hero-subtitle {
+        font-size: 1rem;          /* Smaller text for mobile */
+        margin: 0 1rem 1rem 1rem;
+        text-align: left;
+    }
+
+    /* Hero buttons adjustments */
+    .hero-actions {
+        display: flex;
+        flex-direction: row;      /* Make buttons side by side */
+        justify-content: flex-start;
+        gap: 0.5rem;              /* Space between buttons */
+        margin-left: 1rem;        /* Space from left edge */
+        margin-right: 1rem;       /* Space from right edge */
+        flex-wrap: wrap;           /* Wrap to next line if screen is very small */
+    }
+
+    .hero-actions .btn {
+        font-size: 0.9rem;        /* Slightly smaller button text */
+        padding: 0.5rem 1rem;     /* Smaller padding for mobile */
+    }
 }
 
 /* Forms */
@@ -260,4 +338,39 @@ section {
 }
 .hidden {
   display: none;
+}
+
+
+/* Features Section Cards Hover Effect */
+.feature-card {
+    border: 1px solid #e5e7eb; /* keep subtle border */
+    background-color: #fff; /* card background */
+    padding: 1.5rem; /* space inside */
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12); /* strong lift at rest */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.feature-card:hover {
+    transform: translateY(-12px); /* lift slightly more on hover */
+    border: 2px solid #007bff; /* blue outline on hover */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2); /* stronger shadow on hover */
+}
+
+/* Optional: feature icon styling */
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+/* features on hover*/
+.feature-card {
+    border: 1px solid #e5e7eb; /* existing border */
+    transition: transform 0.3s ease, border-color 0.3s ease; /* smooth hover */
+}
+
+.feature-card:hover {
+    transform: translateY(-8px); /* lift effect */
+    border: 2px solid #007bff; /* blue outline on hover */
 }
