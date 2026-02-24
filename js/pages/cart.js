@@ -10,6 +10,8 @@ import { confirmModal } from "../components/modal.js";
 import { updateCartBadge } from "../components/header.js";
 import { sanitizeHTML } from "../utils/helpers.js";
 
+import { ensureLocalProductsPopulated } from "../services/products.js";
+
 export function initCartPage() {
   renderCart();
   setupCartHandlers();
@@ -21,6 +23,8 @@ async function renderCart() {
 
   if (!container) return;
 
+  // Ensure local products are available for cart rendering
+  await ensureLocalProductsPopulated();
   const cart = await getCart();
   console.log("Cart contents:", cart.items);
 

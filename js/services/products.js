@@ -1,3 +1,20 @@
+// Utility: Force-populate localStorage with products from products.json if empty
+export async function ensureLocalProductsPopulated() {
+  let localProducts = getFromStorage(window.CONFIG.STORAGE_KEYS.PRODUCTS);
+  if (!localProducts || localProducts.length === 0) {
+    try {
+      const response = await fetch("../data/products.json");
+      if (response.ok) {
+        const products = await response.json();
+        saveToStorage(window.CONFIG.STORAGE_KEYS.PRODUCTS, products);
+        return products;
+      }
+    } catch (e) {
+      console.error("Failed to load products.json:", e);
+    }
+  }
+  return getFromStorage(window.CONFIG.STORAGE_KEYS.PRODUCTS) || [];
+}
 // Products service - manages product data
 import { getFromStorage, saveToStorage } from "../utils/storage.js";
 
