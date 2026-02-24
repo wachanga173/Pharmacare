@@ -28,10 +28,10 @@ async function renderCart() {
   if (cart.items.length === 0) {
     container.innerHTML = `
       <div class="cart-empty">
-        <img src="../assets/images/cart-empty.svg" alt="Empty Cart" class="cart-empty-img" />
+        <img src="../assets/images/products/cart-placeholder.png" class="cart-empty-img" />
         <h2>Your cart is empty</h2>
         <p>Looks like you haven't added anything yet</p>
-        <button class="shop-now-btn" onclick="window.location.href='products.html'">Shop Now</button>
+        <a href="../products.html" class="shop-now-btn" style="text-decoration: none;">Shop Now</a>
       </div>
     `;
     if (summaryContainer) summaryContainer.innerHTML = "";
@@ -49,7 +49,7 @@ function renderCartItems(items) {
     .map(
       (item) => `
       <div class="cart-item" data-id="${item.productId}">
-        <img src="${sanitizeHTML(item.product.image || "assets/images/products/placeholder.png")}" 
+        <img src="${sanitizeHTML(item.product.image || "../assets/images/products/cart-placeholder.png")}" 
            alt="${sanitizeHTML(item.product.name)}" 
            class="cart-item-image">
         <div class="cart-item-details">
