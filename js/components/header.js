@@ -116,6 +116,18 @@ function attachHeaderEventListeners() {
             window.location.reload();
         });
     }
+
+
+const mobileToggle = document.getElementById('mobile-menu-toggle');
+const allMenus = document.querySelectorAll('.nav-links, .nav-links-right');
+
+if (mobileToggle) {
+    mobileToggle.addEventListener('click', () => {
+        allMenus.forEach(menu => {
+            menu.classList.toggle('active');
+        });
+    });
+}
 }
 
 export async function updateCartBadge() {

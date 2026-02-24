@@ -16,7 +16,7 @@
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 700;
     color: var(--primary-color);
     display: flex;
@@ -26,7 +26,8 @@
 }
 
 .logo-icon {
-    font-size: 1.75rem;
+    font-size: 2rem;
+    margin-left: 0%;
 }
 
 .logo:hover {
@@ -147,18 +148,56 @@
     }
 }
 
+
+
+
+
+
 @media (max-width: 768px) {
+
+    .header-nav {
+        position: relative;
+        align-items: center;
+    }
+
+    .logo {
+        margin-right: auto;
+    }
+
     .mobile-menu-toggle {
         display: flex;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1200;
     }
-    
+
+    /* Combine both nav sections */
     .nav-links,
     .nav-links-right {
-        display: none;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 270px;
+        background: white;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 6rem 2rem 2rem 2rem;
+        gap: 1.5rem;
+        transition: right 0.3s ease;
+        box-shadow: -4px 0 12px rgba(0,0,0,0.1);
+        display: flex;
     }
-    
-    /* Mobile menu styles can be added for hamburger menu */
+
+    .nav-links.active,
+    .nav-links-right.active {
+        right: 0;
+    }
 }
+
+
+
 
 /* Footer Component */
 .footer {
