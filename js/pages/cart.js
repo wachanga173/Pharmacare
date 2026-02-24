@@ -27,11 +27,13 @@ async function renderCart() {
   container.innerHTML = "";
   if (cart.items.length === 0) {
     container.innerHTML = `
-            <div class="text-center">
-                <p>Your cart is empty</p>
-                <a href="products.html" class="btn btn-primary mt-2">Shop Now</a>
-            </div>
-        `;
+      <div class="cart-empty">
+        <img src="../assets/images/cart-empty.svg" alt="Empty Cart" class="cart-empty-img" />
+        <h2>Your cart is empty</h2>
+        <p>Looks like you haven't added anything yet</p>
+        <button class="shop-now-btn" onclick="window.location.href='products.html'">Shop Now</button>
+      </div>
+    `;
     if (summaryContainer) summaryContainer.innerHTML = "";
     return;
   }
