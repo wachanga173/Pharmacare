@@ -23,7 +23,7 @@ async function renderCart() {
 
   if (!container) return;
 
-  // Ensure local products are available for cart rendering
+  // Force-populate local products from products.json if needed
   await ensureLocalProductsPopulated();
   const cart = await getCart();
   console.log("Cart contents:", cart.items);
