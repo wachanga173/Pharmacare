@@ -59,6 +59,14 @@ export async function addToCart(productId, quantity = 1) {
     return false;
   }
 
+  // Store product details locally for offline access
+  let localProducts = getFromStorage(CONFIG.STORAGE_KEYS.PRODUCTS) || [];
+  const existsLocally = localProducts.some((p) => p.id == product.id);
+  if (!existsLocally) {
+    localProducts.push(product);
+    saveToStorage(CONFIG.STORAGE_KEYS.PRODUCTS, localProducts);
+  }
+
   const normalizedId = String(productId);
   const existingItem = cart.items.find(
     (item) => String(item.productId) === normalizedId,
