@@ -19,13 +19,16 @@ export async function getCart() {
     if (typeof productId === "string" && !isNaN(productId)) {
       productId = parseInt(productId);
     }
-    const currentProduct = products.find(
+    let currentProduct = products.find(
       (p) => p.id == productId || p.id === String(productId),
     );
-
+    // Fallback: use product object stored in cart item if not found in products
+    if (!currentProduct && item.product) {
+      currentProduct = item.product;
+    }
     if (currentProduct) {
       itemsWithCurrentData.push({
-        productId: currentProduct.id,
+        productId: currentProduct.id || productId,
         product: currentProduct,
         quantity: item.quantity,
       });
