@@ -14,12 +14,18 @@ export async function getCart() {
   const itemsWithCurrentData = [];
 
   for (const item of cart.items) {
-    const productId = item.productId || item.product?.id;
-    const currentProduct = products.find((p) => p.id == productId);
+    // Ensure productId is always a number for comparison
+    let productId = item.productId || item.product?.id;
+    if (typeof productId === "string" && !isNaN(productId)) {
+      productId = parseInt(productId);
+    }
+    const currentProduct = products.find(
+      (p) => p.id == productId || p.id === String(productId),
+    );
 
     if (currentProduct) {
       itemsWithCurrentData.push({
-        productId: productId,
+        productId: currentProduct.id,
         product: currentProduct,
         quantity: item.quantity,
       });
