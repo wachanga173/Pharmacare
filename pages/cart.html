@@ -20,9 +20,45 @@
           >
           <h1>Shopping Cart</h1>
         </section>
-        <!-- Cart Items and Total Display (moved inside main, above footer) -->
-        <div id="cart-container"></div>
-        <div id="cart-total" class="cart-total"></div>
+        <!-- Side-by-side layout for cart sections -->
+        <div
+          class="cart-sections-wrapper"
+          style="display: flex; gap: 2rem; align-items: flex-start"
+        >
+          <!-- Section for Added Items -->
+          <section
+            id="cart-items-section"
+            style="
+              flex: 2;
+              max-height: 500px;
+              overflow-y: auto;
+              background: #fff;
+              border-radius: 8px;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+              padding: 1rem;
+            "
+          >
+            <h2>Added Items</h2>
+            <div id="cart-container"></div>
+          </section>
+          <!-- Section for Total Cost -->
+          <section
+            id="cart-total-section"
+            style="
+              flex: 1;
+              position: sticky;
+              top: 2rem;
+              background: #f9f9f9;
+              border-radius: 8px;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+              padding: 1rem;
+              min-width: 220px;
+            "
+          >
+            <h2>Total Cost</h2>
+            <div id="cart-total" class="cart-total"></div>
+          </section>
+        </div>
       </main>
       <footer id="footer"></footer>
     </div>
