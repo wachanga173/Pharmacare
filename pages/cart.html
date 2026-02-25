@@ -124,7 +124,11 @@
               <tr>
                 <td><img src="${item.product.image || item.product.image_url || "assets/images/products/placeholder.png"}" alt="${item.product.name}" class="cart-img" /></td>
                 <td>${item.product.name}</td>
-                <td>${item.quantity}</td>
+                <td style="min-width:110px;">
+                  <button class="qty-btn" data-action="decrease" data-id="${item.productId}" style="padding:2px 8px;margin-right:4px;">-</button>
+                  <span class="cart-qty-value" style="display:inline-block;min-width:24px;text-align:center;">${item.quantity}</span>
+                  <button class="qty-btn" data-action="increase" data-id="${item.productId}" style="padding:2px 8px;margin-left:4px;">+</button>
+                </td>
                 <td>$${(item.product.price * item.quantity).toFixed(2)}</td>
                 <td>
                   <button class="remove-btn" data-id="${item.productId}">Remove</button>
@@ -146,6 +150,27 @@
           btn.addEventListener("click", async (e) => {
             const id = btn.getAttribute("data-id");
             removeFromCart(id);
+            renderSelectedCart();
+          });
+        });
+        // Bind quantity buttons
+        cartContainer.querySelectorAll(".qty-btn").forEach((btn) => {
+          btn.addEventListener("click", async (e) => {
+            const id = btn.getAttribute("data-id");
+            const action = btn.getAttribute("data-action");
+            let item = items.find((i) => String(i.productId) === String(id));
+            if (!item) return;
+            let newQty =
+              action === "increase" ? item.quantity + 1 : item.quantity - 1;
+            if (newQty < 1) return;
+            // Use addToCart for increase, updateQuantity for decrease
+            if (action === "increase") {
+              const { addToCart } = await import("../js/services/cart.js");
+              await addToCart(id, 1);
+            } else {
+              const { updateQuantity } = await import("../js/services/cart.js");
+              updateQuantity(id, newQty);
+            }
             renderSelectedCart();
           });
         });
