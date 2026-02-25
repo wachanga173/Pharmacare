@@ -107,7 +107,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/config.js"></script>
     <script type="module">
-      import { initHeader } from "../js/components/header.js";
+      import { initHeader, updateCartBadge } from "../js/components/header.js";
       import { initFooter } from "../js/components/footer.js";
       import { getCart, removeFromCart } from "../js/services/cart.js";
 
@@ -175,6 +175,7 @@
             const id = btn.getAttribute("data-id");
             removeFromCart(id);
             renderSelectedCart();
+            updateCartBadge();
           });
         });
         // Bind quantity buttons
