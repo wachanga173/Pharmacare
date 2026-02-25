@@ -152,7 +152,7 @@
                   <span class="cart-qty-value" style="display:inline-block;min-width:24px;text-align:center;">${item.quantity}</span>
                   <button class="qty-btn" data-action="increase" data-id="${item.productId}" style="padding:2px 8px;margin-left:4px;">+</button>
                 </td>
-                <td>$${(item.product.price * item.quantity).toFixed(2)}</td>
+                <td>Ksh ${(item.product.price * item.quantity).toFixed(2)}</td>
                 <td>
                   <button class="remove-btn" data-id="${item.productId}">Remove</button>
                 </td>
@@ -166,7 +166,7 @@
 
         // Display total price
         if (totalPriceElem)
-          totalPriceElem.textContent = `Total: $${total.toFixed(2)}`;
+          totalPriceElem.textContent = `Total: Ksh ${total.toFixed(2)}`;
         if (proceedBtn) proceedBtn.style.display = "block";
 
         // Bind remove buttons
