@@ -26,81 +26,24 @@
 
     <!-- Cart Items and Total Display -->
     <div id="cart-container"></div>
-    <div id="cart-total" class="cart-total"></div>
-
+    <div id="cart-summary"></div>
     <div id="toast-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/config.js"></script>
     <script type="module">
       import { initHeader } from "../js/components/header.js";
       import { initFooter } from "../js/components/footer.js";
-      import { getCart, removeFromCart } from "../js/services/cart.js";
-
-      async function renderSelectedCart() {
-        const cartContainer = document.getElementById("cart-container");
-        const totalPriceElem = document.getElementById("cart-total");
-        if (!cartContainer) return;
-        cartContainer.innerHTML = "";
-
-        const { items, total } = await getCart();
-
-        if (!items.length) {
-          cartContainer.innerHTML = "<p>Your cart is empty.</p>";
-          if (totalPriceElem) totalPriceElem.textContent = "";
-          return;
-        }
-
-        // Build table
-        const table = document.createElement("table");
-        table.className = "cart-table";
-        table.innerHTML = `
-          <thead>
-            <tr>
-              <th>Image</th>
-              <th>Name</th>
-              <th>Quantity</th>
-              <th>Subtotal</th>
-              <th>Remove</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${items
-              .map(
-                (item) => `
-              <tr>
-                <td><img src="${item.product.image || item.product.image_url || "assets/images/products/placeholder.png"}" alt="${item.product.name}" class="cart-img" /></td>
-                <td>${item.product.name}</td>
-                <td>${item.quantity}</td>
-                <td>$${(item.product.price * item.quantity).toFixed(2)}</td>
-                <td>
-                  <button class="remove-btn" data-id="${item.productId}">Remove</button>
-                </td>
-              </tr>
-            `,
-              )
-              .join("")}
-          </tbody>
-        `;
-        cartContainer.appendChild(table);
-
-        // Display total price
-        if (totalPriceElem)
-          totalPriceElem.textContent = `Total: $${total.toFixed(2)}`;
-
-        // Bind remove buttons
-        cartContainer.querySelectorAll(".remove-btn").forEach((btn) => {
-          btn.addEventListener("click", async (e) => {
-            const id = btn.getAttribute("data-id");
-            removeFromCart(id);
-            renderSelectedCart();
-          });
-        });
-      }
+      import { renderCart, initCartPage } from "../js/pages/cart.js";
 
       document.addEventListener("DOMContentLoaded", () => {
         initHeader();
         initFooter();
-        renderSelectedCart();
+        // Use the main cart logic from js/pages/cart.js
+        if (typeof initCartPage === "function") {
+          initCartPage();
+        } else {
+          renderCart();
+        }
       });
     </script>
   </body>
