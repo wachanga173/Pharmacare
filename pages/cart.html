@@ -114,6 +114,7 @@
       async function renderSelectedCart() {
         const cartContainer = document.getElementById("cart-container");
         const totalPriceElem = document.getElementById("cart-total");
+        const proceedBtn = document.getElementById("proceed-payment-btn");
         if (!cartContainer) return;
         cartContainer.innerHTML = "";
 
@@ -122,6 +123,7 @@
         if (!items.length) {
           cartContainer.innerHTML = "<p>Your cart is empty.</p>";
           if (totalPriceElem) totalPriceElem.textContent = "";
+          if (proceedBtn) proceedBtn.style.display = "none";
           return;
         }
 
@@ -165,6 +167,7 @@
         // Display total price
         if (totalPriceElem)
           totalPriceElem.textContent = `Total: $${total.toFixed(2)}`;
+        if (proceedBtn) proceedBtn.style.display = "block";
 
         // Bind remove buttons
         cartContainer.querySelectorAll(".remove-btn").forEach((btn) => {
