@@ -72,10 +72,31 @@
               box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
               padding: 1rem;
               min-width: 220px;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              height: 100%;
             "
           >
             <h2>Total Cost</h2>
             <div id="cart-total" class="cart-total"></div>
+            <button
+              id="proceed-payment-btn"
+              style="
+                margin-top: auto;
+                width: 100%;
+                background: #007bff;
+                color: #fff;
+                border: none;
+                padding: 0.75rem 0;
+                font-size: 1.1rem;
+                border-radius: 6px;
+                cursor: pointer;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+              "
+            >
+              Proceed to Payment
+            </button>
           </section>
         </div>
       </main>
