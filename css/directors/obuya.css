@@ -224,8 +224,8 @@ section {
   box-shadow: var(--card-shadow);
   transition: var(--transition);
   border: 2px solid transparent;
-  opacity: 0;
-  transform: translateY(20px);
+  opacity: 1;
+  transform: none;
 }
 .responsibility-card.animate-in {
   opacity: 1;
