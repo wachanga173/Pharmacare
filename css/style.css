@@ -319,8 +319,9 @@ a:hover {
   /* Make hero text fit screen */
   .hero-text {
     text-align: center;       /* optional: center text */
-    max-width: 100%;          /* prevent exceeding screen width */
+    max-width:max-content;          /* prevent exceeding screen width */
     word-wrap: break-word;    /* wrap long words or buttons */
+    margin-left: 50px;
   }
 
   /* Buttons stay side by side but shrink if needed */
@@ -359,6 +360,7 @@ a:hover {
         margin: 0 1rem 1rem 1rem; /* Add space from screen edges */
         word-wrap: break-word;    /* Break long words if needed */
         font-size: 50px;
+        
     }
 
     /* Hero subtitle adjustments */
@@ -508,4 +510,18 @@ section {
 .feature-card:hover {
     transform: translateY(-8px); /* lift effect */
     border: 2px solid #007bff; /* blue outline on hover */
+}
+
+
+.features-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Desktop: 4 in one row */
+    gap: 15px;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+    .features-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 by 2 on phone */
+    }
 }
