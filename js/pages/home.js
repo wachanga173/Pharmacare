@@ -2,6 +2,8 @@
 import { getProducts } from "../services/products.js";
 import { addToCart } from "../services/cart.js";
 import { showToast } from "../components/toast.js";
+import { sanitizeHTML } from "../utils/helpers.js";
+import { updateCartBadge } from "../components/header.js";
 
 // Carousel State Management
 const carouselState = {
@@ -281,6 +283,7 @@ async function addToCartHandler(productId) {
     if (!product) return;
 
     await addToCart(productId, 1);
+    await updateCartBadge();
     // Show toast with product image
     showToast(
       `
