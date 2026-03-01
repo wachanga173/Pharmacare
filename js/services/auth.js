@@ -185,18 +185,32 @@ export async function register(userData) {
         
         if (authError) throw authError;
         
-        // Create user profile in users table
-        const { error: profileError } = await supabase
+        if (!authData.user) {
+            throw new Error('User registration failed - no user data returned');
+        }
+        
+        // Create user profile in public.users table with role
+        const { data: profileData, error: profileError } = await supabase
             .from('users')
             .insert({
                 id: authData.user.id,
                 email: userData.email,
                 full_name: userData.name,
                 phone: userData.phone || '',
-                role: 'customer'
-            });
+                role: userData.role || 'customer', // Default to customer if not specified
+                created_at: new Date().toISOString()
+            })
+            .select()
+            .single();
         
-        if (profileError) console.error('Profile creation error:', profileError);
+        if (profileError) {
+            console.error('Profile creation error:', profileError);
+            // If profile creation fails, we should delete the auth user to maintain consistency
+            await supabase.auth.admin.deleteUser(authData.user.id).catch(console.error);
+            throw new Error(`Failed to create user profile: ${profileError.message}`);
+        }
+        
+        const userRole = profileData?.role || 'customer';
         
         return { 
             success: true, 
@@ -204,7 +218,8 @@ export async function register(userData) {
                 id: authData.user.id,
                 email: authData.user.email,
                 name: userData.name,
-                isAdmin: false
+                role: userRole,
+                isAdmin: userRole === 'admin'
             },
             message: 'Registration successful! Please check your email to verify your account.'
         };
@@ -244,18 +259,19 @@ export async function login(email, password) {
             .eq('id', data.user.id)
             .single();
         
+        // Always check role from public.users
+        const userRole = profile?.role || 'customer';
         const userSession = {
             id: data.user.id,
             email: data.user.email,
             name: profile?.full_name || data.user.user_metadata?.full_name || email,
             phone: profile?.phone || '',
-            isAdmin: profile?.role === 'admin',
-            role: profile?.role || 'customer'
+            role: userRole,
+            isAdmin: userRole === 'admin',
+            avatar_url: profile?.avatar_url || ''
         };
-        
         // Store in localStorage for quick access
         saveToStorage(CONFIG.STORAGE_KEYS.USER, userSession);
-        
         return { success: true, user: userSession };
     } catch (error) {
         console.error('Login error:', error);
@@ -314,19 +330,19 @@ export async function getCurrentUser() {
             .eq('id', session.user.id)
             .single();
         
+        // Always check role from public.users
+        const userRole = profile?.role || 'customer';
         const userSession = {
             id: session.user.id,
             email: session.user.email,
             name: profile?.full_name || session.user.user_metadata?.full_name || session.user.email,
             phone: profile?.phone || '',
-            isAdmin: profile?.role === 'admin',
-            role: profile?.role || 'customer',
+            role: userRole,
+            isAdmin: userRole === 'admin',
             avatar_url: profile?.avatar_url || ''
         };
-        
         // Update localStorage cache
         saveToStorage(CONFIG.STORAGE_KEYS.USER, userSession);
-        
         return userSession;
     }
     
@@ -483,11 +499,13 @@ async function localStorageLogin(email, password) {
     const user = users.find(u => u.email === email && u.password === hashedPassword);
     
     if (user) {
+        const userRole = user.role || (user.isAdmin ? 'admin' : 'customer');
         const userSession = {
             id: user.id,
             email: user.email,
             name: user.name,
-            isAdmin: user.isAdmin || false
+            role: userRole,
+            isAdmin: userRole === 'admin'
         };
         saveToStorage(CONFIG.STORAGE_KEYS.USER, userSession);
         return { success: true, user: userSession };
@@ -506,11 +524,13 @@ async function localStorageRegister(userData) {
     // Hash password before storing
     const hashedPassword = await hashPassword(userData.password);
     
+    const userRole = userData.role || 'customer';
     const newUser = {
         id: Math.max(...users.map(u => u.id), 0) + 1,
         ...userData,
         password: hashedPassword,  // Store hashed password
-        isAdmin: false,
+        role: userRole,
+        isAdmin: userRole === 'admin',
         createdAt: new Date().toISOString()
     };
     
@@ -521,7 +541,8 @@ async function localStorageRegister(userData) {
         id: newUser.id,
         email: newUser.email,
         name: newUser.name,
-        isAdmin: false
+        role: userRole,
+        isAdmin: userRole === 'admin'
     };
     saveToStorage(CONFIG.STORAGE_KEYS.USER, userSession);
     
@@ -539,11 +560,13 @@ function localStorageUpdateProfile(updates) {
         users[userIndex] = { ...users[userIndex], ...updates };
         saveToStorage(CONFIG.STORAGE_KEYS.USER + 's', users);
         
+        const userRole = users[userIndex].role || (users[userIndex].isAdmin ? 'admin' : 'customer');
         const updatedSession = {
             id: users[userIndex].id,
             email: users[userIndex].email,
             name: users[userIndex].name,
-            isAdmin: users[userIndex].isAdmin
+            role: userRole,
+            isAdmin: userRole === 'admin'
         };
         saveToStorage(CONFIG.STORAGE_KEYS.USER, updatedSession);
         
