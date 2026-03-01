@@ -114,6 +114,5 @@ function showAddProductModal() {
 }
 
 function showEditProductModal(id) {
-    // Implementation for editing products
     showModal('Edit Product', '<p>Edit product form would go here</p>');
 }
