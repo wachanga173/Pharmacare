@@ -1,5 +1,20 @@
 /* Product Detail Page Styles */
 
+/* Back Button */
+.btn-back {
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    background: #f3f4f6 !important;
+    transform: translateX(-4px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.btn-back:active {
+    transform: translateX(-2px);
+}
+
 .product-detail-image {
     width: 100%;
     border-radius: 0.5rem;
