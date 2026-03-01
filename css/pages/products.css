@@ -15,3 +15,64 @@
 .filters select {
     min-width: 150px;
 }
+
+.prodback{
+    background: linear-gradient(135deg, var(--primary-color), #0056b3);
+    color: white;
+    padding: 4rem 0;
+    margin-top: 50px;
+}
+
+h1{
+    color: white;
+    font-size: 3rem;
+}
+
+.btn-back{
+    margin-top: 40px;
+    align-self: flex-start;
+    margin-left: 0px;
+}
+
+/* Back Button Hover */
+.btn-back:hover {
+    background: #f3f4f6 !important;
+    border-color: #007bff !important;
+    color: #007bff !important;
+    transform: translateX(-2px);
+}
+
+/* Consistency fix for the Back Button */
+.btn-back-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem; /* Slightly adjusted for better visual weight */
+    background-color: var(--primary-color, #007bff); /* Uses your site's blue */
+    color: white !important; /* Forces text to be white */
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    margin-top:0px;
+    padding-left: 20px;
+}
+
+.btn-back-light:hover {
+    background: #f3f4f6 !important;
+    border-color: #007bff !important;
+    color: #007bff !important;
+    transform: translateX(-2px);
+}
+
+/* Make sure the arrow (SVG) turns white too */
+.btn-back-light svg {
+    stroke: white;
+}
+
+.btn-back{
+    background-color:dodgerblue;
+}
