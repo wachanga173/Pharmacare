@@ -145,15 +145,15 @@
               .map(
                 (item) => `
               <tr>
-                <td><img src="${item.product.image || item.product.image_url || "assets/images/products/placeholder.png"}" alt="${item.product.name}" class="cart-img" /></td>
-                <td>${item.product.name}</td>
-                <td style="min-width:110px;">
+                <td data-label="Image"><img src="${item.product.image || item.product.image_url || "assets/images/products/placeholder.png"}" alt="${item.product.name}" class="cart-img" /></td>
+                <td data-label="Name">${item.product.name}</td>
+                <td data-label="Quantity" style="min-width:110px;">
                   <button class="qty-btn" data-action="decrease" data-id="${item.productId}" style="padding:2px 8px;margin-right:4px;">-</button>
                   <span class="cart-qty-value" style="display:inline-block;min-width:24px;text-align:center;">${item.quantity}</span>
                   <button class="qty-btn" data-action="increase" data-id="${item.productId}" style="padding:2px 8px;margin-left:4px;">+</button>
                 </td>
-                <td>KSh ${(item.product.price * item.quantity).toFixed(2)}</td>
-                <td>
+                <td data-label="Subtotal">KSh ${(item.product.price * item.quantity).toFixed(2)}</td>
+                <td data-label="Remove">
                   <button class="remove-btn" data-id="${item.productId}">Remove</button>
                 </td>
               </tr>

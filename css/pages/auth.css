@@ -13,3 +13,63 @@
     text-align: center;
     margin-top: 1rem;
 }
+
+/* ========================================
+   RESPONSIVE STYLES
+   ======================================== */
+
+/* Mobile styles (< 768px) */
+@media (max-width: 767px) {
+    .auth-container {
+        max-width: 100%;
+        margin: 1.5rem auto;
+        padding: 0 1rem;
+    }
+
+    .auth-form {
+        margin-top: 1.5rem;
+    }
+
+    /* Ensure form inputs are readable */
+    .form-control {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    /* Title sizing */
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    /* Button styling */
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    /* Adjust section padding */
+    section {
+        padding: 2rem 0 !important;
+    }
+}
+
+/* Small mobile (< 480px) */
+@media (max-width: 479px) {
+    .auth-container {
+        margin: 1rem auto;
+        padding: 0 0.75rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .btn-primary {
+        padding: 0.9rem;
+    }
+
+    section {
+        padding: 1.5rem 0 !important;
+    }
+}
