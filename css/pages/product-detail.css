@@ -13,3 +13,81 @@
     font-size: 2rem;
     margin: 1rem 0;
 }
+
+/* ========================================
+   RESPONSIVE STYLES
+   ======================================== */
+
+/* Tablet and below (< 992px) */
+@media (max-width: 991px) {
+    .product-detail-price {
+        font-size: 1.75rem;
+    }
+}
+
+/* Mobile styles (< 768px) */
+@media (max-width: 767px) {
+    /* Product detail container stacks vertically (handled by responsive.css) */
+    .product-detail-image {
+        margin-bottom: 1.5rem;
+    }
+
+    .product-detail-info {
+        padding: 0;
+    }
+
+    .product-detail-price {
+        font-size: 1.5rem;
+        margin: 0.75rem 0;
+    }
+
+    /* Full width buttons */
+    #add-to-cart-detail,
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        padding: 1rem;
+        margin-top: 1.5rem !important;
+        font-size: 1rem;
+    }
+
+    /* Product info adjustments */
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    p strong {
+        font-size: 0.9rem;
+    }
+}
+
+/* Small mobile (< 480px) */
+@media (max-width: 479px) {
+    .product-detail-image {
+        margin-bottom: 1rem;
+    }
+
+    .product-detail-price {
+        font-size: 1.35rem;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    #add-to-cart-detail,
+    .btn-primary {
+        padding: 0.9rem;
+        font-size: 0.95rem;
+    }
+}
