@@ -153,6 +153,11 @@ body {
   color: #ea4335;
 }
 
+.social-btn.github:hover {
+  color: #24292f;
+  background: #fff;
+}
+
 section {
   padding: 5rem 0;
 }
