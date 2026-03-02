@@ -4,7 +4,7 @@
     background: linear-gradient(135deg, var(--primary-color), #0056b3);
     color: white;
     padding: 4rem 0;
-    text-align: center;
+    text-align:justify;
     margin-bottom: 3rem;
 }
 
@@ -38,17 +38,17 @@
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 25px;
 }
 
 .stat-card {
     background: white;
-    border-radius: 8px;
+    border-radius: 15px;
     padding: 2rem 1.5rem;
     text-align: center;
     transition: all 0.2s ease;
     border: 1px solid #e5e7eb;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }
 
 .stat-card:hover {
@@ -92,7 +92,9 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    margin-top: 2rem;
+    margin: 2rem auto 0;
+    max-width: 1200px;
+    justify-content: center;
 }
 
 .feature-card-modern {
@@ -134,12 +136,23 @@
     font-size: 1rem;
 }
 
+.btn-back{
+    margin-top: 40px;
+    align-self: flex-start;
+    margin-left: 0px;
+}
+
 /* Back Button Hover */
 .btn-back:hover {
     background: #f3f4f6 !important;
     border-color: #007bff !important;
     color: #007bff !important;
     transform: translateX(-2px);
+}
+
+.btn-primary:hover {
+    background-color: #0d6efd; /* your blue */
+    color: #ffffff;            /* force text to white */
 }
 
 /* Responsive */

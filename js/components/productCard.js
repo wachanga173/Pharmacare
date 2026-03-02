@@ -9,11 +9,18 @@ export function createProductCard(product) {
     card.className = 'product-card';
     card.dataset.productId = product.id;
     
+    // Detect if we're in the pages folder for correct relative paths
+    const currentPath = window.location.pathname;
+    const isInPagesFolder = currentPath.includes('/pages/');
+    const imageFallback = isInPagesFolder 
+        ? '../assets/images/products/placeholder.png'
+        : 'assets/images/products/placeholder.png';
+    
     card.innerHTML = `
-        <img src="${sanitizeHTML(product.image_url || product.image || 'assets/images/products/placeholder.png')}" 
+        <img src="${sanitizeHTML(product.image_url || product.image || imageFallback)}" 
              alt="${sanitizeHTML(product.name)}" 
              class="product-image"
-             onerror="this.src='assets/images/products/placeholder.png'">
+             onerror="this.src='${imageFallback}'">
         <div class="product-body">
             <h3 class="product-title">${sanitizeHTML(product.name)}</h3>
             <p class="product-description">${sanitizeHTML(product.description || '')}</p>
@@ -44,7 +51,13 @@ export function createProductCard(product) {
     const viewDetailsBtn = card.querySelector('.view-details-btn');
     if (viewDetailsBtn) {
         viewDetailsBtn.addEventListener('click', () => {
-            window.location.href = `pages/product-detail.html?id=${product.id}`;
+            // Detect if we're already in the pages folder
+            const currentPath = window.location.pathname;
+            const isInPagesFolder = currentPath.includes('/pages/');
+            const detailPath = isInPagesFolder 
+                ? `product-detail.html?id=${product.id}`
+                : `pages/product-detail.html?id=${product.id}`;
+            window.location.href = detailPath;
         });
     }
     

@@ -49,10 +49,12 @@ body {
     z-index: 1;
     max-width: 1100px;
     margin: 0 auto;
+    justify-items: start;
 }
 
 .profile-image-container {
     position: relative;
+    justify-self: center;
 }
 
 .profile-image {
@@ -94,6 +96,10 @@ body {
 @keyframes pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.6; }
+}
+
+.hero-text {
+    text-align: left;
 }
 
 .hero-title {

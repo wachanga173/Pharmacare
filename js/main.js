@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             case '':
                 await initHomePage();
                 break;
-            // Add other page initializations here
             default:
                 console.log('Page:', page);
         }

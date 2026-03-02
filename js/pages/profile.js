@@ -266,12 +266,7 @@ async function handlePasswordChange(e) {
         return;
     }
     
-    // TODO: Implement password change with Supabase
     showError('Password change feature coming soon');
-    
-    // For Supabase implementation:
-    // const supabase = getSupabaseClient();
-    // const { error } = await supabase.auth.updateUser({ password: newPassword });
 }
 
 async function handleDeleteAccount() {
@@ -287,13 +282,7 @@ async function handleDeleteAccount() {
         );
         
         if (doubleConfirm) {
-            // TODO: Implement account deletion
             showError('Account deletion feature coming soon');
-            
-            // For Supabase implementation:
-            // Delete user data from database
-            // Delete Supabase auth user
-            // Logout
         }
     }
 }
