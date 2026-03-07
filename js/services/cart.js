@@ -88,6 +88,7 @@ export async function addToCart(productId, quantity = 1) {
   }
 
   saveToStorage(CONFIG.STORAGE_KEYS.CART, cart);
+  window.dispatchEvent(new CustomEvent("cart:updated"));
   return true;
 }
 
@@ -98,6 +99,7 @@ export function removeFromCart(productId) {
     (item) => String(item.productId) !== normalizedId,
   );
   saveToStorage(CONFIG.STORAGE_KEYS.CART, cart);
+  window.dispatchEvent(new CustomEvent("cart:updated"));
 }
 
 export function updateQuantity(productId, quantity) {
@@ -114,11 +116,13 @@ export function updateQuantity(productId, quantity) {
     // Remove old product object if it exists
     delete item.product;
     saveToStorage(CONFIG.STORAGE_KEYS.CART, cart);
+    window.dispatchEvent(new CustomEvent("cart:updated"));
   }
 }
 
 export function clearCart() {
   saveToStorage(CONFIG.STORAGE_KEYS.CART, { items: [], total: 0 });
+  window.dispatchEvent(new CustomEvent("cart:updated"));
 }
 
 export async function getCartItemCount() {
