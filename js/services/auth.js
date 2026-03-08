@@ -1,143 +1,4 @@
-/**
- * Authentication Service with Supabase Integration
- * 
- * This service manages user authentication using Supabase Auth with localStorage fallback.
- * All functions are now ASYNC and return Promises.
- * 
- * USAGE EXAMPLES:
- * ================
- * 
- * 1. REGISTER A NEW USER:
- * ```javascript
- * import { register } from '../services/auth.js';
- * 
- * const result = await register({
- *   email: 'user@example.com',
- *   password: 'secure123',
- *   name: 'John Doe',
- *   phone: '+1234567890'
- * });
- * 
- * if (result.success) {
- *   console.log('User registered:', result.user);
- *   // Note: User will receive verification email
- * } else {
- *   console.error('Registration failed:', result.error);
- * }
- * ```
- * 
- * 2. LOGIN:
- * ```javascript
- * import { login } from '../services/auth.js';
- * 
- * const result = await login('user@example.com', 'password');
- * 
- * if (result.success) {
- *   console.log('Logged in as:', result.user);
- * }
- * ```
- * 
- * 3. LOGOUT:
- * ```javascript
- * import { logout } from '../services/auth.js';
- * 
- * await logout();
- * window.location.href = 'login.html';
- * ```
- * 
- * 4. CHECK IF USER IS LOGGED IN:
- * ```javascript
- * import { isLoggedIn } from '../services/auth.js';
- * 
- * const loggedIn = await isLoggedIn();
- * if (!loggedIn) {
- *   window.location.href = 'login.html';
- * }
- * ```
- * 
- * 5. GET CURRENT USER:
- * ```javascript
- * import { getCurrentUser } from '../services/auth.js';
- * 
- * const user = await getCurrentUser();
- * if (user) {
- *   console.log('User:', user.name, user.email);
- *   console.log('Is Admin:', user.isAdmin);
- * }
- * ```
- * 
- * 6. UPDATE USER PROFILE:
- * ```javascript
- * import { updateUserProfile } from '../services/auth.js';
- * 
- * const result = await updateUserProfile({
- *   name: 'New Name',
- *   phone: '+9876543210',
- *   address: '123 Main St, City, State'
- * });
- * ```
- * 
- * 7. PASSWORD RESET:
- * ```javascript
- * import { resetPassword } from '../services/auth.js';
- * 
- * const result = await resetPassword('user@example.com');
- * if (result.success) {
- *   alert(result.message); // "Check your email"
- * }
- * ```
- * 
- * 8. UPLOAD PROFILE PHOTO:
- * ```javascript
- * import { uploadProfilePhoto } from '../services/auth.js';
- * 
- * const file = document.getElementById('file-input').files[0];
- * const result = await uploadProfilePhoto(file);
- * 
- * if (result.success) {
- *   console.log('Photo URL:', result.url);
- * }
- * ```
- * 
- * 9. LISTEN TO AUTH STATE CHANGES:
- * ```javascript
- * import { onAuthStateChange } from '../services/auth.js';
- * 
- * onAuthStateChange((event, user) => {
- *   console.log('Auth event:', event); // SIGNED_IN, SIGNED_OUT, etc.
- *   console.log('User:', user);
- *   
- *   if (user) {
- *     // User logged in
- *   } else {
- *     // User logged out
- *   }
- * });
- * ```
- * 
- * FEATURES:
- * =========
- * ✅ Supabase Auth integration (primary)
- * ✅ localStorage fallback (for development)
- * ✅ Email verification
- * ✅ Password reset via email
- * ✅ Profile photo upload to Supabase Storage
- * ✅ Session persistence
- * ✅ Role-based access (admin/customer)
- * ✅ Automatic profile creation in users table
- * ✅ Auth state listener
- * 
- * SUPABASE SETUP REQUIRED:
- * ========================
- * 1. Enable Email Auth in Supabase Dashboard
- * 2. Create 'users' table with RLS policies
- * 3. Create 'user-avatars' storage bucket
- * 4. Configure email templates (optional)
- * 
- * @module auth
- */
-
-// Authentication service - manages user authentication with Supabase
+// Authentication service - manages user authentication with Supabase and localStorage fallback
 import { getFromStorage, saveToStorage } from '../utils/storage.js';
 import { hashPassword } from '../utils/helpers.js';
 
@@ -157,11 +18,7 @@ function getSupabaseClient() {
     return null;
 }
 
-/**
- * Register a new user with Supabase Auth
- * @param {Object} userData - User data { email, password, name, phone }
- * @returns {Promise<Object>} { success, user, error }
- */
+// Register new user with Supabase Auth
 export async function register(userData) {
     const supabase = getSupabaseClient();
     
@@ -229,12 +86,7 @@ export async function register(userData) {
     }
 }
 
-/**
- * Login user with Supabase Auth
- * @param {string} email 
- * @param {string} password 
- * @returns {Promise<Object>} { success, user, error }
- */
+// Login user with Supabase Auth
 export async function login(email, password) {
     const supabase = getSupabaseClient();
     
@@ -279,10 +131,7 @@ export async function login(email, password) {
     }
 }
 
-/**
- * Logout current user
- * @returns {Promise<Object>} { success }
- */
+// Logout current user
 export async function logout() {
     const supabase = getSupabaseClient();
     
@@ -294,10 +143,7 @@ export async function logout() {
     return { success: true };
 }
 
-/**
- * Check if user is logged in
- * @returns {Promise<boolean>}
- */
+// Check if user is logged in
 export async function isLoggedIn() {
     const supabase = getSupabaseClient();
     
@@ -311,10 +157,7 @@ export async function isLoggedIn() {
     return !!user;
 }
 
-/**
- * Get current logged-in user
- * @returns {Promise<Object|null>}
- */
+// Get current logged-in user
 export async function getCurrentUser() {
     const supabase = getSupabaseClient();
     
@@ -350,11 +193,7 @@ export async function getCurrentUser() {
     return getFromStorage(CONFIG.STORAGE_KEYS.USER);
 }
 
-/**
- * Update user profile
- * @param {Object} updates - Profile updates
- * @returns {Promise<Object>} { success, user, error }
- */
+// Update user profile
 export async function updateUserProfile(updates) {
     const supabase = getSupabaseClient();
     
@@ -398,11 +237,7 @@ export async function updateUserProfile(updates) {
     }
 }
 
-/**
- * Send password reset email
- * @param {string} email 
- * @returns {Promise<Object>} { success, message, error }
- */
+// Send password reset email
 export async function resetPassword(email) {
     const supabase = getSupabaseClient();
     
@@ -427,11 +262,7 @@ export async function resetPassword(email) {
     }
 }
 
-/**
- * Upload profile photo to Supabase Storage
- * @param {File} file 
- * @returns {Promise<Object>} { success, url, error }
- */
+// Upload profile photo to Supabase Storage
 export async function uploadProfilePhoto(file) {
     const supabase = getSupabaseClient();
     
@@ -471,10 +302,7 @@ export async function uploadProfilePhoto(file) {
     }
 }
 
-/**
- * Listen to auth state changes
- * @param {Function} callback 
- */
+// Listen to auth state changes
 export function onAuthStateChange(callback) {
     const supabase = getSupabaseClient();
     
@@ -491,7 +319,7 @@ export function onAuthStateChange(callback) {
     }
 }
 
-// ============ LocalStorage Fallback Functions ============
+// LocalStorage Fallback Functions
 
 async function localStorageLogin(email, password) {
     const users = getFromStorage(CONFIG.STORAGE_KEYS.USER + 's') || [];

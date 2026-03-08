@@ -27,14 +27,9 @@
 .product-detail-price {
     font-size: 2rem;
     margin: 1rem 0;
-<<<<<<< HEAD
-}
-=======
 }
 
-/* ========================================
-   RESPONSIVE STYLES
-   ======================================== */
+/* Responsive Styles */
 
 /* Tablet and below (< 992px) */
 @media (max-width: 991px) {
@@ -45,7 +40,6 @@
 
 /* Mobile styles (< 768px) */
 @media (max-width: 767px) {
-    /* Product detail container stacks vertically (handled by responsive.css) */
     .product-detail-image {
         margin-bottom: 1.5rem;
     }
@@ -59,7 +53,6 @@
         margin: 0.75rem 0;
     }
 
-    /* Full width buttons */
     #add-to-cart-detail,
     .btn-primary,
     .btn-secondary {
@@ -69,7 +62,6 @@
         font-size: 1rem;
     }
 
-    /* Product info adjustments */
     h1 {
         font-size: 1.5rem;
         margin-bottom: 0.75rem;
@@ -109,4 +101,3 @@
         font-size: 0.95rem;
     }
 }
->>>>>>> 98d2c95fa5e74f37cb6829f87be9818c0d71beb4

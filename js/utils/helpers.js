@@ -86,12 +86,7 @@ export function isElementInView(element) {
     );
 }
 
-/**
- * Sanitize HTML to prevent XSS attacks
- * Escapes dangerous characters that could be used for script injection
- * @param {string} str - The string to sanitize
- * @returns {string} - Sanitized string safe for innerHTML
- */
+// Sanitize HTML to prevent XSS attacks
 export function sanitizeHTML(str) {
     if (typeof str !== 'string') return '';
     
@@ -100,12 +95,7 @@ export function sanitizeHTML(str) {
     return div.innerHTML;
 }
 
-/**
- * Simple hash function for password storage (SHA-256)
- * Note: For production, use a proper backend hashing like bcrypt
- * @param {string} password - Password to hash
- * @returns {Promise<string>} - Hashed password
- */
+// Simple hash function for password storage (SHA-256)
 export async function hashPassword(password) {
     const encoder = new TextEncoder();
     const data = encoder.encode(password);

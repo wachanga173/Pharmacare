@@ -1,14 +1,7 @@
-/* ================================================================
-    titus.css  —  Titus Ondeu Portfolio  v4.0
-    Primary   : #007bff → #0056b3
-    Secondary : #17a2b8 → #138496
-    All sections have colour. Contact = Wachanga frosted-glass style.
-    ================================================================ */
+/* titus.css — Titus Ondeu Portfolio v4.0 - Primary: #007bff → #0056b3, Secondary: #17a2b8 → #138496, All sections have colour. Contact = Wachanga frosted-glass style. */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-/* ─────────────────────────────────────────────────────────────────
-    DESIGN TOKENS
-───────────────────────────────────────────────────────────────── */
+/* Design Tokens */
 :root {
      --primary:         #007bff;
      --primary-dark:    #0056b3;
@@ -53,9 +46,7 @@
      --t:            all 0.3s var(--ease);
 }
 
-/* ─────────────────────────────────────────────────────────────────
-    FOOTER
-───────────────────────────────────────────────────────────────── */
+/* Footer */
 .site-footer {
      background:var(--dark); color:#9ca3af;
      text-align:center; padding:2rem; font-size:.875rem;
@@ -63,18 +54,11 @@
 .site-footer strong { color:#f9fafb; }
 
 /* Add your custom styles below */
-/* ================================================================
-   titus.css  —  Titus Ondeu Portfolio  v4.0
-   Primary   : #007bff → #0056b3
-   Secondary : #17a2b8 → #138496
-   All sections have colour. Contact = Wachanga frosted-glass style.
-   ================================================================ */
+/* titus.css — Titus Ondeu Portfolio v4.0 - Primary: #007bff → #0056b3, Secondary: #17a2b8 → #138496, All sections have colour. Contact = Wachanga frosted-glass style. */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-/* ─────────────────────────────────────────────────────────────────
-   DESIGN TOKENS
-───────────────────────────────────────────────────────────────── */
+/* Design Tokens */
 :root {
     --primary:         #007bff;
     --primary-dark:    #0056b3;
@@ -123,9 +107,7 @@
     --t:            all 0.3s var(--ease);
 }
 
-/* ─────────────────────────────────────────────────────────────────
-   RESET & BASE
-───────────────────────────────────────────────────────────────── */
+/* Reset & Base */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -144,15 +126,11 @@ button { border: none; background: none; font-family: inherit; cursor: pointer; 
 ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--primary-dark); }
 
-/* ─────────────────────────────────────────────────────────────────
-   LAYOUT
-───────────────────────────────────────────────────────────────── */
+/* Layout */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 section { padding: 5rem 0; }
 
-/* ─────────────────────────────────────────────────────────────────
-   KEYFRAMES
-───────────────────────────────────────────────────────────────── */
+/* Keyframes */
 @keyframes pulse {
     0%,100% { opacity:1; transform:scale(1); }
     50%     { opacity:.5; transform:scale(.82); }
@@ -163,15 +141,11 @@ section { padding: 5rem 0; }
 }
 @keyframes barFill { from { width:0 !important; } }
 
-/* ─────────────────────────────────────────────────────────────────
-   SCROLL REVEAL
-───────────────────────────────────────────────────────────────── */
+/* Scroll Reveal */
 .reveal { opacity:0; transform:translateY(30px); transition:opacity .65s ease,transform .65s ease; }
 .reveal.revealed { opacity:1; transform:translateY(0); }
 
-/* ─────────────────────────────────────────────────────────────────
-   BACK BUTTON
-───────────────────────────────────────────────────────────────── */
+/* Back Button */
 .btn-back {
     display:inline-flex; align-items:center; gap:.5rem;
     background:rgba(255,255,255,.18); backdrop-filter:blur(12px);
@@ -182,9 +156,7 @@ section { padding: 5rem 0; }
 }
 .btn-back:hover { background:var(--white); color:var(--primary); transform:translateX(-4px); box-shadow:0 4px 16px rgba(0,0,0,.18); }
 
-/* ─────────────────────────────────────────────────────────────────
-   SECTION HEADERS  (two variants: dark text / white text)
-───────────────────────────────────────────────────────────────── */
+/* Section Headers (two variants: dark text / white text) */
 .section-header { text-align:center; margin-bottom:3.5rem; }
 
 .section-title {
@@ -202,9 +174,7 @@ section { padding: 5rem 0; }
 .title-underline               { width:90px; height:4px; background:var(--grad-primary); margin:0 auto; border-radius:2px; }
 .title-underline--light        { background:rgba(255,255,255,.70); }
 
-/* ═══════════════════════════════════════════════════════════════
-   HERO
-═══════════════════════════════════════════════════════════════ */
+/* Hero */
 .hero-section {
     background: var(--bg-hero);
     color:var(--white); padding:5rem 0;
@@ -277,9 +247,7 @@ section { padding: 5rem 0; }
 .social-btn.linkedin:hover { color:#0077b5; }
 .social-btn.email:hover    { color:#ea4335; }
 
-/* ═══════════════════════════════════════════════════════════════
-   ABOUT  —  blue-tinted bg, accent-bordered card
-═══════════════════════════════════════════════════════════════ */
+/* About — blue-tinted bg, accent-bordered card */
 .about-section { background:var(--bg-about); position:relative; overflow:hidden; }
 .about-section::before {
     content:''; position:absolute;
@@ -309,9 +277,7 @@ section { padding: 5rem 0; }
 .about-text { font-size:1.0625rem; line-height:1.9; color:var(--body-text); margin-bottom:1.5rem; }
 .about-text:last-child { margin-bottom:0; }
 
-/* ═══════════════════════════════════════════════════════════════
-   RESPONSIBILITIES  —  blue gradient bg, frosted white cards
-═══════════════════════════════════════════════════════════════ */
+/* Responsibilities — blue gradient bg, frosted white cards */
 
 .responsibilities-section::before {
     content:''; position:absolute; inset:0;
@@ -356,9 +322,7 @@ section { padding: 5rem 0; }
 .responsibility-card h3 { font-size:1.2rem; font-weight:700; color:var(--dark); margin-bottom:.85rem; }
 .responsibility-card p  { font-size:.9375rem; line-height:1.75; color:var(--body-text); }
 
-/* ═══════════════════════════════════════════════════════════════
-   TECHNOLOGIES  —  soft blue bg, bold gradient pills
-═══════════════════════════════════════════════════════════════ */
+/* Technologies — soft blue bg, bold gradient pills */
 .technologies-section { background:var(--bg-tech); position:relative; overflow:hidden; }
 .technologies-section::before {
     content:''; position:absolute;
@@ -392,9 +356,7 @@ section { padding: 5rem 0; }
     background:linear-gradient(135deg,#0056b3 0%,#007bff 100%);
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   ACHIEVEMENTS  —  blue→teal gradient, frosted cards
-═══════════════════════════════════════════════════════════════ */
+/* Achievements — blue→teal gradient, frosted cards */
 
 .achievements-section::before {
     content:''; position:absolute; inset:0;
@@ -443,10 +405,7 @@ section { padding: 5rem 0; }
 .achievement-card p { font-size:.9375rem; color:var(--body-text); font-weight:600; line-height:1.5; }
 
 
-/* ═══════════════════════════════════════════════════════════════
-SKILLS
-1. Skill Item Layout 
-═══════════════════════════════════════════════════════════════ */
+/* Skills - Skill Item Layout */
 .skill-item { 
     margin-bottom: 2.25rem; 
     opacity: 1; 
@@ -496,10 +455,7 @@ SKILLS
 
 
 
-/* ═══════════════════════════════════════════════════════════════
-   CONTACT  —   frosted-glass cards on blue gradient
-   Large icon · Bold label · Handle text · Hover lift
-═══════════════════════════════════════════════════════════════ */
+/* Contact — frosted-glass cards on blue gradient - Large icon, Bold label, Handle text, Hover lift */
 .contact-section {
     background:var(--bg-contact);
     color:var(--white); padding:5rem 0 5.5rem;
@@ -629,18 +585,14 @@ SKILLS
 }
 
 
-/* ─────────────────────────────────────────────────────────────────
-   FOOTER
-───────────────────────────────────────────────────────────────── */
+/* Footer */
 .site-footer {
     background:var(--dark); color:#9ca3af;
     text-align:center; padding:2rem; font-size:.875rem;
 }
 .site-footer strong { color:#f9fafb; }
 
-/* ─────────────────────────────────────────────────────────────────
-   RESPONSIVE
-───────────────────────────────────────────────────────────────── */
+/* Responsive */
 @media (max-width:1024px) {
     .achievements-grid  { grid-template-columns:repeat(2,1fr); }
     .contact-cards-grid { grid-template-columns:repeat(3,1fr); }

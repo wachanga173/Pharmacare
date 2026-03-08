@@ -1,16 +1,9 @@
-/* ========================================
-   Wachanga's Director Profile Page
-   Pharmacare Professional Theme
-   ======================================== */
-
-/* ===== PROFESSIONAL TYPOGRAPHY ===== */
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* ===== VARIABLES ===== */
 :root {
     --primary-color: #007bff;
     --secondary-color: #17a2b8;
@@ -22,7 +15,6 @@ body {
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ===== HERO SECTION ===== */
 .hero-section {
     background: var(--primary-gradient);
     color: white;
@@ -124,7 +116,6 @@ body {
     font-weight: 400;
 }
 
-/* ===== SOCIAL LINKS ===== */
 .social-links {
     display: flex;
     gap: 1rem;
@@ -155,7 +146,6 @@ body {
 .social-btn.email:hover { color: #ea4335; }
 .social-btn.portfolio:hover { color: var(--primary-color); }
 
-/* ===== SECTIONS ===== */
 section {
     padding: 5rem 0;
 }
@@ -170,7 +160,6 @@ section {
     color: white;
 }
 
-/* ===== SECTION HEADERS ===== */
 .section-header {
     text-align: center;
     margin-bottom: 3.5rem;
@@ -213,7 +202,6 @@ section {
     background: white;
 }
 
-/* ===== ABOUT SECTION ===== */
 .about-content {
     max-width: 900px;
     margin: 0 auto;
@@ -235,7 +223,6 @@ section {
     margin-bottom: 0;
 }
 
-/* ===== RESPONSIBILITIES GRID - FIXED 3 COLUMNS ===== */
 .responsibilities-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -318,7 +305,6 @@ section {
     font-weight: 400;
 }
 
-/* ===== TECHNOLOGIES - FIXED 3 COLUMNS ===== */
 .tech-categories {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -378,7 +364,6 @@ section {
     box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
 }
 
-/* ===== ACHIEVEMENTS - FIXED 4 COLUMNS ===== */
 .achievements-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -432,7 +417,6 @@ section {
     font-weight: 600;
 }
 
-/* ===== SKILLS ===== */
 .skills-container {
     max-width: 900px;
     margin: 0 auto;
@@ -482,7 +466,6 @@ section {
     box-shadow: 0 2px 6px rgba(0, 123, 255, 0.4);
 }
 
-/* ===== CONTACT ===== */
 .contact-content {
     max-width: 900px;
     margin: 0 auto;
@@ -542,7 +525,6 @@ section {
     text-decoration: underline;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 1024px) {
     .responsibilities-grid,
     .tech-categories {

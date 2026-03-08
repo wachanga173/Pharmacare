@@ -1,6 +1,4 @@
-/* ===================================
-   Homepage Styles - Modern & Dynamic
-   =================================== */
+/* Homepage Styles - Modern & Dynamic */
 
 /* Hero Section */
 .hero-modern {
@@ -12,6 +10,7 @@
     display: flex;
     align-items: center;
     overflow: hidden;
+    margin-top: 70px;
 }
 
 .hero-overlay {
@@ -53,7 +52,6 @@
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
     animation: fadeInUp 0.8s ease-out;
     color: white;
-    white-space: nowrap;
 }
 
 .hero-subtitle {

@@ -130,11 +130,7 @@ export function validateProductForm(data) {
   };
 }
 
-/**
- * Validate phone number format
- * @param {string} phone
- * @returns {boolean}
- */
+// Validate phone number format
 export function validatePhone(phone) {
   // Allow various phone formats
   const phoneRegex =
@@ -142,11 +138,7 @@ export function validatePhone(phone) {
   return phoneRegex.test(phone);
 }
 
-/**
- * Check for potentially malicious input patterns
- * @param {string} input
- * @returns {boolean}
- */
+// Check for potentially malicious input patterns
 export function validateSafeInput(input) {
   // Detect common XSS patterns
   const dangerousPatterns = [
@@ -161,11 +153,7 @@ export function validateSafeInput(input) {
   return !dangerousPatterns.some((pattern) => pattern.test(input));
 }
 
-/**
- * Validate URL format
- * @param {string} url
- * @returns {boolean}
- */
+// Validate URL format
 export function validateURL(url) {
   try {
     new URL(url);

@@ -1,12 +1,8 @@
-/* ========================================
-   RESPONSIVE DESIGN - Mobile First Approach
-   ======================================== */
+/* Responsive Design - Mobile First Approach */
 
 /* Base styles are mobile-first (320px+) */
 
-/* ========================================
-   LARGE PHONES / PHABLETS (576px+)
-   ======================================== */
+/* Large Phones / Phablets (576px+) */
 @media (min-width: 576px) {
     .container {
         max-width: 540px;
@@ -50,9 +46,7 @@
     }
 }
 
-/* ========================================
-   TABLET PORTRAIT (768px+)
-   ======================================== */
+/* Tablet Portrait (768px+) */
 @media (min-width: 768px) {
     .container {
         max-width: 720px;
@@ -92,9 +86,7 @@
     }
 }
 
-/* ========================================
-   TABLET LANDSCAPE / SMALL DESKTOP (992px+)
-   ======================================== */
+/* Tablet Landscape / Small Desktop (992px+) */
 @media (min-width: 992px) {
     .container {
         max-width: 960px;
@@ -125,9 +117,7 @@
     }
 }
 
-/* ========================================
-   DESKTOP (1200px+)
-   ======================================== */
+/* Desktop (1200px+) */
 @media (min-width: 1200px) {
     .container {
         max-width: 1140px;
@@ -139,27 +129,21 @@
     }
 }
 
-/* ========================================
-   LARGE DESKTOP (1400px+)
-   ======================================== */
+/* Large Desktop (1400px+) */
 @media (min-width: 1400px) {
     .container {
         max-width: 1320px;
     }
 }
 
-/* ========================================
-   EXTRA LARGE DESKTOP (1600px+)
-   ======================================== */
+/* Extra Large Desktop (1600px+) */
 @media (min-width: 1600px) {
     .container {
         max-width: 1540px;
     }
 }
 
-/* ========================================
-   MOBILE-SPECIFIC STYLES (< 768px)
-   ======================================== */
+/* Mobile-Specific Styles (< 768px) */
 @media (max-width: 767px) {
     /* Container */
     .container {
@@ -396,9 +380,7 @@
     }
 }
 
-/* ========================================
-   SMALL MOBILE (< 480px)
-   ======================================== */
+/* Small Mobile (< 480px) */
 @media (max-width: 479px) {
     /* Even tighter spacing */
     .container {
@@ -466,9 +448,7 @@
     }
 }
 
-/* ========================================
-   PRINT STYLES
-   ======================================== */
+/* Print Styles */
 @media print {
     .header,
     .footer,

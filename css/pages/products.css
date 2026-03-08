@@ -16,7 +16,6 @@
     min-width: 150px;
 }
 
-<<<<<<< HEAD
 .prodback{
     background: linear-gradient(135deg, var(--primary-color), #0056b3);
     color: white;
@@ -43,14 +42,14 @@ h1{
     transform: translateX(-2px);
 }
 
-/* Consistency fix for the Back Button */
+/* Back Button Light */
 .btn-back-light {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.6rem 1.2rem; /* Slightly adjusted for better visual weight */
-    background-color: var(--primary-color, #007bff); /* Uses your site's blue */
-    color: white !important; /* Forces text to be white */
+    padding: 0.6rem 1.2rem;
+    background-color: var(--primary-color, #007bff);
+    color: white !important;
     border: none;
     border-radius: 0.375rem;
     font-weight: 500;
@@ -69,7 +68,6 @@ h1{
     transform: translateX(-2px);
 }
 
-/* Make sure the arrow (SVG) turns white too */
 .btn-back-light svg {
     stroke: white;
 }
@@ -77,10 +75,8 @@ h1{
 .btn-back{
     background-color:dodgerblue;
 }
-=======
-/* ========================================
-   RESPONSIVE STYLES
-   ======================================== */
+
+/* Responsive Styles */
 
 /* Tablet and below (< 992px) */
 @media (max-width: 991px) {
@@ -110,15 +106,13 @@ h1{
     .filters select,
     .filters input {
         width: 100%;
-        font-size: 16px; /* Prevents zoom on iOS */
+        font-size: 16px;
     }
 
-    /* Product grid handled by responsive.css */
     #products-container {
         margin-top: 1.5rem;
     }
 
-    /* Page title */
     h1 {
         font-size: 1.75rem;
         margin-bottom: 1rem;
@@ -139,4 +133,3 @@ h1{
         margin-top: 1rem;
     }
 }
->>>>>>> 98d2c95fa5e74f37cb6829f87be9818c0d71beb4

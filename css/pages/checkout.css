@@ -23,9 +23,7 @@
     color: var(--dark-color);
 }
 
-/* ========================================
-   RESPONSIVE STYLES
-   ======================================== */
+/* Responsive Styles */
 
 /* Mobile styles (< 768px) */
 @media (max-width: 767px) {
