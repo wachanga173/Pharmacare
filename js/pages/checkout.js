@@ -1,6 +1,6 @@
 // Checkout page logic
-import { getCart } from "../services/cart.js";
-import { isLoggedIn } from "../services/auth.js";
+import { getCart, clearCart } from "../services/cart.js";
+import { isLoggedIn, getCurrentUser } from "../services/auth.js";
 import { showSuccess, showError } from "../components/toast.js";
 import { validateCheckoutForm } from "../utils/validation.js";
 import { sanitizeHTML } from "../utils/helpers.js";
@@ -120,6 +120,8 @@ function setupCheckoutForm() {
     try {
       await processOrder(data);
       showSuccess("Order placed successfully!");
+      // Clear cart after successful order
+      clearCart();
       setTimeout(() => {
         window.location.href = "profile.html";
       }, 2000);
@@ -131,12 +133,86 @@ function setupCheckoutForm() {
 }
 
 async function processOrder(orderData) {
-  // Simulate API call
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      // In a real app, this would send data to a server
-      console.log("Processing order:", orderData);
-      resolve();
-    }, 1000);
-  });
+  // Get current user
+  const user = await getCurrentUser();
+  if (!user) {
+    throw new Error("User not authenticated");
+  }
+
+  // Get cart data
+  const cart = await getCart();
+  if (cart.items.length === 0) {
+    throw new Error("Cart is empty");
+  }
+
+  // Calculate order totals
+  const subtotal = cart.total;
+  const shipping =
+    subtotal >= CONFIG.FREE_SHIPPING_THRESHOLD ? 0 : CONFIG.SHIPPING_COST;
+  const tax = subtotal * CONFIG.TAX_RATE;
+  const total = subtotal + shipping + tax;
+
+  // Generate order number
+  const orderNumber = `ORD-${Date.now()}-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+
+  // Prepare order items
+  const orderItems = cart.items.map((item) => ({
+    product_id: item.product.id,
+    product_name: item.product.name,
+    product_price: item.product.price,
+    quantity: item.quantity,
+  }));
+
+  // Prepare order data for database
+  const order = {
+    user_id: user.id,
+    order_number: orderNumber,
+    status: "pending",
+    items: orderItems,
+    subtotal: subtotal,
+    shipping_cost: shipping,
+    tax: tax,
+    total: total,
+    shipping_info: {
+      name: orderData.fullName,
+      address: orderData.address,
+      city: orderData.city,
+      state: orderData.state,
+      zipCode: orderData.zipCode,
+      phone: orderData.phone,
+    },
+    payment_method: orderData.paymentMethod,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  };
+
+  // Get Supabase client
+  const supabase = window.supabase?.createClient(
+    window.CONFIG.SUPABASE.URL,
+    window.CONFIG.SUPABASE.ANON_KEY,
+    {
+      auth: {
+        redirectTo:
+          window.CONFIG.SITE_URL ||
+          "https://wachanga173.github.io/Pharmacare",
+      },
+    }
+  );
+
+  if (!supabase) {
+    // Fallback: Log to console if Supabase is not available
+    console.log("Processing order (no database):", order);
+    return;
+  }
+
+  // Save order to Supabase
+  const { data, error } = await supabase.from("orders").insert(order).select();
+
+  if (error) {
+    console.error("Error saving order to database:", error);
+    throw new Error("Failed to save order: " + error.message);
+  }
+
+  console.log("Order saved successfully:", data);
+  return data;
 }
