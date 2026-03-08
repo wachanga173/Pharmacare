@@ -3,7 +3,7 @@ import { getFromStorage, saveToStorage } from '../utils/storage.js';
 import { hashPassword } from '../utils/helpers.js';
 
 // Get Supabase client
-function getSupabaseClient() {
+export function getSupabaseClient() {
     if (typeof window !== 'undefined' && window.supabase && window.CONFIG) {
         return window.supabase.createClient(
             window.CONFIG.SUPABASE.URL, 
