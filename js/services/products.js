@@ -54,8 +54,8 @@ function getSupabaseClient() {
   return supabase;
 }
 
-export async function getProducts() {
-  if (productsCache) {
+export async function getProducts(forceReload = false) {
+  if (productsCache && !forceReload) {
     return productsCache;
   }
 

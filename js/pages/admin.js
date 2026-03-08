@@ -25,7 +25,7 @@ async function loadProductsTable() {
     if (!container) return;
     
     try {
-        const products = await getProducts();
+        const products = await getProducts(true); // Force reload to get fresh data
         container.innerHTML = renderProductsTable(products);
     } catch (error) {
         console.error('Error loading products:', error);
