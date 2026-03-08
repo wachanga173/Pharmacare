@@ -68,6 +68,7 @@ export function renderEditProductForm(product) {
 }
 
 export async function initEditProductModal(productId, onSuccess) {
+    console.log('[EDIT] initEditProductModal called with productId:', productId, 'onSuccess:', typeof onSuccess);
     const product = await getProductById(productId);
     if (!product) {
         showError('Product not found');
@@ -115,10 +116,18 @@ export async function initEditProductModal(productId, onSuccess) {
                     }
 
                     const updatedProduct = await updateProduct(productId, updates);
+                    console.log('[EDIT] Update result:', updatedProduct);
                     if (updatedProduct) {
+                        console.log('[EDIT] Update successful, showing success and closing modal');
                         showSuccess('Product updated successfully!');
                         closeModal();
-                        if (onSuccess) onSuccess();
+                        console.log('[EDIT] Calling onSuccess callback:', typeof onSuccess);
+                        if (onSuccess) {
+                            console.log('[EDIT] Executing onSuccess...');
+                            onSuccess();
+                        } else {
+                            console.warn('[EDIT] No onSuccess callback provided!');
+                        }
                     } else {
                         throw new Error('Failed to update product: Product not found');
                     }

@@ -119,6 +119,8 @@ function showAddProductModal() {
 }
 
 async function showEditProductModal(id) {
+    console.log('[ADMIN] showEditProductModal called with id:', id);
+    console.log('[ADMIN] Passing loadProductsTable as callback:', typeof loadProductsTable);
     const content = await initEditProductModal(id, loadProductsTable);
     if (content) {
         showModal('Edit Product', content);
