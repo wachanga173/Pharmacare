@@ -383,10 +383,29 @@ function renderOrderDetailForAdmin(order) {
             <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 6px; margin-bottom: 1.5rem;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                     <h3 style="margin: 0;">${sanitizeHTML(order.order_number || 'N/A')}</h3>
-                    <span class="status-badge status-${order.status}">${sanitizeHTML(order.status || 'pending')}</span>
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <span class="status-badge status-${order.status}" id="current-status-badge">${sanitizeHTML(order.status || 'pending')}</span>
+                        <button class="btn btn-secondary btn-sm" onclick="window.showStatusUpdateForm('${order.id}', '${order.status}')">Change Status</button>
+                    </div>
                 </div>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; font-size: 0.9rem;">
+                <!-- Status Update Form (hidden by default) -->
+                <div id="status-update-form" style="display: none; margin-top: 1rem; padding: 1rem; background: white; border-radius: 6px; border: 2px solid #007bff;">
+                    <h4 style="margin: 0 0 1rem 0; font-size: 1rem;">Update Order Status</h4>
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <select id="new-status-select" class="form-control" style="flex: 1; max-width: 250px;">
+                            <option value="pending" ${order.status === 'pending' ? 'selected' : ''}>Pending</option>
+                            <option value="processing" ${order.status === 'processing' ? 'selected' : ''}>Processing</option>
+                            <option value="shipped" ${order.status === 'shipped' ? 'selected' : ''}>Shipped</option>
+                            <option value="delivered" ${order.status === 'delivered' ? 'selected' : ''}>Delivered</option>
+                            <option value="cancelled" ${order.status === 'cancelled' ? 'selected' : ''}>Cancelled</option>
+                        </select>
+                        <button class="btn btn-primary btn-sm" onclick="window.updateOrderStatus('${order.id}')">Save</button>
+                        <button class="btn btn-secondary btn-sm" onclick="window.hideStatusUpdateForm()">Cancel</button>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; font-size: 0.9rem; margin-top: 1rem;">
                     <div>
                         <strong>Order Date:</strong><br>
                         ${new Date(order.created_at).toLocaleDateString('en-US', { 
@@ -504,3 +523,61 @@ function renderOrderItemsForAdmin(items) {
         </table>
     `;
 }
+
+// ============ ORDER STATUS UPDATE FUNCTIONS ============
+// Make these available globally for inline onclick handlers
+window.showStatusUpdateForm = function(orderId, currentStatus) {
+    const form = document.getElementById('status-update-form');
+    if (form) {
+        form.style.display = 'block';
+        form.dataset.orderId = orderId;
+    }
+};
+
+window.hideStatusUpdateForm = function() {
+    const form = document.getElementById('status-update-form');
+    if (form) {
+        form.style.display = 'none';
+    }
+};
+
+window.updateOrderStatus = async function(orderId) {
+    const select = document.getElementById('new-status-select');
+    if (!select) return;
+    
+    const newStatus = select.value;
+    
+    try {
+        const supabase = getSupabaseClient();
+        const { error } = await supabase
+            .from('orders')
+            .update({ 
+                status: newStatus,
+                updated_at: new Date().toISOString()
+            })
+            .eq('id', orderId);
+        
+        if (error) throw error;
+        
+        // Update the badge in the modal
+        const badge = document.getElementById('current-status-badge');
+        if (badge) {
+            badge.className = `status-badge status-${newStatus}`;
+            badge.textContent = newStatus;
+        }
+        
+        // Hide the form
+        window.hideStatusUpdateForm();
+        
+        // Show success message
+        showSuccess(`Order status updated to ${newStatus}`);
+        
+        // Reload orders table if we're on the orders tab
+        if (currentTab === 'orders') {
+            loadOrdersTable();
+        }
+    } catch (error) {
+        console.error('Error updating order status:', error);
+        showError('Failed to update order status');
+    }
+};
