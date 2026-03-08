@@ -4,6 +4,7 @@ import { getProducts, addProduct, updateProduct, deleteProduct } from '../servic
 import { showSuccess, showError } from '../components/toast.js';
 import { showModal, confirmModal } from '../components/modal.js';
 import { sanitizeHTML } from '../utils/helpers.js';
+import { initEditProductModal } from './EditProduct.js';
 
 export async function initAdminPage() {
     // Check authentication and authorization
@@ -74,7 +75,7 @@ function setupAdminHandlers() {
     if (container) {
         container.addEventListener('click', async (e) => {
             if (e.target.classList.contains('delete-product')) {
-                const id = parseInt(e.target.dataset.id);
+                const id = e.target.dataset.id;
                 const confirmed = await confirmModal('Delete Product', 'Are you sure?');
                 if (confirmed) {
                     deleteProduct(id);
@@ -82,9 +83,9 @@ function setupAdminHandlers() {
                     loadProductsTable();
                 }
             }
-            
+
             if (e.target.classList.contains('edit-product')) {
-                const id = parseInt(e.target.dataset.id);
+                const id = e.target.dataset.id;
                 showEditProductModal(id);
             }
         });
@@ -113,6 +114,9 @@ function showAddProductModal() {
     showModal('Add Product', content);
 }
 
-function showEditProductModal(id) {
-    showModal('Edit Product', '<p>Edit product form would go here</p>');
+async function showEditProductModal(id) {
+    const content = await initEditProductModal(id, loadProductsTable);
+    if (content) {
+        showModal('Edit Product', content);
+    }
 }

@@ -157,29 +157,36 @@ export async function updateProduct(id, updates) {
         .update(updates)
         .eq("id", id)
         .select()
-        .single();
+        .maybeSingle();
 
-      if (error) throw error;
-
-      productsCache = null; // Clear cache
-      return data;
+      if (error) {
+        console.error("Error updating product in Supabase:", error);
+      } else if (data) {
+        productsCache = null; // Clear cache
+        return data;
+      } else {
+        console.log("No product updated in Supabase, falling back to localStorage");
+      }
     } catch (error) {
       console.error("Error updating product in Supabase:", error);
-      throw error;
+      // Fall back to localStorage if Supabase fails
     }
   }
 
   // Fallback to localStorage
   const products = getFromStorage(window.CONFIG.STORAGE_KEYS.PRODUCTS) || [];
-  const index = products.findIndex((p) => p.id === id);
+  const index = products.findIndex((p) => p.id == id);
 
   if (index !== -1) {
+    console.log('Updating product in localStorage', id, updates);
     products[index] = { ...products[index], ...updates };
     saveToStorage(window.CONFIG.STORAGE_KEYS.PRODUCTS, products);
     productsCache = null;
+    console.log('Updated product', products[index]);
     return products[index];
   }
 
+  console.log('Product not found in localStorage for update', id);
   return null;
 }
 
