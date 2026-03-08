@@ -21,10 +21,16 @@ export function createProductCard(product) {
              alt="${sanitizeHTML(product.name)}" 
              class="product-image"
              onerror="this.src='${imageFallback}'">
+        ${product.requires_prescription ? '<div class="prescription-badge">Rx Required</div>' : ''}
         <div class="product-body">
             <h3 class="product-title">${sanitizeHTML(product.name)}</h3>
             <p class="product-description">${sanitizeHTML(product.description || '')}</p>
-            <p class="product-price">${window.CONFIG.CURRENCY}${product.price.toFixed(2)}</p>
+            <div class="product-meta">
+                <p class="product-price">${window.CONFIG.CURRENCY}${product.price.toFixed(2)}</p>
+                <p class="stock-indicator ${product.stock > 10 ? 'stock-good' : product.stock > 0 ? 'stock-low' : 'stock-out'}">
+                    ${product.stock > 0 ? `Stock: ${product.stock}` : 'Out of Stock'}
+                </p>
+            </div>
             ${product.stock > 0 ? `
                 <div class="product-actions">
                     <button class="btn btn-primary add-to-cart-btn" data-id="${product.id}">
