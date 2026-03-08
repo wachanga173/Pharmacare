@@ -8,7 +8,7 @@ export function showModal(title, content, options = {}) {
     
     // Create modal
     const modal = document.createElement('div');
-    modal.className = 'modal active';
+    modal.className = `modal active ${options.className || ''}`;
     modal.innerHTML = `
         <div class="modal-content">
             <div class="modal-header">

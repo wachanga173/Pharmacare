@@ -23,13 +23,48 @@
                     Back
                 </button>
 
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <h1>Admin Panel</h1>
-                    <button class="btn btn-primary" id="add-product-btn">Add Product</button>
+                <h1>Admin Panel</h1>
+                
+                <!-- Tabs Navigation -->
+                <div class="admin-tabs" style="margin-top: 2rem; border-bottom: 2px solid #e5e7eb;">
+                    <button class="admin-tab active" data-tab="products">Products</button>
+                    <button class="admin-tab" data-tab="orders">Orders</button>
+                    <button class="admin-tab" data-tab="contacts">Contacts</button>
+                    <button class="admin-tab" data-tab="users">Users</button>
                 </div>
                 
-                <div id="admin-products-table" style="margin-top: 2rem; overflow-x: auto;">
-                    <p>Loading...</p>
+                <!-- Tab Contents -->
+                <div class="admin-tab-content">
+                    <!-- Products Tab -->
+                    <div id="products-tab" class="tab-pane active">
+                        <div style="display: flex; justify-content: flex-end; margin: 1.5rem 0;">
+                            <button class="btn btn-primary" id="add-product-btn">Add Product</button>
+                        </div>
+                        <div id="admin-products-table" style="overflow-x: auto;">
+                            <p>Loading...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Orders Tab -->
+                    <div id="orders-tab" class="tab-pane">
+                        <div id="admin-orders-table" style="margin-top: 1.5rem; overflow-x: auto;">
+                            <p>Loading...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Contacts Tab -->
+                    <div id="contacts-tab" class="tab-pane">
+                        <div id="admin-contacts-table" style="margin-top: 1.5rem; overflow-x: auto;">
+                            <p>Loading...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Users Tab -->
+                    <div id="users-tab" class="tab-pane">
+                        <div id="admin-users-table" style="margin-top: 1.5rem; overflow-x: auto;">
+                            <p>Loading...</p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>

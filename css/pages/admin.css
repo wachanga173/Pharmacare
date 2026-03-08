@@ -4,6 +4,10 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 1rem;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .admin-table th,
@@ -26,6 +30,109 @@
     background-color: var(--light-color);
 }
 
+/* Admin Tabs */
+.admin-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.admin-tab {
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #6b7280;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1rem;
+}
+
+.admin-tab:hover {
+    color: #007bff;
+    background: #f3f4f6;
+}
+
+.admin-tab.active {
+    color: #007bff;
+    border-bottom-color: #007bff;
+}
+
+/* Tab Content */
+.admin-tab-content {
+    margin-top: 2rem;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-processing {
+    background: #cfe2ff;
+    color: #084298;
+}
+
+.status-shipped {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.status-delivered,
+.status-completed {
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+.status-cancelled {
+    background: #f8d7da;
+    color: #842029;
+}
+
+/* Role Badge */
+.role-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.role-admin {
+    background: #e7f3ff;
+    color: #0066cc;
+}
+
+.role-customer {
+    background: #f0f0f0;
+    color: #666;
+}
+
+/* Modal Large Size */
+.modal-large .modal-content {
+    max-width: 900px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .admin-table {
@@ -35,5 +142,19 @@
     .admin-table th,
     .admin-table td {
         padding: 0.5rem;
+    }
+    
+    .admin-tab {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+    
+    .admin-tabs {
+        gap: 0.25rem;
+    }
+    
+    .modal-large .modal-content {
+        max-width: 95%;
+        margin: 1rem;
     }
 }
