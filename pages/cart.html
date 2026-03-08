@@ -233,6 +233,14 @@
         initHeader();
         initFooter();
         renderSelectedCart();
+        
+        // Add event listener for proceed to payment button
+        const proceedBtn = document.getElementById("proceed-payment-btn");
+        if (proceedBtn) {
+          proceedBtn.addEventListener("click", () => {
+            window.location.href = "checkout.html";
+          });
+        }
       });
     </script>
     <!-- Footer should remain at the bottom. -->
