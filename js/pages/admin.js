@@ -24,13 +24,9 @@ async function loadProductsTable() {
     const container = document.getElementById('admin-products-table');
     if (!container) return;
     
-    console.log('[ADMIN] Loading products table...');
     try {
         const products = await getProducts(true); // Force reload to get fresh data
-        console.log('[ADMIN] Loaded', products.length, 'products');
-        console.log('[ADMIN] First 3 products:', products.slice(0, 3));
         container.innerHTML = renderProductsTable(products);
-        console.log('[ADMIN] Table rendered');
     } catch (error) {
         console.error('Error loading products:', error);
         showError('Error loading products');
@@ -119,8 +115,6 @@ function showAddProductModal() {
 }
 
 async function showEditProductModal(id) {
-    console.log('[ADMIN] showEditProductModal called with id:', id);
-    console.log('[ADMIN] Passing loadProductsTable as callback:', typeof loadProductsTable);
     const content = await initEditProductModal(id, loadProductsTable);
     if (content) {
         showModal('Edit Product', content);
