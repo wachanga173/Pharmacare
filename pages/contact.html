@@ -130,15 +130,32 @@
                         phone: document.getElementById('phone').value,
                         subject: document.getElementById('subject').value,
                         message: document.getElementById('message').value,
-                        timestamp: new Date().toISOString()
+                        created_at: new Date().toISOString()
                     };
                     
                     try {
-                        // In production, this would send to backend/Supabase
-                        console.log('Contact form submitted:', formData);
+                        // Get Supabase client
+                        const supabase = window.supabase?.createClient(
+                            window.CONFIG.SUPABASE.URL,
+                            window.CONFIG.SUPABASE.ANON_KEY
+                        );
                         
-                        // Simulate submission
-                        await new Promise(resolve => setTimeout(resolve, 1000));
+                        if (supabase) {
+                            // Save to Supabase contacts table
+                            const { data, error } = await supabase
+                                .from('contacts')
+                                .insert([formData]);
+                            
+                            if (error) {
+                                console.error('Supabase error:', error);
+                                throw error;
+                            }
+                            
+                            console.log('Contact saved to database:', data);
+                        } else {
+                            // Fallback if Supabase not available
+                            console.log('Contact form submitted (no database):', formData);
+                        }
                         
                         showSuccess('Thank you! Your message has been sent. We will get back to you soon.');
                         contactForm.reset();
