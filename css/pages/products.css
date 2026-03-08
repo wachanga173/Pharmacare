@@ -19,17 +19,24 @@
 .prodback{
     background: linear-gradient(135deg, var(--primary-color), #0056b3);
     color: white;
-    padding: 4rem 0;
+    padding: 4rem 2rem;
     margin-top: 50px;
 }
 
 h1{
     color: white;
     font-size: 3rem;
+    text-align: center;
+    margin: 0 auto 1rem;
+}
+
+.prodback p {
+    text-align: center;
+    margin: 0 auto;
 }
 
 .btn-back{
-    margin-top: 40px;
+    margin-top: 0;
     align-self: flex-start;
     margin-left: 0px;
 }
