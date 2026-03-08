@@ -58,6 +58,7 @@
     animation: fadeInUp 0.8s ease-out;
     color: white;
     letter-spacing: -0.02em;
+    white-space: nowrap;
 }
 
 .hero-subtitle {
