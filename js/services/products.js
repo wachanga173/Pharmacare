@@ -148,6 +148,8 @@ export async function addProduct(product) {
 }
 
 export async function updateProduct(id, updates) {
+  console.log('[UPDATE] Starting update for ID:', id, 'Updates:', updates);
+  
   // If Supabase is configured, update in Supabase
   const client = getSupabaseClient();
   if (client) {
@@ -163,6 +165,7 @@ export async function updateProduct(id, updates) {
         console.error("Error updating product in Supabase:", error);
       } else if (data) {
         productsCache = null; // Clear cache
+        console.log('[UPDATE] Updated in Supabase, cleared cache');
         return data;
       } else {
         console.log("No product updated in Supabase, falling back to localStorage");
@@ -175,18 +178,26 @@ export async function updateProduct(id, updates) {
 
   // Fallback to localStorage
   const products = getFromStorage(window.CONFIG.STORAGE_KEYS.PRODUCTS) || [];
-  const index = products.findIndex((p) => p.id == id);
+  console.log('[UPDATE] Loaded', products.length, 'products from localStorage');
+  console.log('[UPDATE] Looking for product with ID:', id, 'Type:', typeof id);
+  
+  // Handle both string and integer IDs
+  const index = products.findIndex((p) => {
+    return p.id == id || p.id === parseInt(id) || String(p.id) === String(id);
+  });
 
   if (index !== -1) {
-    console.log('Updating product in localStorage', id, updates);
+    console.log('[UPDATE] Found product at index', index);
+    console.log('[UPDATE] Before update:', JSON.parse(JSON.stringify(products[index])));
     products[index] = { ...products[index], ...updates };
+    console.log('[UPDATE] After update:', JSON.parse(JSON.stringify(products[index])));
     saveToStorage(window.CONFIG.STORAGE_KEYS.PRODUCTS, products);
     productsCache = null;
-    console.log('Updated product', products[index]);
+    console.log('[UPDATE] Saved to localStorage and cleared cache');
     return products[index];
   }
 
-  console.log('Product not found in localStorage for update', id);
+  console.error('[UPDATE] Product not found with ID:', id);
   return null;
 }
 
