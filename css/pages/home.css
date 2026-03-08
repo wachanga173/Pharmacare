@@ -3,7 +3,7 @@
 /* Hero Section */
 .hero-modern {
     position: relative;
-    min-height: 500px;
+    min-height: 90vh;
     background: 
         linear-gradient(135deg, rgba(0, 123, 255, 0.9) 0%, rgba(0, 86, 179, 0.9) 100%),
         url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
@@ -11,6 +11,7 @@
     align-items: center;
     overflow: hidden;
     margin-top: 70px;
+    padding: 4rem 0;
 }
 
 .hero-overlay {
@@ -35,7 +36,8 @@
     position: relative;
     z-index: 2;
     text-align: center;
-    padding: 2.5rem 0;
+    padding: 3rem 1rem;
+    width: 100%;
 }
 
 .hero-text {
@@ -45,9 +47,9 @@
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
     font-weight: 800;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     line-height: 1.2;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
     animation: fadeInUp 0.8s ease-out;
@@ -55,14 +57,14 @@
 }
 
 .hero-subtitle {
-    font-size: 1.4rem;
-    margin-bottom: 2.5rem;
+    font-size: 1.6rem;
+    margin-bottom: 3rem;
     opacity: 1;
     line-height: 1.8;
     animation: fadeInUp 0.8s ease-out 0.2s both;
     color: white;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-    max-width: 700px;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -112,15 +114,16 @@
 .hero-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    max-width: 1000px;
+    gap: 2.5rem;
+    max-width: 1100px;
     margin: 0 auto;
+    margin-top: 4rem;
 }
 
 .stat-card {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
-    padding: 2rem;
+    padding: 3rem 2rem;
     border-radius: 20px;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -151,16 +154,16 @@
 }
 
 .stat-number {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 3.5rem;
+    font-weight: 800;
     color: white;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .stat-label {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 500;
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 600;
 }
 
 /* Product Carousel Section */
@@ -508,31 +511,39 @@
 /* Responsive Design */
 @media (max-width: 1024px) {
     .hero-title {
-        font-size: 3rem;
+        font-size: 3.5rem;
     }
 
     .hero-subtitle {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 
     .hero-stats {
         grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
+        gap: 2rem;
+    }
+
+    .stat-card {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .stat-number {
+        font-size: 3rem;
     }
 }
 
 @media (max-width: 768px) {
     .hero-modern {
         min-height: auto;
-        padding: 3rem 0;
+        padding: 4rem 0;
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
     }
 
     .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1.25rem;
     }
 
     .hero-actions {
@@ -550,7 +561,20 @@
 
     .hero-stats {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+
+    .stat-card {
+        padding: 2.5rem 2rem;
+    }
+
+    .stat-number {
+        font-size: 3rem;
+    }
+
+    .stat-label {
+        font-size: 1.1rem;
     }
 
     .section-title {
