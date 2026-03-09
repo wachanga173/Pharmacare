@@ -104,7 +104,7 @@ async function renderHeader() {
                             <li>
                                 <a href="${cartPath}" class="nav-link cart-link">
                                     🛒 Cart
-                                    ${cartCount > 0 ? `<span class="cart-badge" id="cart-badge">${cartCount}</span>` : ""}
+                                    <span class="cart-badge" id="cart-badge" style="display: ${cartCount > 0 ? 'flex' : 'none'}">${cartCount}</span>
                                 </a>
                             </li>
                         </ul>
@@ -143,10 +143,22 @@ function attachHeaderEventListeners() {
 }
 
 export async function updateCartBadge() {
-  const badge = document.getElementById("cart-badge");
+  let badge = document.getElementById("cart-badge");
   const cartCount = await getCartItemCount();
+  
   if (badge) {
     badge.textContent = cartCount;
     badge.style.display = cartCount > 0 ? "flex" : "none";
+  } else {
+    // If badge doesn't exist, find cart link and add it
+    const cartLink = document.querySelector('.cart-link');
+    if (cartLink) {
+      badge = document.createElement('span');
+      badge.className = 'cart-badge';
+      badge.id = 'cart-badge';
+      badge.textContent = cartCount;
+      badge.style.display = cartCount > 0 ? "flex" : "none";
+      cartLink.appendChild(badge);
+    }
   }
 }
