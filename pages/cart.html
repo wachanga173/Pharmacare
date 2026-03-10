@@ -21,23 +21,9 @@
           <h1>Shopping Cart</h1>
         </section>
         <!-- Side-by-side layout for cart sections -->
-        <div
-          class="cart-sections-wrapper"
-          style="display: flex; gap: 2rem; align-items: flex-start"
-        >
+        <div class="cart-sections-wrapper">
           <!-- Section for Added Items -->
-          <section
-            id="cart-items-section"
-            style="
-              flex: 2;
-              max-height: 500px;
-              overflow-y: auto;
-              background: #fff;
-              border-radius: 8px;
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-              padding: 1rem;
-            "
-          >
+          <section id="cart-items-section">
             <h2>Added Items</h2>
             <div id="cart-container"></div>
             <style>
@@ -61,23 +47,7 @@
             </style>
           </section>
           <!-- Section for Total Cost -->
-          <section
-            id="cart-total-section"
-            style="
-              flex: 1;
-              position: sticky;
-              top: 2rem;
-              background: #f9f9f9;
-              border-radius: 8px;
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-              padding: 1rem;
-              min-width: 220px;
-              display: flex;
-              flex-direction: column;
-              justify-content: space-between;
-              height: 100%;
-            "
-          >
+          <section id="cart-total-section">
             <h2>Total Cost</h2>
             <div id="cart-total" class="cart-total"></div>
             <button
@@ -109,7 +79,12 @@
     <script type="module">
       import { initHeader, updateCartBadge } from "../js/components/header.js";
       import { initFooter } from "../js/components/footer.js";
-      import { getCart, removeFromCart, updateQuantity, addToCart } from "../js/services/cart.js";
+      import {
+        getCart,
+        removeFromCart,
+        updateQuantity,
+        addToCart,
+      } from "../js/services/cart.js";
 
       async function renderSelectedCart() {
         const cartContainer = document.getElementById("cart-container");
@@ -167,7 +142,10 @@
         // Display detailed summary with breakdown
         if (totalPriceElem) {
           const subtotal = total;
-          const shipping = subtotal >= CONFIG.FREE_SHIPPING_THRESHOLD ? 0 : CONFIG.SHIPPING_COST;
+          const shipping =
+            subtotal >= CONFIG.FREE_SHIPPING_THRESHOLD
+              ? 0
+              : CONFIG.SHIPPING_COST;
           const tax = subtotal * CONFIG.TAX_RATE;
           const grandTotal = subtotal + shipping + tax;
 
@@ -179,8 +157,8 @@
               </div>
               <div style="display: flex; justify-content: space-between; font-size: 0.95rem;">
                 <span style="color: #666;">Shipping:</span>
-                <span style="font-weight: 500; color: ${shipping === 0 ? '#28a745' : '#333'};">
-                  ${shipping === 0 ? 'FREE' : 'KSh ' + shipping.toFixed(2)}
+                <span style="font-weight: 500; color: ${shipping === 0 ? "#28a745" : "#333"};">
+                  ${shipping === 0 ? "FREE" : "KSh " + shipping.toFixed(2)}
                 </span>
               </div>
               <div style="display: flex; justify-content: space-between; font-size: 0.95rem;">
@@ -195,7 +173,7 @@
             </div>
           `;
         }
-        
+
         if (proceedBtn) proceedBtn.style.display = "block";
 
         // Bind remove buttons
@@ -207,7 +185,7 @@
             updateCartBadge();
           });
         });
-        
+
         // Bind quantity buttons
         cartContainer.querySelectorAll(".qty-btn").forEach((btn) => {
           btn.addEventListener("click", async (e) => {
@@ -215,9 +193,10 @@
             const action = btn.getAttribute("data-action");
             let item = items.find((i) => String(i.productId) === String(id));
             if (!item) return;
-            let newQty = action === "increase" ? item.quantity + 1 : item.quantity - 1;
+            let newQty =
+              action === "increase" ? item.quantity + 1 : item.quantity - 1;
             if (newQty < 1) return;
-            
+
             if (action === "increase") {
               await addToCart(id, 1);
             } else {
@@ -233,7 +212,7 @@
         initHeader();
         initFooter();
         renderSelectedCart();
-        
+
         // Add event listener for proceed to payment button
         const proceedBtn = document.getElementById("proceed-payment-btn");
         if (proceedBtn) {
