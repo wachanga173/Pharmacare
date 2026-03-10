@@ -1,0 +1,90 @@
+/* Checkout Page Styles */
+
+.checkout-form {
+    max-width: 800px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.summary-total {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+/* Responsive Styles */
+
+/* Mobile styles (< 768px) */
+@media (max-width: 767px) {
+    .checkout-form {
+        max-width: 100%;
+        padding: 1rem;
+    }
+
+    /* Make grids single column on mobile */
+    .grid-2,
+    .grid-3 {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Form elements full width */
+    .form-control {
+        font-size: 16px; /* Prevents zoom on iOS */
+        width: 100%;
+    }
+
+    /* Summary section */
+    .summary-item,
+    .summary-row {
+        font-size: 0.9rem;
+    }
+
+    .summary-total {
+        font-size: 1.1rem;
+    }
+
+    /* Spacing adjustments */
+    section {
+        padding: 1rem 0 !important;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    /* Buttons full width on mobile */
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* Small mobile (< 480px) */
+@media (max-width: 479px) {
+    .checkout-form {
+        padding: 0.5rem;
+    }
+
+    .summary-item,
+    .summary-row {
+        font-size: 0.85rem;
+        padding: 0.4rem 0;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+}

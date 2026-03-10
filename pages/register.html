@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Pharmacare</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/pages/auth.css">
+</head>
+<body>
+    <div id="app">
+        <header id="header"></header>
+        
+        <main class="container">
+            <section style="padding: 3rem 0;">
+                <button onclick="window.history.back()" class="btn-back btn-back-light" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: white; border: 1px solid #e5e7eb; border-radius: 0.375rem; color: #374151; cursor: pointer; transition: all 0.3s; box-shadow: 0 1px 2px rgba(0,0,0,0.05); margin-bottom: 1rem;">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Back
+                </button>
+
+                <div style="max-width: 400px; margin: 0 auto;">
+                    <h1 class="text-center">Register</h1>
+                    <div id="register-notice" style="display:none; margin-top:1rem; margin-bottom:1rem; background:#e0f7fa; color:#00796b; padding:0.75rem 1rem; border-radius:6px; text-align:center; font-size:1rem;">
+                        Registration successful! Please check your email to verify your account.
+                    </div>
+                    
+                    <form id="register-form" style="margin-top: 2rem;">
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Confirm Password</label>
+                            <input type="password" name="confirmPassword" class="form-control" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            Register
+                        </button>
+                        
+                        <p class="text-center mt-2">
+                            Already have an account? <a href="login.html">Login here</a>
+                        </p>
+                    </form>
+                </div>
+            </section>
+        </main>
+        
+        <footer id="footer"></footer>
+    </div>
+
+    <div id="toast-container"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config.js"></script>
+    <script type="module">
+        import { initHeader } from '../js/components/header.js';
+        import { initFooter } from '../js/components/footer.js';
+        import { register } from '../js/services/auth.js';
+        import { validateRegisterForm } from '../js/utils/validation.js';
+        import { showSuccess, showError } from '../js/components/toast.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            initHeader();
+            initFooter();
+            
+            const form = document.getElementById('register-form');
+            const submitBtn = form.querySelector('button[type="submit"]');
+            
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+                
+                // Validate form
+                const validation = validateRegisterForm(data);
+                if (!validation.isValid) {
+                    showError(validation.errors.join(', '));
+                    return;
+                }
+                
+                // Disable submit button
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Creating account...';
+                
+                try {
+                    // Register with async function
+                    const result = await register(data);
+                    if (result.success) {
+                        // Show visible notice
+                        document.getElementById('register-notice').style.display = 'block';
+                        // Optionally also show toast
+                        showSuccess(result.message || 'Registration successful!');
+                        // Redirect to home or login
+                        setTimeout(() => {
+                            window.location.href = '../index.html';
+                        }, 3500);
+                    } else {
+                        showError(result.error);
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Register';
+                    }
+                } catch (error) {
+                    console.error('Registration error:', error);
+                    showError('Registration failed. Please try again.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Register';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart - Pharmacare</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
+    <link rel="stylesheet" href="../css/pages/cart.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header id="header"></header>
+      <main>
+        <section class="cart-container">
+          <a href="products.html" class="back-btn" style="text-decoration: none"
+            >&larr; Back to Shopping</a
+          >
+          <h1>Shopping Cart</h1>
+        </section>
+        <!-- Side-by-side layout for cart sections -->
+        <div
+          class="cart-sections-wrapper"
+          style="display: flex; gap: 2rem; align-items: flex-start"
+        >
+          <!-- Section for Added Items -->
+          <section
+            id="cart-items-section"
+            style="
+              flex: 2;
+              max-height: 500px;
+              overflow-y: auto;
+              background: #fff;
+              border-radius: 8px;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+              padding: 1rem;
+            "
+          >
+            <h2>Added Items</h2>
+            <div id="cart-container"></div>
+            <style>
+              .cart-table .cart-img {
+                width: 48px;
+                height: 48px;
+                object-fit: cover;
+                border-radius: 6px;
+              }
+              .cart-table {
+                width: 100%;
+                border-collapse: separate;
+                border-spacing: 0;
+                padding: 12px;
+              }
+              .cart-table th,
+              .cart-table td {
+                padding: 12px 10px;
+                text-align: left;
+              }
+            </style>
+          </section>
+          <!-- Section for Total Cost -->
+          <section
+            id="cart-total-section"
+            style="
+              flex: 1;
+              position: sticky;
+              top: 2rem;
+              background: #f9f9f9;
+              border-radius: 8px;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+              padding: 1rem;
+              min-width: 220px;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              height: 100%;
+            "
+          >
+            <h2>Total Cost</h2>
+            <div id="cart-total" class="cart-total"></div>
+            <button
+              id="proceed-payment-btn"
+              style="
+                margin-top: auto;
+                width: 100%;
+                background: #007bff;
+                color: #fff;
+                border: none;
+                padding: 0.75rem 0;
+                font-size: 1.1rem;
+                border-radius: 6px;
+                cursor: pointer;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+              "
+            >
+              Proceed to Payment
+            </button>
+          </section>
+        </div>
+      </main>
+      <footer id="footer"></footer>
+    </div>
+
+    <div id="toast-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config.js"></script>
+    <script type="module">
+      import { initHeader, updateCartBadge } from "../js/components/header.js";
+      import { initFooter } from "../js/components/footer.js";
+      import { getCart, removeFromCart, updateQuantity, addToCart } from "../js/services/cart.js";
+
+      async function renderSelectedCart() {
+        const cartContainer = document.getElementById("cart-container");
+        const totalPriceElem = document.getElementById("cart-total");
+        const proceedBtn = document.getElementById("proceed-payment-btn");
+        if (!cartContainer) return;
+        cartContainer.innerHTML = "";
+
+        const { items, total } = await getCart();
+
+        if (!items.length) {
+          cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+          if (totalPriceElem) totalPriceElem.innerHTML = "";
+          if (proceedBtn) proceedBtn.style.display = "none";
+          return;
+        }
+
+        // Build table
+        const table = document.createElement("table");
+        table.className = "cart-table";
+        table.innerHTML = `
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Subtotal</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${items
+              .map(
+                (item) => `
+              <tr>
+                <td data-label="Image"><img src="${item.product.image || item.product.image_url || "assets/images/products/placeholder.png"}" alt="${item.product.name}" class="cart-img" /></td>
+                <td data-label="Name">${item.product.name}</td>
+                <td data-label="Quantity" style="min-width:110px;">
+                  <button class="qty-btn" data-action="decrease" data-id="${item.productId}" style="padding:2px 8px;margin-right:4px;">-</button>
+                  <span class="cart-qty-value" style="display:inline-block;min-width:24px;text-align:center;">${item.quantity}</span>
+                  <button class="qty-btn" data-action="increase" data-id="${item.productId}" style="padding:2px 8px;margin-left:4px;">+</button>
+                </td>
+                <td data-label="Subtotal">KSh ${(item.product.price * item.quantity).toFixed(2)}</td>
+                <td data-label="Remove">
+                  <button class="remove-btn" data-id="${item.productId}">Remove</button>
+                </td>
+              </tr>
+            `,
+              )
+              .join("")}
+          </tbody>
+        `;
+        cartContainer.appendChild(table);
+
+        // Display detailed summary with breakdown
+        if (totalPriceElem) {
+          const subtotal = total;
+          const shipping = subtotal >= CONFIG.FREE_SHIPPING_THRESHOLD ? 0 : CONFIG.SHIPPING_COST;
+          const tax = subtotal * CONFIG.TAX_RATE;
+          const grandTotal = subtotal + shipping + tax;
+
+          totalPriceElem.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.95rem;">
+                <span style="color: #666;">Subtotal:</span>
+                <span style="font-weight: 500;">KSh ${subtotal.toFixed(2)}</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.95rem;">
+                <span style="color: #666;">Shipping:</span>
+                <span style="font-weight: 500; color: ${shipping === 0 ? '#28a745' : '#333'};">
+                  ${shipping === 0 ? 'FREE' : 'KSh ' + shipping.toFixed(2)}
+                </span>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.95rem;">
+                <span style="color: #666;">Tax (${(CONFIG.TAX_RATE * 100).toFixed(0)}%):</span>
+                <span style="font-weight: 500;">KSh ${tax.toFixed(2)}</span>
+              </div>
+              <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #ddd;">
+              <div style="display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: 600;">
+                <span>Total:</span>
+                <span style="color: #007bff;">KSh ${grandTotal.toFixed(2)}</span>
+              </div>
+            </div>
+          `;
+        }
+        
+        if (proceedBtn) proceedBtn.style.display = "block";
+
+        // Bind remove buttons
+        cartContainer.querySelectorAll(".remove-btn").forEach((btn) => {
+          btn.addEventListener("click", async (e) => {
+            const id = btn.getAttribute("data-id");
+            removeFromCart(id);
+            renderSelectedCart();
+            updateCartBadge();
+          });
+        });
+        
+        // Bind quantity buttons
+        cartContainer.querySelectorAll(".qty-btn").forEach((btn) => {
+          btn.addEventListener("click", async (e) => {
+            const id = btn.getAttribute("data-id");
+            const action = btn.getAttribute("data-action");
+            let item = items.find((i) => String(i.productId) === String(id));
+            if (!item) return;
+            let newQty = action === "increase" ? item.quantity + 1 : item.quantity - 1;
+            if (newQty < 1) return;
+            
+            if (action === "increase") {
+              await addToCart(id, 1);
+            } else {
+              updateQuantity(id, newQty);
+            }
+            renderSelectedCart();
+            updateCartBadge();
+          });
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        initHeader();
+        initFooter();
+        renderSelectedCart();
+        
+        // Add event listener for proceed to payment button
+        const proceedBtn = document.getElementById("proceed-payment-btn");
+        if (proceedBtn) {
+          proceedBtn.addEventListener("click", () => {
+            window.location.href = "checkout.html";
+          });
+        }
+      });
+    </script>
+    <!-- Footer should remain at the bottom. -->
+  </body>
+</html>

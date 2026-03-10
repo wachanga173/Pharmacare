@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & FAQ - Pharmacare</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/pages/about.css">
+    <style>
+        .faq-section {
+            padding: 2rem 0;
+        }
+        .faq-category {
+            margin-bottom: 3rem;
+        }
+        .faq-category h2 {
+            color: #007bff;
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 0.5rem;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        .faq-item:hover {
+            box-shadow: 0 4px 16px rgba(0,123,255,0.2);
+            transform: translateY(-2px);
+        }
+        .faq-question {
+            font-weight: 600;
+            color: #1a202c;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .faq-question::before {
+            content: "Q:";
+            color: #007bff;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .faq-answer {
+            color: #4a5568;
+            line-height: 1.7;
+            padding-left: 2rem;
+        }
+        .faq-answer p {
+            margin-bottom: 0.5rem;
+        }
+        .faq-answer ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+        .faq-answer li {
+            margin-bottom: 0.5rem;
+        }
+        .search-box {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .search-box input {
+            width: 100%;
+            max-width: 600px;
+            padding: 1rem 1.5rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .search-box input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header id="header"></header>
+        
+        <main>
+            <!-- Hero Section -->
+            <section class="about-hero">
+                <div class="container">
+                    <button onclick="window.history.back()" class="btn-back" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); border-radius: 0.375rem; color: white; cursor: pointer; transition: all 0.3s; margin-bottom: 1rem;">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Back
+                    </button>
+                    <h1>Help & Frequently Asked Questions</h1>
+                    <p style="font-size: 1.25rem;">Find answers to common questions about our pharmacy services</p>
+                </div>
+            </section>
+
+            <!-- Search Box -->
+            <section class="container">
+                <div class="search-box">
+                    <input type="text" placeholder="Search for answers..." id="faqSearch">
+                </div>
+            </section>
+
+            <!-- FAQ Sections -->
+            <section class="faq-section">
+                <div class="container">
+                    
+                    <!-- Ordering & Prescriptions -->
+                    <div class="faq-category">
+                        <h2>📋 Ordering & Prescriptions</h2>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">How do I place an order?</div>
+                            <div class="faq-answer">
+                                <p>Ordering from Pharmacare is simple:</p>
+                                <ul>
+                                    <li>Browse our product catalog or search for your medication</li>
+                                    <li>Add items to your cart</li>
+                                    <li>Proceed to checkout and create an account or log in</li>
+                                    <li>Upload your prescription if required</li>
+                                    <li>Complete payment and delivery details</li>
+                                    <li>Receive confirmation and tracking information</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Do I need a prescription for all medications?</div>
+                            <div class="faq-answer">
+                                <p>Prescription requirements vary by medication type:</p>
+                                <ul>
+                                    <li><strong>Prescription Medications:</strong> Require a valid prescription from a licensed healthcare provider</li>
+                                    <li><strong>Over-the-Counter (OTC):</strong> Available without a prescription</li>
+                                    <li><strong>Controlled Substances:</strong> Require additional verification and cannot be shipped to all locations</li>
+                                </ul>
+                                <p>Each product page clearly indicates if a prescription is required.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">How do I submit my prescription?</div>
+                            <div class="faq-answer">
+                                <p>You can submit prescriptions in several ways:</p>
+                                <ul>
+                                    <li>Upload a photo or scan during checkout</li>
+                                    <li>Email it to prescriptions@pharmacare.com</li>
+                                    <li>Have your doctor send it directly to us</li>
+                                    <li>Mail the original to our pharmacy address</li>
+                                </ul>
+                                <p>Accepted formats: JPG, PNG, PDF. Ensure all information is clearly visible.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Can I order refills?</div>
+                            <div class="faq-answer">
+                                <p>Yes! Registered users can easily request refills:</p>
+                                <ul>
+                                    <li>Log in to your account</li>
+                                    <li>Go to "My Prescriptions"</li>
+                                    <li>Select the medication you need to refill</li>
+                                    <li>Confirm the refill request</li>
+                                </ul>
+                                <p>We'll verify with your prescriber if refills remain on your prescription.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment & Pricing -->
+                    <div class="faq-category">
+                        <h2>💳 Payment & Pricing</h2>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">What payment methods do you accept?</div>
+                            <div class="faq-answer">
+                                <p>We accept multiple payment methods:</p>
+                                <ul>
+                                    <li>Credit Cards (Visa, Mastercard, American Express)</li>
+                                    <li>Debit Cards</li>
+                                    <li>Mobile Money (M-Pesa, Airtel Money)</li>
+                                    <li>Bank Transfer</li>
+                                    <li>Insurance (with prior verification)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Do you accept insurance?</div>
+                            <div class="faq-answer">
+                                <p>Yes, we work with major insurance providers. To use insurance:</p>
+                                <ul>
+                                    <li>Add your insurance information to your account profile</li>
+                                    <li>We'll verify your coverage</li>
+                                    <li>Your copay will be calculated at checkout</li>
+                                    <li>You pay only your copay amount</li>
+                                </ul>
+                                <p>Contact us if you have questions about your specific coverage.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Are your prices competitive?</div>
+                            <div class="faq-answer">
+                                <p>Absolutely! We offer competitive pricing on all medications. Our prices include:</p>
+                                <ul>
+                                    <li>No hidden fees</li>
+                                    <li>Price match guarantee on select items</li>
+                                    <li>Discounts for bulk orders and subscriptions</li>
+                                    <li>Generic alternatives at lower prices</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Account & Privacy -->
+                    <div class="faq-category">
+                        <h2>🔐 Account & Privacy</h2>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">Is my health information secure?</div>
+                            <div class="faq-answer">
+                                <p>Yes! We take your privacy seriously:</p>
+                                <ul>
+                                    <li>HIPAA-compliant data protection</li>
+                                    <li>Encrypted transmission of all sensitive data</li>
+                                    <li>Secure storage of prescriptions and medical records</li>
+                                    <li>Strict access controls for pharmacy staff only</li>
+                                    <li>Regular security audits and compliance checks</li>
+                                </ul>
+                                <p>See our <a href="privacy.html" style="color: #007bff;">Privacy Policy</a> for complete details.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">How do I create an account?</div>
+                            <div class="faq-answer">
+                                <p>Creating an account is quick and free:</p>
+                                <ul>
+                                    <li>Click "Register" in the top menu</li>
+                                    <li>Provide your email and create a password</li>
+                                    <li>Verify your email address</li>
+                                    <li>Complete your profile with delivery information</li>
+                                </ul>
+                                <p>Benefits include order tracking, prescription history, and faster checkout.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">I forgot my password. What should I do?</div>
+                            <div class="faq-answer">
+                                <p>To reset your password:</p>
+                                <ul>
+                                    <li>Click "Login" then "Forgot Password"</li>
+                                    <li>Enter your registered email address</li>
+                                    <li>Check your email for a reset link</li>
+                                    <li>Create a new secure password</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Medication Safety -->
+                    <div class="faq-category">
+                        <h2>💊 Medication Safety & Information</h2>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">How do I know if a medication is right for me?</div>
+                            <div class="faq-answer">
+                                <p>Always consult with your healthcare provider before starting any medication. Our pharmacists are also available to:</p>
+                                <ul>
+                                    <li>Answer questions about medication interactions</li>
+                                    <li>Explain proper usage and dosing</li>
+                                    <li>Discuss potential side effects</li>
+                                    <li>Recommend over-the-counter alternatives</li>
+                                </ul>
+                                <p>Contact our pharmacy team via phone, email, or live chat.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">What if I experience side effects?</div>
+                            <div class="faq-answer">
+                                <p>If you experience any adverse effects:</p>
+                                <ul>
+                                    <li><strong>Severe reactions:</strong> Seek emergency medical attention immediately</li>
+                                    <li><strong>Mild side effects:</strong> Contact your prescriber or our pharmacy</li>
+                                    <li>Report side effects to our team for documentation</li>
+                                    <li>Do not stop taking prescribed medications without consulting your doctor</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">How should I store my medications?</div>
+                            <div class="faq-answer">
+                                <p>Proper storage ensures medication effectiveness:</p>
+                                <ul>
+                                    <li>Store in a cool, dry place away from sunlight</li>
+                                    <li>Keep medications in original containers</li>
+                                    <li>Follow specific storage instructions on the label</li>
+                                    <li>Keep all medications out of reach of children</li>
+                                    <li>Check expiration dates regularly</li>
+                                    <li>Some medications require refrigeration - follow label instructions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delivery & Shipping -->
+                    <div class="faq-category">
+                        <h2>🚚 Delivery & Shipping</h2>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">How long does delivery take?</div>
+                            <div class="faq-answer">
+                                <p>Delivery times vary by location and shipping method:</p>
+                                <ul>
+                                    <li><strong>Standard Delivery:</strong> 3-5 business days</li>
+                                    <li><strong>Express Delivery:</strong> 1-2 business days</li>
+                                    <li><strong>Same-Day Delivery:</strong> Available in select cities</li>
+                                </ul>
+                                <p>You'll receive tracking information once your order ships. See our <a href="shipping.html" style="color: #007bff;">Shipping Information</a> page for details.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Do you ship internationally?</div>
+                            <div class="faq-answer">
+                                <p>Currently, we only ship within Kenya. International shipping is not available due to regulatory requirements and medication importation laws.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact & Support -->
+                    <div class="faq-category">
+                        <h2>📞 Contact & Support</h2>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">How can I contact customer service?</div>
+                            <div class="faq-answer">
+                                <p>Our customer service team is here to help:</p>
+                                <ul>
+                                    <li><strong>Phone:</strong> +254 700 000 000 (Mon-Sat, 8am-8pm)</li>
+                                    <li><strong>Email:</strong> support@pharmacare.com</li>
+                                    <li><strong>Live Chat:</strong> Available on our website</li>
+                                    <li><strong>Visit:</strong> See our <a href="contact.html" style="color: #007bff;">Contact page</a> for more options</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Can I speak to a pharmacist?</div>
+                            <div class="faq-answer">
+                                <p>Yes! Our licensed pharmacists are available for consultations:</p>
+                                <ul>
+                                    <li>Call during business hours for immediate consultation</li>
+                                    <li>Schedule a phone or video consultation</li>
+                                    <li>Send questions via our secure messaging system</li>
+                                    <li>All consultations are confidential and HIPAA-compliant</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Still have questions? -->
+                    <div style="background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); color: white; padding: 3rem 2rem; border-radius: 12px; text-align: center; margin-top: 3rem;">
+                        <h2 style="color: white; margin-bottom: 1rem;">Still Have Questions?</h2>
+                        <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.95;">Our customer service team is ready to help you with any questions or concerns.</p>
+                        <a href="contact.html" class="btn" style="background: white; color: #007bff; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block;">Contact Us</a>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+        
+        <footer id="footer"></footer>
+    </div>
+
+    <div id="toast-container"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config.js"></script>
+    <script type="module">
+        import { initHeader } from '../js/components/header.js';
+        import { initFooter } from '../js/components/footer.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            initHeader();
+            initFooter();
+
+            // Simple search functionality
+            const searchInput = document.getElementById('faqSearch');
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question').textContent.toLowerCase();
+                    const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                    
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

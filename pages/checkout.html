@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout - Pharmacare</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
+    <link rel="stylesheet" href="../css/pages/checkout.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header id="header"></header>
+
+      <main class="container">
+        <section style="padding: 2rem 0">
+          <button
+            onclick="window.history.back()"
+            class="btn-back btn-back-light"
+            style="
+              display: inline-flex;
+              align-items: center;
+              gap: 0.5rem;
+              padding: 0.5rem 1rem;
+              background: white;
+              border: 1px solid #e5e7eb;
+              border-radius: 0.375rem;
+              color: #374151;
+              cursor: pointer;
+              transition: all 0.3s;
+              box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+              margin-bottom: 1rem;
+            "
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.5 15L7.5 10L12.5 5"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Back
+          </button>
+
+          <h1>Checkout</h1>
+
+          <div class="grid grid-3" style="margin-top: 2rem">
+            <div style="grid-column: span 2">
+              <form id="checkout-form">
+                <h2>Shipping Information</h2>
+                <div class="form-group">
+                  <label class="form-label">Full Name</label>
+                  <input
+                    type="text"
+                    name="fullName"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Address</label>
+                  <input
+                    type="text"
+                    name="address"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="grid grid-2">
+                  <div class="form-group">
+                    <label class="form-label">City</label>
+                    <input
+                      type="text"
+                      name="city"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">ZIP Code</label>
+                    <input
+                      type="text"
+                      name="zipCode"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Phone</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    class="form-control"
+                    required
+                  />
+                </div>
+
+                <h2 class="mt-3">Payment Information</h2>
+                <div class="form-group">
+                  <label class="form-label">Payment Method</label>
+                  <select name="paymentMethod" class="form-control" required>
+                    <option value="mpesa" selected>M-Pesa (Safaricom)</option>
+                    <option value="card">Credit/Debit Card</option>
+                    <option value="paypal">PayPal</option>
+                  </select>
+                </div>
+                <div class="form-group mpesa-fields">
+                  <label class="form-label">M-Pesa Phone Number</label>
+                  <input
+                    type="tel"
+                    name="mpesaPhone"
+                    class="form-control"
+                    placeholder="07XXXXXXXX"
+                    required
+                  />
+                  <small class="form-text"
+                    >You will receive a prompt on your phone to complete the
+                    payment via Safaricom (developer sandbox).</small
+                  >
+                </div>
+                <div class="card-fields" style="display: none">
+                  <div class="form-group">
+                    <label class="form-label">Card Number</label>
+                    <input
+                      type="text"
+                      name="cardNumber"
+                      class="form-control"
+                      placeholder="1234 5678 9012 3456"
+                    />
+                  </div>
+                  <div class="grid grid-2">
+                    <div class="form-group">
+                      <label class="form-label">Expiry Date</label>
+                      <input
+                        type="text"
+                        name="cardExpiry"
+                        class="form-control"
+                        placeholder="MM/YY"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">CVV</label>
+                      <input
+                        type="text"
+                        name="cardCVV"
+                        class="form-control"
+                        placeholder="123"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  style="width: 100%; margin-top: 1rem"
+                >
+                  Place Order
+                </button>
+              </form>
+            </div>
+
+            <div>
+              <div id="order-summary" style="position: sticky; top: 80px"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer id="footer"></footer>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config.js"></script>
+    <script type="module">
+      import { initHeader } from "../js/components/header.js";
+      import { initFooter } from "../js/components/footer.js";
+      import { initCheckoutPage } from "../js/pages/checkout.js";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        initHeader();
+        initFooter();
+        initCheckoutPage();
+      });
+    </script>
+  </body>
+</html>

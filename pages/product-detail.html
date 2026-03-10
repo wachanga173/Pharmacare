@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Pharmacare</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/pages/product-detail.css">
+</head>
+<body>
+    <div id="app">
+        <header id="header"></header>
+        
+        <main class="container" style="margin-top: 80px;">
+            <section style="padding: 2rem 0;">
+                <button id="back-button" class="btn-back btn-back-light" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: white; border: 1px solid #e5e7eb; border-radius: 0.375rem; color: #374151; cursor: pointer; transition: all 0.3s; box-shadow: 0 1px 2px rgba(0,0,0,0.05); margin-bottom: 1rem;">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Back
+                </button>
+
+                <div id="product-detail-container">
+                    <p>Loading...</p>
+                </div>
+            </section>
+        </main>
+        
+        <footer id="footer"></footer>
+    </div>
+
+    <div id="toast-container"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config.js"></script>
+    <script type="module">
+        import { initHeader } from '../js/components/header.js';
+        import { initFooter } from '../js/components/footer.js';
+        import { getProductById } from '../js/services/products.js';
+        import { addToCart } from '../js/services/cart.js';
+        import { showSuccess } from '../js/components/toast.js';
+        import { updateCartBadge } from '../js/components/header.js';
+        import { getQueryParam, sanitizeHTML } from '../js/utils/helpers.js';
+        
+        document.addEventListener('DOMContentLoaded', async () => {
+            initHeader();
+            initFooter();
+            
+            // Setup back button with smart navigation
+            const backButton = document.getElementById('back-button');
+            if (backButton) {
+                backButton.addEventListener('click', () => {
+                    // Check if there's a referrer from the same site
+                    if (document.referrer && document.referrer.includes(window.location.hostname)) {
+                        window.history.back();
+                    } else {
+                        // If no referrer or external, go to products page
+                        window.location.href = 'products.html';
+                    }
+                });
+            }
+            
+            const productId = getQueryParam('id');
+            const container = document.getElementById('product-detail-container');
+            
+            if (!productId) {
+                container.innerHTML = '<p>Product not found</p>';
+                return;
+            }
+            
+            const product = await getProductById(productId);
+            
+            if (!product) {
+                container.innerHTML = '<p>Product not found</p>';
+                return;
+            }
+            
+            container.innerHTML = `
+                <div class="grid grid-2">
+                    <div>
+                        <img src="${sanitizeHTML(product.image_url || product.image || '../assets/images/products/placeholder.png')}" 
+                             alt="${sanitizeHTML(product.name)}" 
+                             style="width: 100%; border-radius: 0.5rem;"
+                             onerror="this.src='../assets/images/products/placeholder.png'">
+                    </div>
+                    <div>
+                        <h1>${sanitizeHTML(product.name)}</h1>
+                        <p class="product-price" style="font-size: 2rem; margin: 1rem 0;">
+                            ${CONFIG.CURRENCY}${parseFloat(product.price).toFixed(2)}
+                        </p>
+                        <p>${sanitizeHTML(product.description || 'No description available')}</p>
+                        <p><strong>Category:</strong> ${sanitizeHTML(product.category || 'N/A')}</p>
+                        <p><strong>Stock:</strong> ${product.stock > 0 ? product.stock + ' available' : 'Out of stock'}</p>
+                        
+                        ${product.stock > 0 ? `
+                            <button class="btn btn-primary" id="add-to-cart-detail" style="margin-top: 2rem;">
+                                Add to Cart
+                            </button>
+                        ` : '<p class="text-danger">Currently out of stock</p>'}
+                    </div>
+                </div>
+            `;
+            
+            const addBtn = document.getElementById('add-to-cart-detail');
+            if (addBtn) {
+                addBtn.addEventListener('click', async () => {
+                    await addToCart(product.id);
+                    showSuccess(`${product.name} added to cart!`);
+                    await updateCartBadge();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

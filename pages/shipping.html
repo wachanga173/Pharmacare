@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Information - Pharmacare</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/pages/about.css">
+    <style>
+        .info-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .info-card h2 {
+            color: #007bff;
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .info-card h3 {
+            color: #1a202c;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.25rem;
+        }
+        .info-card p {
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .info-card ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        .info-card li {
+            color: #4a5568;
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+        .shipping-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        .shipping-table th,
+        .shipping-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .shipping-table th {
+            background: #f7fafc;
+            color: #1a202c;
+            font-weight: 600;
+        }
+        .shipping-table tr:hover {
+            background: #f7fafc;
+        }
+        .highlight-box {
+            background: #f0f7ff;
+            border-left: 4px solid #007bff;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        .highlight-box p {
+            margin: 0;
+            color: #1a202c;
+        }
+        .icon {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header id="header"></header>
+        
+        <main>
+            <!-- Hero Section -->
+            <section class="about-hero">
+                <div class="container">
+                    <button onclick="window.history.back()" class="btn-back" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); border-radius: 0.375rem; color: white; cursor: pointer; transition: all 0.3s; margin-bottom: 1rem;">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Back
+                    </button>
+                    <h1>Shipping Information</h1>
+                    <p style="font-size: 1.25rem;">Fast, secure, and reliable medication delivery</p>
+                </div>
+            </section>
+
+            <section class="container" style="padding: 3rem 0;">
+                
+                <!-- Shipping Options -->
+                <div class="info-card">
+                    <h2><span class="icon">🚚</span> Shipping Options & Delivery Times</h2>
+                    <p>We offer multiple shipping options to meet your medication needs. All medications are shipped in discreet, temperature-controlled packaging to ensure safety and privacy.</p>
+                    
+                    <table class="shipping-table">
+                        <thead>
+                            <tr>
+                                <th>Shipping Method</th>
+                                <th>Delivery Time</th>
+                                <th>Cost</th>
+                                <th>Availability</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Standard Shipping</strong></td>
+                                <td>3-5 business days</td>
+                                <td>KSh 200</td>
+                                <td>Nationwide</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Express Shipping</strong></td>
+                                <td>1-2 business days</td>
+                                <td>KSh 500</td>
+                                <td>Major cities</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Same-Day Delivery</strong></td>
+                                <td>3-6 hours</td>
+                                <td>KSh 800</td>
+                                <td>Nairobi, Mombasa, Kisumu</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Free Shipping</strong></td>
+                                <td>4-6 business days</td>
+                                <td>Free</td>
+                                <td>Orders over KSh 5,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box">
+                        <p><strong>📦 Free Shipping Promotion:</strong> Enjoy free standard shipping on all orders over KSh 5,000! Applies to prescription and over-the-counter medications.</p>
+                    </div>
+                </div>
+
+                <!-- Order Processing -->
+                <div class="info-card">
+                    <h2><span class="icon">⏱️</span> Order Processing & Fulfillment</h2>
+                    <p>We work diligently to process and ship your medications quickly:</p>
+                    
+                    <h3>Processing Timeline</h3>
+                    <ul>
+                        <li><strong>Prescription Verification:</strong> 1-4 hours during business hours</li>
+                        <li><strong>Order Preparation:</strong> 2-6 hours after verification</li>
+                        <li><strong>Shipment:</strong> Same day if order placed before 2 PM</li>
+                        <li><strong>Weekend Orders:</strong> Processed on the next business day</li>
+                    </ul>
+
+                    <h3>What We Need Before Shipping</h3>
+                    <ul>
+                        <li>Valid prescription (for prescription medications)</li>
+                        <li>Verified payment</li>
+                        <li>Complete delivery address</li>
+                        <li>Contact phone number</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <p><strong>⚡ Expedited Processing:</strong> Need your medication urgently? Contact our pharmacy team at +254 700 000 000 to request expedited processing (additional fees may apply).</p>
+                    </div>
+                </div>
+
+                <!-- Tracking -->
+                <div class="info-card">
+                    <h2><span class="icon">📱</span> Order Tracking</h2>
+                    <p>Stay informed about your delivery every step of the way:</p>
+                    
+                    <ul>
+                        <li><strong>Order Confirmation:</strong> Immediate email upon order placement</li>
+                        <li><strong>Processing Updates:</strong> Notification when prescription is verified</li>
+                        <li><strong>Shipment Alert:</strong> SMS and email with tracking number</li>
+                        <li><strong>Real-Time Tracking:</strong> Track your package via our website or courier partner</li>
+                        <li><strong>Delivery Confirmation:</strong> Notification upon successful delivery</li>
+                    </ul>
+
+                    <h3>How to Track Your Order</h3>
+                    <ol style="padding-left: 1.5rem;">
+                        <li>Log in to your Pharmacare account</li>
+                        <li>Go to "My Orders"</li>
+                        <li>Click on the order you want to track</li>
+                        <li>View real-time tracking information</li>
+                    </ol>
+
+                    <p>Alternatively, use the tracking number sent via email with your courier's tracking portal.</p>
+                </div>
+
+                <!-- Delivery Areas -->
+                <div class="info-card">
+                    <h2><span class="icon">🗺️</span> Delivery Coverage</h2>
+                    
+                    <h3>We Deliver Nationwide:</h3>
+                    <ul>
+                        <li><strong>Nairobi & Surrounding Areas:</strong> All delivery options available</li>
+                        <li><strong>Major Cities:</strong> Mombasa, Kisumu, Nakuru, Eldoret - Express & Standard</li>
+                        <li><strong>Other Regions:</strong> Standard shipping available to all accessible locations</li>
+                    </ul>
+
+                    <h3>Delivery Restrictions:</h3>
+                    <ul>
+                        <li>P.O. Box addresses: Not available for medication delivery (requires physical address)</li>
+                        <li>Remote areas: May require additional delivery time</li>
+                        <li>Controlled substances: Limited delivery options due to regulations</li>
+                    </ul>
+                </div>
+
+                <!-- Packaging & Safety -->
+                <div class="info-card">
+                    <h2><span class="icon">📦</span> Safe & Discreet Packaging</h2>
+                    
+                    <h3>Temperature Control</h3>
+                    <p>Medications are packaged with appropriate temperature controls:</p>
+                    <ul>
+                        <li>Ambient temperature medications: Secure boxes</li>
+                        <li>Refrigerated items: Insulated packaging with ice packs</li>
+                        <li>Controlled substances: Tamper-evident packaging</li>
+                    </ul>
+
+                    <h3>Privacy & Discretion</h3>
+                    <ul>
+                        <li>Plain, unmarked packaging (no pharmacy branding)</li>
+                        <li>No indication of package contents on exterior</li>
+                        <li>Secure sealing to prevent tampering</li>
+                        <li>Privacy labels on prescription information inside</li>
+                    </ul>
+
+                    <h3>Package Contents</h3>
+                    <p>Every package includes:</p>
+                    <ul>
+                        <li>Your medications in original, sealed containers</li>
+                        <li>Prescription labels with dosing instructions</li>
+                        <li>Patient information leaflets</li>
+                        <li>Packing slip (inside package only)</li>
+                        <li>Return instructions if needed</li>
+                    </ul>
+                </div>
+
+                <!-- Delivery Instructions -->
+                <div class="info-card">
+                    <h2><span class="icon">🏠</span> Delivery Instructions</h2>
+                    
+                    <h3>Receiving Your Order</h3>
+                    <ul>
+                        <li><strong>Signature Required:</strong> Most deliveries require a signature from an adult (18+)</li>
+                        <li><strong>ID Verification:</strong> May be required for controlled substances</li>
+                        <li><strong>Safe Location:</strong> You can specify a secure delivery location</li>
+                        <li><strong>Delivery Attempts:</strong> Courier will make 2-3 delivery attempts</li>
+                    </ul>
+
+                    <h3>If You're Not Home</h3>
+                    <ul>
+                        <li>Delivery notice left with instructions</li>
+                        <li>Reschedule delivery via courier's website or phone</li>
+                        <li>Option to pick up from local courier depot</li>
+                        <li>Temperature-sensitive items returned to pharmacy if not received within 24 hours</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <p><strong>💡 Tip:</strong> You can add special delivery instructions (gate code, reception desk, etc.) during checkout to ensure smooth delivery.</p>
+                    </div>
+                </div>
+
+                <!-- Issues & Support -->
+                <div class="info-card">
+                    <h2><span class="icon">❓</span> Shipping Issues & Support</h2>
+                    
+                    <h3>What If My Package Is Delayed?</h3>
+                    <p>Contact us immediately if your package doesn't arrive within the expected timeframe:</p>
+                    <ul>
+                        <li>📧 Email: shipping@pharmacare.com</li>
+                        <li>📞 Phone: +254 700 000 000</li>
+                        <li>💬 Live chat on our website</li>
+                    </ul>
+                    <p>We'll track your package and arrange for redelivery or replacement if necessary.</p>
+
+                    <h3>Damaged or Incorrect Shipment</h3>
+                    <ul>
+                        <li>Do not use damaged medications</li>
+                        <li>Contact us within 24 hours of delivery</li>
+                        <li>Provide photos of damaged packaging/products</li>
+                        <li>We'll arrange immediate replacement at no cost</li>
+                    </ul>
+
+                    <h3>Lost Packages</h3>
+                    <p>If your package is marked as delivered but you haven't received it:</p>
+                    <ul>
+                        <li>Check with household members or neighbors</li>
+                        <li>Look around your property and secure locations</li>
+                        <li>Contact the courier with your tracking number</li>
+                        <li>Report to us within 48 hours for investigation</li>
+                        <li>We'll file a claim and arrange replacement</li>
+                    </ul>
+                </div>
+
+                <!-- International Shipping -->
+                <div class="info-card">
+                    <h2><span class="icon">🌍</span> International Shipping</h2>
+                    <p><strong>Currently Not Available:</strong> Due to pharmaceutical regulations, import/export laws, and licensing requirements, we do not offer international shipping at this time. We only ship within Kenya.</p>
+                    
+                    <p>For customers outside Kenya, please consult with local pharmacies or online pharmacy services licensed in your country.</p>
+                </div>
+
+                <!-- Contact CTA -->
+                <div style="background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); color: white; padding: 3rem 2rem; border-radius: 12px; text-align: center; margin-top: 2rem;">
+                    <h2 style="color: white; margin-bottom: 1rem;">Questions About Shipping?</h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.95;">Our customer service team is here to help with any shipping questions or concerns.</p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="contact.html" class="btn" style="background: white; color: #007bff; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600;">Contact Us</a>
+                        <a href="faq.html" class="btn" style="background: rgba(255,255,255,0.2); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; border: 2px solid white;">View FAQ</a>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+        
+        <footer id="footer"></footer>
+    </div>
+
+    <div id="toast-container"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config.js"></script>
+    <script type="module">
+        import { initHeader } from '../js/components/header.js';
+        import { initFooter } from '../js/components/footer.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            initHeader();
+            initFooter();
+        });
+    </script>
+</body>
+</html>
