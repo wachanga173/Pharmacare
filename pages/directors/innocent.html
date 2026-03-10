@@ -14,113 +14,26 @@
     <div id="app">
         <header id="header"></header>
         
-        <main>
-            <!-- Hero Section -->
-            <section class="hero-section">
-                <div class="container">
-                    <!-- Back Button -->
-                    <div style="padding-bottom: 1rem;">
-                        <button onclick="window.history.back()" class="btn-back" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); border-radius: 0.375rem; color: white; cursor: pointer; transition: all 0.3s;">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            Back
-                        </button>
-                    </div>
-                    <div class="hero-content">
-                        <div class="profile-image-container">
-                            <div class="profile-image" style="background-image: url('https://res.cloudinary.com/dopdw3i4y/image/upload/v1766330306/innocent_profile.jpg'); background-size: cover; background-position: center;"></div>
-                            <div class="status-badge">
-                                <i class="fas fa-circle"></i> Available
-                            </div>
-                        </div>
-                        <div class="hero-text">
-                            <h1 class="hero-title">I.N.N.O.C.E.N.T</h1>
-                            <p class="hero-subtitle">Chief Pharmacy Compliance Officer</p>
-                            <p class="hero-description">
-                                Compliance Lead | Patient Identity Verification | Regulatory Systems Specialist
-                            </p>
-                            <div class="social-links">
-                                <a href="https://github.com/innocent-profile" target="_blank" class="social-btn github" title="GitHub Profile">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="https://linkedin.com/in/innocent-profile" target="_blank" class="social-btn linkedin" title="LinkedIn Profile">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                                <a href="mailto:innocent@pharmacare.com" class="social-btn email" title="Email">
-                                    <i class="fas fa-envelope"></i>
-                                </a>
-                                <a href="#" class="social-btn portfolio" title="Portfolio">
-                                    <i class="fas fa-globe"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+        <main class="container">
+            <section style="padding: 3rem 0;">
+                <!-- Back Button -->
+                <div style="padding-bottom: 1.5rem;">
+                    <button onclick="window.history.back()" class="btn-back btn-back-light" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: white; border: 1px solid #e5e7eb; border-radius: 0.375rem; color: #374151; cursor: pointer; transition: all 0.3s; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Back
+                    </button>
+                </div>
+                <h1>I.N.N.O.C.E.N.T</h1>
+                <p class="subtitle">Chief Pharmacy Compliance Officer</p>
+                
+                <!-- Add your custom content here -->
+                <div class="director-content">
+                    <p>Welcome to my profile page. This page is under construction.</p>
                 </div>
             </section>
-
-            <!-- About Section -->
-            <section class="about-section">
-                <div class="container">
-                    <div class="section-header">
-                        <h2 class="section-title">
-                            <i class="fas fa-user-circle"></i> About Me
-                        </h2>
-                        <div class="title-underline"></div>
-                    </div>
-                    <div class="about-content">
-                        <p class="about-text">
-                            As Chief Pharmacy Compliance Officer, I ensure patient identity verification, prescription authentication protocols, and regulatory compliance systems. I oversee secure patient onboarding, credential verification, email-based prescription confirmations, password security protocols, and patient record photo documentation for Pharmacare.
-                        </p>
-                        <p class="about-text">
-                            My role is dedicated to maintaining the highest standards of patient safety, privacy, and regulatory excellence. I am passionate about advancing secure healthcare technology and compliance-driven pharmacy operations.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Responsibilities Section -->
-            <section class="responsibilities-section">
-                <div class="container">
-                    <div class="section-header">
-                        <h2 class="section-title">
-                            <i class="fas fa-tasks"></i> Key Responsibilities
-                        </h2>
-                        <div class="title-underline"></div>
-                    </div>
-                    <div class="responsibilities-grid">
-                        <div class="responsibility-card">
-                            <div class="card-icon id">
-                                <i class="fas fa-id-card"></i>
-                            </div>
-                            <h3 class="card-title">Patient Identity Verification</h3>
-                            <p class="card-description">
-                                Oversee secure patient onboarding, credential verification, and photo documentation for patient records. Ensure robust identity checks and compliance with privacy standards.
-                            </p>
-                        </div>
-
-                        <div class="responsibility-card">
-                            <div class="card-icon auth">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <h3 class="card-title">Prescription Authentication Protocols</h3>
-                            <p class="card-description">
-                                Implement email-based prescription confirmations, password security protocols, and multi-factor authentication for prescription access and validation.
-                            </p>
-                        </div>
-
-                        <div class="responsibility-card">
-                            <div class="card-icon compliance">
-                                <i class="fas fa-balance-scale"></i>
-                            </div>
-                            <h3 class="card-title">Regulatory Compliance Systems</h3>
-                            <p class="card-description">
-                                Maintain regulatory compliance systems, audit trails, and documentation for pharmacy operations. Ensure adherence to HIPAA and pharmaceutical regulations.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        </main>
 
             <!-- Technologies Section -->
             <section class="technologies-section">
