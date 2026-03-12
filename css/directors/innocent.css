@@ -33,7 +33,7 @@
 
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 2.5rem;
+        /* Obuya's profile page */
     }
     .profile-image-container {
         margin: 0 auto;
