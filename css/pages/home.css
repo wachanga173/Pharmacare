@@ -693,6 +693,47 @@
     }
 }
 
+@media (max-width: 380px) {
+    .hero-modern {
+        padding: 2.75rem 0 2rem;
+    }
+
+    .hero-modern::before {
+        background-position: center 14%;
+    }
+
+    .hero-content {
+        padding: 2.25rem 0.5rem 1.5rem;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: clamp(1.75rem, 8.8vw, 2rem);
+        line-height: 1.15;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .hero-subtitle {
+        font-size: 0.98rem;
+        line-height: 1.55;
+        max-width: 30ch;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .hero-actions {
+        gap: 0.75rem;
+    }
+
+    .hero-actions .btn,
+    .hero-actions .btn-large {
+        width: 100%;
+        padding: 0.9rem 1rem;
+        font-size: 0.95rem;
+    }
+}
+
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
     *,
