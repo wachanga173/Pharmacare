@@ -546,11 +546,13 @@ iframe {
 @media (max-width: 767px) {
     .profile-hero .container,
     .hero-section .container {
-        width: min(100%, calc(100% - 1.25rem)) !important;
+        width: min(100%, calc(100% - 1rem)) !important;
+        max-width: calc(100% - 1rem) !important;
         margin-left: auto !important;
         margin-right: auto !important;
-        padding-left: 0.625rem !important;
-        padding-right: 0.625rem !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+        box-sizing: border-box !important;
     }
 
     .profile-hero-grid,
@@ -593,10 +595,10 @@ iframe {
     .profile-intro,
     .profile-hero .hero-text p,
     .hero-section .hero-text p {
-        max-width: 34ch;
+        max-width: 32ch;
         margin-left: auto !important;
         margin-right: auto !important;
-        text-align: left !important;
+        text-align: center !important;
         line-height: 1.7;
     }
 
