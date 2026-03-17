@@ -2,10 +2,11 @@
 import { isLoggedIn, getCurrentUser } from '../services/auth.js';
 import { getProducts, addProduct, updateProduct, deleteProduct } from '../services/products.js';
 import { showSuccess, showError } from '../components/toast.js';
-import { showModal, confirmModal } from '../components/modal.js';
+import { showModal, confirmModal, closeModal } from '../components/modal.js';
 import { sanitizeHTML } from '../utils/helpers.js';
 import { initEditProductModal } from './EditProduct.js';
 import { getSupabaseClient } from '../services/auth.js';
+import { validateProductForm } from '../utils/validation.js';
 
 let currentTab = 'products';
 
@@ -99,8 +100,10 @@ function renderProductsTable(products) {
                         <td>${CONFIG.CURRENCY}${product.price.toFixed(2)}</td>
                         <td>${product.stock}</td>
                         <td>
-                            <button class="btn btn-secondary edit-product" data-id="${product.id}">Edit</button>
-                            <button class="btn btn-danger delete-product" data-id="${product.id}">Delete</button>
+                            <div class="admin-actions">
+                                <button class="btn btn-secondary btn-sm edit-product" data-id="${product.id}">Edit</button>
+                                <button class="btn btn-danger btn-sm delete-product" data-id="${product.id}">Delete</button>
+                            </div>
                         </td>
                     </tr>
                 `).join('')}
@@ -156,6 +159,20 @@ function showAddProductModal() {
                 <input type="text" name="name" class="form-control" required>
             </div>
             <div class="form-group">
+                <label class="form-label">Category</label>
+                <select name="category" class="form-control" required>
+                    <option value="">Select category</option>
+                    <option value="Pain Relief">Pain Relief</option>
+                    <option value="Vitamins">Vitamins</option>
+                    <option value="First Aid">First Aid</option>
+                    <option value="Antibiotics">Antibiotics</option>
+                    <option value="Cold & Flu">Cold & Flu</option>
+                    <option value="Digestive Health">Digestive Health</option>
+                    <option value="Skin Care">Skin Care</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label class="form-label">Price</label>
                 <input type="number" name="price" class="form-control" step="0.01" required>
             </div>
@@ -163,11 +180,75 @@ function showAddProductModal() {
                 <label class="form-label">Stock</label>
                 <input type="number" name="stock" class="form-control" required>
             </div>
-            <button type="submit" class="btn btn-primary">Add Product</button>
+            <div class="form-group">
+                <label class="form-label">Description</label>
+                <textarea name="description" class="form-control" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Image URL</label>
+                <input type="url" name="image_url" class="form-control" placeholder="https://example.com/product.jpg">
+            </div>
+            <div class="form-group">
+                <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;">
+                    <input type="checkbox" name="requires_prescription">
+                    Requires Prescription
+                </label>
+            </div>
+            <div style="display:flex;gap:0.75rem;justify-content:flex-end;margin-top:1rem;">
+                <button type="button" class="btn btn-secondary" id="cancel-add-product">Cancel</button>
+                <button type="submit" class="btn btn-primary">Add Product</button>
+            </div>
         </form>
     `;
-    
-    showModal('Add Product', content);
+
+    const modal = showModal('Add Product', content);
+    const form = modal?.querySelector('#product-form');
+    const cancelBtn = modal?.querySelector('#cancel-add-product');
+
+    cancelBtn?.addEventListener('click', closeModal);
+
+    form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const rawData = Object.fromEntries(formData.entries());
+
+        const validation = validateProductForm(rawData);
+        if (!validation.isValid) {
+            showError(validation.errors.join(', '));
+            return;
+        }
+
+        const payload = {
+            name: rawData.name?.trim(),
+            category: rawData.category?.trim() || 'Other',
+            description: rawData.description?.trim() || '',
+            image_url: rawData.image_url?.trim() || null,
+            price: parseFloat(rawData.price),
+            stock: parseInt(rawData.stock, 10),
+            requires_prescription: formData.get('requires_prescription') === 'on'
+        };
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Adding...';
+        }
+
+        try {
+            await addProduct(payload);
+            showSuccess('Product added successfully');
+            closeModal();
+            await loadProductsTable();
+        } catch (error) {
+            console.error('Error adding product:', error);
+            showError(error.message || 'Failed to add product');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Add Product';
+            }
+        }
+    });
 }
 
 async function showEditProductModal(id) {
@@ -228,7 +309,9 @@ function renderOrdersTable(orders) {
                         <td>${order.items ? order.items.length : 0}</td>
                         <td>${new Date(order.created_at).toLocaleDateString()}</td>
                         <td>
-                            <button class="btn btn-secondary view-order" data-id="${order.id}">View Details</button>
+                            <div class="admin-actions">
+                                <button class="btn btn-secondary btn-sm view-order" data-id="${order.id}">View Details</button>
+                            </div>
                         </td>
                     </tr>
                 `).join('')}

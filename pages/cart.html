@@ -15,7 +15,7 @@
       <header id="header"></header>
       <main>
         <section class="cart-container">
-          <a href="products.html" class="back-btn" style="text-decoration: none"
+          <a href="products.html" class="back-btn"
             >&larr; Back to Shopping</a
           >
           <h1>Shopping Cart</h1>
@@ -26,25 +26,6 @@
           <section id="cart-items-section">
             <h2>Added Items</h2>
             <div id="cart-container"></div>
-            <style>
-              .cart-table .cart-img {
-                width: 48px;
-                height: 48px;
-                object-fit: cover;
-                border-radius: 6px;
-              }
-              .cart-table {
-                width: 100%;
-                border-collapse: separate;
-                border-spacing: 0;
-                padding: 12px;
-              }
-              .cart-table th,
-              .cart-table td {
-                padding: 12px 10px;
-                text-align: left;
-              }
-            </style>
           </section>
           <!-- Section for Total Cost -->
           <section id="cart-total-section">
@@ -52,18 +33,7 @@
             <div id="cart-total" class="cart-total"></div>
             <button
               id="proceed-payment-btn"
-              style="
-                margin-top: auto;
-                width: 100%;
-                background: #007bff;
-                color: #fff;
-                border: none;
-                padding: 0.75rem 0;
-                font-size: 1.1rem;
-                border-radius: 6px;
-                cursor: pointer;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-              "
+              class="btn-proceed-payment"
             >
               Proceed to Payment
             </button>
@@ -96,8 +66,16 @@
         const { items, total } = await getCart();
 
         if (!items.length) {
-          cartContainer.innerHTML = "<p>Your cart is empty.</p>";
-          if (totalPriceElem) totalPriceElem.innerHTML = "";
+          cartContainer.innerHTML = `
+            <div class="cart-empty-state">
+              <h3>Your cart is empty</h3>
+              <p>Add products to continue to checkout.</p>
+              <a href="products.html" class="btn-empty-cart">Browse Medications</a>
+            </div>
+          `;
+          if (totalPriceElem) {
+            totalPriceElem.innerHTML = '<div class="cart-summary-empty">Cart totals will appear here after you add items.</div>';
+          }
           if (proceedBtn) proceedBtn.style.display = "none";
           return;
         }
@@ -122,10 +100,10 @@
               <tr>
                 <td data-label="Image"><img src="${item.product.image || item.product.image_url || "assets/images/products/placeholder.png"}" alt="${item.product.name}" class="cart-img" /></td>
                 <td data-label="Name">${item.product.name}</td>
-                <td data-label="Quantity" style="min-width:110px;">
-                  <button class="qty-btn" data-action="decrease" data-id="${item.productId}" style="padding:2px 8px;margin-right:4px;">-</button>
-                  <span class="cart-qty-value" style="display:inline-block;min-width:24px;text-align:center;">${item.quantity}</span>
-                  <button class="qty-btn" data-action="increase" data-id="${item.productId}" style="padding:2px 8px;margin-left:4px;">+</button>
+                <td data-label="Quantity" class="cart-qty-cell">
+                  <button class="qty-btn" data-action="decrease" data-id="${item.productId}">-</button>
+                  <span class="cart-qty-value">${item.quantity}</span>
+                  <button class="qty-btn" data-action="increase" data-id="${item.productId}">+</button>
                 </td>
                 <td data-label="Subtotal">KSh ${(item.product.price * item.quantity).toFixed(2)}</td>
                 <td data-label="Remove">
@@ -150,25 +128,25 @@
           const grandTotal = subtotal + shipping + tax;
 
           totalPriceElem.innerHTML = `
-            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-              <div style="display: flex; justify-content: space-between; font-size: 0.95rem;">
-                <span style="color: #666;">Subtotal:</span>
-                <span style="font-weight: 500;">KSh ${subtotal.toFixed(2)}</span>
+            <div class="cart-summary-list">
+              <div class="cart-summary-row">
+                <span class="summary-label">Subtotal:</span>
+                <span class="summary-value">KSh ${subtotal.toFixed(2)}</span>
               </div>
-              <div style="display: flex; justify-content: space-between; font-size: 0.95rem;">
-                <span style="color: #666;">Shipping:</span>
-                <span style="font-weight: 500; color: ${shipping === 0 ? "#28a745" : "#333"};">
+              <div class="cart-summary-row">
+                <span class="summary-label">Shipping:</span>
+                <span class="summary-value ${shipping === 0 ? "shipping-free" : ""}">
                   ${shipping === 0 ? "FREE" : "KSh " + shipping.toFixed(2)}
                 </span>
               </div>
-              <div style="display: flex; justify-content: space-between; font-size: 0.95rem;">
-                <span style="color: #666;">Tax (${(CONFIG.TAX_RATE * 100).toFixed(0)}%):</span>
-                <span style="font-weight: 500;">KSh ${tax.toFixed(2)}</span>
+              <div class="cart-summary-row">
+                <span class="summary-label">Tax (${(CONFIG.TAX_RATE * 100).toFixed(0)}%):</span>
+                <span class="summary-value">KSh ${tax.toFixed(2)}</span>
               </div>
-              <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid #ddd;">
-              <div style="display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: 600;">
+              <hr class="cart-summary-divider">
+              <div class="cart-summary-row cart-summary-total-row">
                 <span>Total:</span>
-                <span style="color: #007bff;">KSh ${grandTotal.toFixed(2)}</span>
+                <span class="cart-summary-total-value">KSh ${grandTotal.toFixed(2)}</span>
               </div>
             </div>
           `;

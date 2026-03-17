@@ -54,7 +54,7 @@
                                 <a href="mailto:innocent@pharmacare.com" class="social-btn email" title="Email">
                                     <i class="fas fa-envelope"></i>
                                 </a>
-                                <a href="#" class="social-btn portfolio" title="Portfolio">
+                                <a href="../../index.html" class="social-btn portfolio" title="Pharmacare Home">
                                     <i class="fas fa-globe"></i>
                                 </a>
                             </div>
@@ -321,9 +321,29 @@
         document.addEventListener('DOMContentLoaded', () => {
             initHeader();
             initFooter();
+
+            const revealSelector = '.achievement-card, .skill-item';
+            const revealItems = document.querySelectorAll(revealSelector);
+
+            const revealItem = (item) => {
+                item.classList.add('animate-in');
+            };
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            revealItem(entry.target);
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                revealItems.forEach((item) => observer.observe(item));
+            } else {
+                revealItems.forEach((item) => revealItem(item));
+            }
         });
-        
-        // Add your custom JavaScript here
     </script>
 </body>
 </html>

@@ -71,7 +71,7 @@ async function renderHeader() {
             <div class="container">
                 <div class="header-nav">
                     <a href="${homePath}" class="logo">
-                        <span class="logo-icon">💊</span>
+                      <img class="logo-icon" src="https://res.cloudinary.com/dopdw3i4y/image/upload/v1773749232/Gemini_Generated_Image_52aq2h52aq2h52aq_1_cdnuew.png" alt="Pharmacare logo pill" />
                         ${window.CONFIG.APP_NAME}
                     </a>
 
@@ -83,12 +83,20 @@ async function renderHeader() {
                     </button>
 
                     <div class="nav-menu">
-                        <ul class="nav-links">
+                        <ul class="nav-links nav-links-center">
                             <li><a href="${homePath}" class="nav-link">Home</a></li>
                             <li><a href="${productsPath}" class="nav-link">Products</a></li>
                             <li><a href="${aboutPath}" class="nav-link">About</a></li>
                             <li><a href="${contactPath}" class="nav-link">Contact</a></li>
+                          <li>
+                            <a href="${cartPath}" class="nav-link cart-link">
+                              🛒 Cart
+                              <span class="cart-badge" id="cart-badge" style="display: ${cartCount > 0 ? 'flex' : 'none'}">${cartCount}</span>
+                            </a>
+                          </li>
+                        </ul>
 
+                        <ul class="nav-links nav-links-right">
                             ${
                               loggedIn
                                 ? `
@@ -101,12 +109,6 @@ async function renderHeader() {
                                 <li><a href="${registerPath}" class="nav-link btn-register">Sign Up</a></li>
                             `
                             }
-                            <li>
-                                <a href="${cartPath}" class="nav-link cart-link">
-                                    🛒 Cart
-                                    <span class="cart-badge" id="cart-badge" style="display: ${cartCount > 0 ? 'flex' : 'none'}">${cartCount}</span>
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>

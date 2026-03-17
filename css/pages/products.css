@@ -1,41 +1,85 @@
 /* Products Page Styles */
 
+.products-page main.container {
+    max-width: 100%;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 0 !important;
+    padding-bottom: 3rem;
+}
+
+.products-page .filters,
+.products-page #products-container {
+    width: min(1260px, calc(100% - 2rem));
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .filters {
-    margin: 2rem 0;
+    margin: -2.25rem auto 2rem;
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 14px 34px rgba(2, 6, 23, 0.12);
+    position: relative;
+    z-index: 3;
 }
 
 .filters .form-group {
     flex: 1;
-    min-width: 200px;
+    min-width: 220px;
+    margin-bottom: 0;
 }
 
 .filters select {
-    min-width: 150px;
+    min-width: 180px;
 }
 
 .prodback{
     background: linear-gradient(135deg, var(--primary-color), #0056b3);
     color: white;
-    padding: 4rem 2rem;
-    margin-top: 50px;
+    padding: 8rem 2rem 4.5rem;
+    margin-top: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
-h1{
+.prodback::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 85% 20%, rgba(255, 255, 255, 0.22), transparent 35%),
+                radial-gradient(circle at 10% 80%, rgba(255, 255, 255, 0.16), transparent 40%);
+    pointer-events: none;
+}
+
+.prodback h1{
     color: white;
-    font-size: 3rem;
+    font-size: clamp(2rem, 4vw, 3.3rem);
     text-align: center;
-    margin: 0 auto 1rem;
+    margin: 0 auto 0.8rem;
+    position: relative;
+    z-index: 1;
 }
 
 .prodback p {
     text-align: center;
     margin: 0 auto;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    max-width: 900px;
+    color: rgba(255, 255, 255, 0.95);
+    position: relative;
+    z-index: 1;
 }
 
 .btn-back{
@@ -60,14 +104,16 @@ h1{
     background-color: var(--primary-color, #007bff);
     color: white !important;
     border: none;
-    border-radius: 0.375rem;
+    border-radius: 10px;
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 1.5rem;
-    margin-top:0px;
+    margin-top:0;
     padding-left: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .btn-back-light:hover {
@@ -85,12 +131,37 @@ h1{
     background-color:dodgerblue;
 }
 
+.products-page #products-container {
+    margin-top: 1rem;
+}
+
+.products-page #products-container .grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.35rem;
+    align-items: stretch;
+}
+
+.products-page #products-container .product-card {
+    min-width: 0;
+    max-width: none;
+    margin-bottom: 0;
+    height: 100%;
+}
+
+.products-page #products-container .product-body {
+    height: 100%;
+}
+
+.products-page #products-container .product-actions {
+    margin-top: auto;
+}
+
 /* Responsive Styles */
 
 /* Tablet and below (< 992px) */
 @media (max-width: 991px) {
     .filters {
-        margin: 1.5rem 0;
+        margin: -1.5rem auto 1.5rem;
     }
     
     .filters .form-group {
@@ -100,10 +171,15 @@ h1{
 
 /* Mobile styles (< 768px) */
 @media (max-width: 767px) {
+    .prodback {
+        padding: 7rem 1rem 3.2rem;
+    }
+
     .filters {
         flex-direction: column;
         gap: 0.75rem;
-        margin: 1rem 0;
+        margin: -1rem auto 1rem;
+        padding: 0.85rem;
     }
 
     .filters .form-group {
