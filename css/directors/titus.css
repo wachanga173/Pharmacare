@@ -599,7 +599,7 @@ section { padding: 5rem 0; }
 }
 
 @media (max-width:768px) {
-    .hero-content            { grid-template-columns:1fr; text-align:center; gap:2.5rem; }
+    .hero-content            { grid-template-columns:1fr; text-align:center; justify-items:center; gap:2.5rem; }
     .profile-image-container { margin:0 auto; }
     .social-links            { justify-content:center; }
     .hero-title              { font-size:2.5rem; }

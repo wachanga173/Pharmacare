@@ -581,6 +581,7 @@ body {
     .hero-content {
       grid-template-columns: 1fr;
       text-align: center;
+      justify-items: center;
       gap: 2.5rem;
     }
   

@@ -150,6 +150,7 @@
     .profile-metrics,
     .operations-grid {
         grid-template-columns: 1fr;
+        justify-items: center;
     }
 
     .profile-avatar {

@@ -184,46 +184,16 @@
     
     /* Modern Hero Section - Mobile */
     .hero-modern {
-        min-height: 400px;
-        padding: 1rem 0;
-    }
-    
-    .hero-content {
+        min-height: auto;
         padding: 2rem 0;
     }
     
-    .hero-title {
-        font-size: 1.75rem !important;
-        line-height: 1.3;
-        margin-bottom: 1rem;
-        text-align: center;
+    .hero-modern .hero-content {
+        padding: 1rem 0;
     }
     
-    .hero-title br {
+    .hero-modern .hero-title br {
         display: none;
-    }
-    
-    .hero-subtitle {
-        font-size: 1rem !important;
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-        padding: 0 0.5rem;
-        text-align: center;
-    }
-    
-    .hero-actions {
-        flex-direction: column !important;
-        gap: 1rem !important;
-        align-items: stretch !important;
-        padding: 0 1rem;
-    }
-    
-    .hero-actions .btn-large {
-        width: 100% !important;
-        padding: 1rem 1.5rem !important;
-        font-size: 1rem !important;
-        justify-content: center !important;
-        text-align: center !important;
     }
     
     /* Hero Stats - Mobile */
@@ -475,7 +445,6 @@ iframe {
     height: auto;
 }
 
-.admin-table,
 .items-table,
 .cart-table {
     width: 100%;
@@ -534,15 +503,10 @@ iframe {
     .contact-container,
     .profile-header,
     .order-meta,
-    .admin-tabs,
     .hero-stats {
         display: grid;
         grid-template-columns: 1fr;
         gap: 1rem;
-    }
-
-    .admin-tabs .admin-tab {
-        width: 100%;
     }
 
     #order-summary,
@@ -572,7 +536,8 @@ iframe {
         font-size: 0.7rem;
     }
 
-    .hero-title,
+    .profile-hero .hero-title,
+    .hero-section .hero-title,
     .directors-hero h1 {
         font-size: 1.4rem !important;
     }
@@ -589,7 +554,8 @@ iframe {
     }
 
     .profile-hero-grid,
-    .hero-content,
+    .profile-hero .hero-content,
+    .hero-section .hero-content,
     .profile-grid,
     .profile-metrics,
     .operations-grid,
@@ -615,15 +581,18 @@ iframe {
         margin-right: auto !important;
     }
 
-    .hero-title,
-    .hero-subtitle,
+    .profile-hero .hero-title,
+    .hero-section .hero-title,
+    .profile-hero .hero-subtitle,
+    .hero-section .hero-subtitle,
     .subtitle {
         text-align: center !important;
     }
 
     .hero-description,
     .profile-intro,
-    .hero-text p {
+    .profile-hero .hero-text p,
+    .hero-section .hero-text p {
         max-width: 34ch;
         margin-left: auto !important;
         margin-right: auto !important;
@@ -631,11 +600,13 @@ iframe {
         line-height: 1.7;
     }
 
-    .hero-text {
+    .profile-hero .hero-text,
+    .hero-section .hero-text {
         width: 100%;
     }
 
-    .social-links,
+    .profile-hero .social-links,
+    .hero-section .social-links,
     .profile-badges {
         justify-content: center !important;
     }

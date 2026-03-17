@@ -551,10 +551,7 @@ section {
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 2.5rem;
-    }
-
-    .profile-image-container {
+                justify-items: center;
         margin: 0 auto;
     }
 

@@ -121,6 +121,7 @@
     .profile-grid,
     .profile-metrics {
         grid-template-columns: 1fr;
+        justify-items: center;
     }
 
     .profile-avatar {
