@@ -265,6 +265,10 @@
 }
 
 @media (max-width: 767px) {
+  #cart-container {
+    width: 100%;
+  }
+
   .cart-container {
     padding: 1rem 0.8rem 0.6rem;
   }
@@ -275,11 +279,18 @@
 
   .cart-sections-wrapper {
     padding: 0.35rem 0.8rem 1.5rem;
+    align-items: stretch;
+  }
+
+  #cart-items-section,
+  #cart-total-section {
+    width: 100%;
   }
 
   .cart-table {
     display: block;
-    overflow-x: auto;
+    width: 100%;
+    overflow-x: hidden;
     font-size: 0.86rem;
   }
 
@@ -293,8 +304,13 @@
     width: 100%;
   }
 
+  .cart-table tbody {
+    display: grid;
+    gap: 0.9rem;
+  }
+
   .cart-table tr {
-    margin-bottom: 0.9rem;
+    margin-bottom: 0;
     border: 1px solid #dee2e6;
     border-radius: 10px;
     padding: 0.7rem;
@@ -323,5 +339,10 @@
   .remove-btn,
   .btn-proceed-payment {
     width: 100%;
+  }
+
+  .cart-qty-cell {
+    justify-content: flex-end;
+    gap: 0.45rem;
   }
 }

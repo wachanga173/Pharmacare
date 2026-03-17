@@ -265,5 +265,15 @@
 @media (max-width: 560px) {
     .directors-grid {
         grid-template-columns: 1fr;
+        max-width: 560px;
+        margin-left: auto;
+        margin-right: auto;
+        justify-items: stretch;
+    }
+
+    .director-card {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
     }
 }

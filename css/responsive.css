@@ -577,3 +577,72 @@ iframe {
         font-size: 1.4rem !important;
     }
 }
+
+@media (max-width: 767px) {
+    .profile-hero .container,
+    .hero-section .container {
+        width: min(100%, calc(100% - 1.25rem)) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 0.625rem !important;
+        padding-right: 0.625rem !important;
+    }
+
+    .profile-hero-grid,
+    .hero-content,
+    .profile-grid,
+    .profile-metrics,
+    .operations-grid,
+    .responsibilities-grid,
+    .tech-categories,
+    .achievements-grid,
+    .contact-cards-grid,
+    .contact-methods {
+        width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .profile-card,
+    .operation-card,
+    .metric,
+    .responsibility-card,
+    .achievement-card,
+    .contact-card,
+    .contact-methods .card {
+        width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .hero-title,
+    .hero-subtitle,
+    .subtitle {
+        text-align: center !important;
+    }
+
+    .hero-description,
+    .profile-intro,
+    .hero-text p {
+        max-width: 34ch;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        text-align: left !important;
+        line-height: 1.7;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    .social-links,
+    .profile-badges {
+        justify-content: center !important;
+    }
+
+    section.reveal {
+        width: calc(100% - 1.25rem) !important;
+        margin: 1.25rem auto !important;
+        padding: 1.25rem !important;
+    }
+}
