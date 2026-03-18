@@ -62,6 +62,29 @@
     padding: 2.5rem 0 3.5rem;
 }
 
+.section-block + .section-block {
+    margin-top: 1.4rem;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 0.9rem;
+}
+
+.section-title {
+    font-size: 1.45rem;
+    margin-bottom: 0.55rem;
+    color: #0f172a;
+}
+
+.title-underline {
+    width: 76px;
+    height: 4px;
+    margin: 0 auto;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+}
+
 .profile-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -72,7 +95,7 @@
     background: #fff;
     border: 1px solid rgba(15, 23, 42, 0.08);
     border-radius: 16px;
-    padding: 1.25rem;
+    padding: 1.35rem;
     box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
 }
 
