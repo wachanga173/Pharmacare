@@ -2,8 +2,16 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+/* Isabell Wanjiku's profile page */
+
+/* Professional Typography */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
+/* Variables */
 :root {
     --primary-color: #007bff;
     --secondary-color: #17a2b8;
@@ -15,11 +23,7 @@ body {
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.hero-section {
-    background: var(--primary-gradient);
-    color: white;
-    padding: 5rem 0;
-    position: relative;
+...existing code...
     overflow: hidden;
 }
 
