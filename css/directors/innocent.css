@@ -537,11 +537,11 @@ section {
 }
 
 @media (max-width: 768px) {
-    .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2.5rem;
-    }
+	.hero-content {
+		grid-template-columns: 1fr;
+		text-align: center;
+		gap: 2.5rem;
+	}
 
     .profile-image-container {
         margin: 0 auto;
@@ -575,28 +575,28 @@ section {
 }
 
 @media (max-width: 480px) {
-    .hero-section {
-        padding: 3rem 0;
-    }
+	.hero-section {
+		padding: 3rem 0;
+	}
 
-    .hero-title {
-        font-size: 2rem;
-    }
+	.hero-title {
+		font-size: 2rem;
+	}
 
-    .profile-image {
-        width: 150px;
-        height: 150px;
-    }
+	.profile-image {
+		width: 150px;
+		height: 150px;
+	}
 
-    .about-content {
-        padding: 2rem;
-    }
+	.about-content {
+		padding: 2rem;
+	}
 
     .achievements-grid {
         grid-template-columns: 1fr;
     }
 
-    section {
-        padding: 3.5rem 0;
-    }
+	section {
+		padding: 3.5rem 0;
+	}
 }

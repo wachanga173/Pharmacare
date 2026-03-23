@@ -3,55 +3,292 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Washington Dave - Director Profile</title>
+    <title>Washington David - Director of Patient Education & Support Services</title>
     <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/components.css">
     <link rel="stylesheet" href="../../css/responsive.css">
-    <link rel="stylesheet" href="../../css/directors/washington.css">
+    <link rel="stylesheet" href="../../css/directors/wachanga.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div id="app">
         <header id="header"></header>
-        
-        <main class="container">
-            <section style="padding: 3rem 0;">
-                <!-- Back Button -->
-                <div style="padding-bottom: 1.5rem;">
-                    <button onclick="window.history.back()" class="btn-back btn-back-light" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: white; border: 1px solid #e5e7eb; border-radius: 0.375rem; color: #374151; cursor: pointer; transition: all 0.3s; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        Back
-                    </button>
-                </div>
-                <h1>Washington Dave</h1>
-                <p class="subtitle">Director of Patient Education & Support Services</p>
-                
-                <!-- Add your custom content here -->
-                <div class="director-content">
-                    <p>Welcome to my profile page. This page is under construction.</p>
+
+        <main>
+            <section class="hero-section">
+                <div class="container">
+                    <div style="padding-bottom: 1rem;">
+                        <button onclick="window.history.back()" class="btn-back" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); border-radius: 0.375rem; color: white; cursor: pointer; transition: all 0.3s;">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Back
+                        </button>
+                    </div>
+                    <div class="hero-content">
+                        <div class="profile-image-container">
+                            <div class="profile-image" style="display:grid;place-items:center;font-size:3rem;font-weight:900;color:#0f172a;">WD</div>
+                            <div class="status-badge">
+                                <i class="fas fa-circle"></i> Available
+                            </div>
+                        </div>
+                        <div class="hero-text">
+                            <h1 class="hero-title">Washington David</h1>
+                            <p class="hero-subtitle">Director of Patient Education &amp; Support Services</p>
+                            <p class="hero-description">
+                                Patient Education Strategist | Adherence Program Lead | Support Workflow Coordinator
+                            </p>
+                            <div class="profile-badges">
+                                <span>Patient Education</span>
+                                <span>Adherence Programs</span>
+                                <span>Care Communication</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
+
+            <section class="about-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-user-circle"></i> About Me
+                        </h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="about-content">
+                        <p class="about-text">
+                            As Director of Patient Education &amp; Support Services, I ensure patients understand every medication they receive and can follow treatment safely. I translate clinical instructions into clear, practical guidance across the full pharmacy journey.
+                        </p>
+                        <p class="about-text">
+                            I lead adherence communication, refill support pathways, and escalation channels that help patients stay informed and consistent with therapy while reducing confusion at home.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="responsibilities-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-tasks"></i> Key Responsibilities
+                        </h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="responsibilities-grid">
+                        <div class="responsibility-card animate-in">
+                            <div class="card-icon database"><i class="fas fa-book"></i></div>
+                            <h3 class="card-title">Medication Education Programs</h3>
+                            <p class="card-description">I design condition-specific education content that explains dosage, timing, and safety in patient-friendly language.</p>
+                        </div>
+                        <div class="responsibility-card animate-in">
+                            <div class="card-icon security"><i class="fas fa-bell"></i></div>
+                            <h3 class="card-title">Adherence Reminder Systems</h3>
+                            <p class="card-description">I oversee reminder and follow-up flows that improve treatment consistency and refill completion rates.</p>
+                        </div>
+                        <div class="responsibility-card animate-in">
+                            <div class="card-icon integration"><i class="fas fa-headset"></i></div>
+                            <h3 class="card-title">Support Routing &amp; Escalation</h3>
+                            <p class="card-description">I route support requests to the right clinical teams with context and urgency to speed quality responses.</p>
+                        </div>
+                        <div class="responsibility-card animate-in">
+                            <div class="card-icon storage"><i class="fas fa-question-circle"></i></div>
+                            <h3 class="card-title">Knowledge Base Governance</h3>
+                            <p class="card-description">I keep FAQ and support guidance current, compliant, and aligned with medication policy updates.</p>
+                        </div>
+                        <div class="responsibility-card animate-in">
+                            <div class="card-icon review"><i class="fas fa-comments"></i></div>
+                            <h3 class="card-title">Care Communication Quality</h3>
+                            <p class="card-description">I standardize communication style so patients receive clear and actionable support at every step.</p>
+                        </div>
+                        <div class="responsibility-card animate-in">
+                            <div class="card-icon deployment"><i class="fas fa-sync-alt"></i></div>
+                            <h3 class="card-title">Continuous Improvement</h3>
+                            <p class="card-description">I analyze patient support outcomes and iterate workflows to improve education impact and service quality.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="technologies-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-tools"></i> Technologies &amp; Tools
+                        </h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="tech-categories">
+                        <div class="tech-category">
+                            <h3 class="tech-category-title"><i class="fas fa-graduation-cap"></i> Education Systems</h3>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Patient Learning Flows</span>
+                                <span class="tech-tag">Medication Literacy</span>
+                                <span class="tech-tag">Content Structuring</span>
+                                <span class="tech-tag">Guidance Frameworks</span>
+                            </div>
+                        </div>
+                        <div class="tech-category">
+                            <h3 class="tech-category-title"><i class="fas fa-people-arrows"></i> Support Operations</h3>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Support Routing</span>
+                                <span class="tech-tag">Escalation Handling</span>
+                                <span class="tech-tag">Response SLA Monitoring</span>
+                                <span class="tech-tag">Case Prioritization</span>
+                            </div>
+                        </div>
+                        <div class="tech-category">
+                            <h3 class="tech-category-title"><i class="fas fa-notes-medical"></i> Adherence Enablement</h3>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Reminder Programs</span>
+                                <span class="tech-tag">Follow-Up Nudges</span>
+                                <span class="tech-tag">FAQ Governance</span>
+                                <span class="tech-tag">Care Communication</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="achievements-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-trophy"></i> Project Achievements
+                        </h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="achievements-grid">
+                        <div class="achievement-card">
+                            <div class="achievement-icon"><i class="fas fa-book-open"></i></div>
+                            <h3 class="achievement-number">92%</h3>
+                            <p class="achievement-label">Education Completion Rate</p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon"><i class="fas fa-arrow-up-right-dots"></i></div>
+                            <h3 class="achievement-number">31%</h3>
+                            <p class="achievement-label">Adherence Improvement</p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon"><i class="fas fa-stopwatch"></i></div>
+                            <h3 class="achievement-number">&lt; 5 min</h3>
+                            <p class="achievement-label">Support Response SLA</p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon"><i class="fas fa-clock"></i></div>
+                            <h3 class="achievement-number">24/7</h3>
+                            <p class="achievement-label">Self-Help Access</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="skills-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-chart-line"></i> Core Competencies
+                        </h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="skills-container">
+                        <div class="skill-item">
+                            <div class="skill-info"><span class="skill-name">Patient Education Design &amp; Literacy Communication</span><span class="skill-percentage">94%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 94%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span class="skill-name">Adherence Program Architecture</span><span class="skill-percentage">91%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 91%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span class="skill-name">Support Operations Routing &amp; Escalation</span><span class="skill-percentage">89%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 89%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span class="skill-name">Healthcare Content Governance</span><span class="skill-percentage">90%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-envelope"></i> Get In Touch
+                        </h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="contact-content">
+                        <p class="contact-intro">
+                            If you want to strengthen medication education, adherence engagement, or patient support quality, I am available to collaborate.
+                        </p>
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <i class="fas fa-envelope-open-text"></i>
+                                <div class="method-details">
+                                    <h4>Email</h4>
+                                    <a href="mailto:washington@pharmacare.com">washington@pharmacare.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <i class="fab fa-github"></i>
+                                <div class="method-details">
+                                    <h4>GitHub</h4>
+                                    <a href="#" target="_blank">@washington-profile</a>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <i class="fab fa-linkedin"></i>
+                                <div class="method-details">
+                                    <h4>LinkedIn</h4>
+                                    <a href="#" target="_blank">Connect with me</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </main>
-        
+
         <footer id="footer"></footer>
     </div>
 
     <div id="toast-container"></div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../../js/config.js"></script>
     <script type="module">
         import { initHeader } from '../../js/components/header.js';
         import { initFooter } from '../../js/components/footer.js';
-        
+
         document.addEventListener('DOMContentLoaded', () => {
             initHeader();
             initFooter();
+
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.responsibility-card, .achievement-card, .skill-item').forEach(el => {
+                observer.observe(el);
+            });
         });
-        
-        // Add your custom JavaScript here
     </script>
 </body>
 </html>

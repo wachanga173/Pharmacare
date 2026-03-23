@@ -3,55 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Techwizbiz - Director Profile</title>
+    <title>Techwizbiz - Director of Patient Experience & Interface Systems</title>
     <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/components.css">
     <link rel="stylesheet" href="../../css/responsive.css">
-    <link rel="stylesheet" href="../../css/directors/techwizbiz.css">
+    <link rel="stylesheet" href="../../css/directors/wachanga.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div id="app">
         <header id="header"></header>
-        
-        <main class="container">
-            <section style="padding: 3rem 0;">
-                <!-- Back Button -->
-                <div style="padding-bottom: 1.5rem;">
-                    <button onclick="window.history.back()" class="btn-back btn-back-light" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: white; border: 1px solid #e5e7eb; border-radius: 0.375rem; color: #374151; cursor: pointer; transition: all 0.3s; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        Back
-                    </button>
+
+        <main>
+            <section class="hero-section">
+                <div class="container">
+                    <div style="padding-bottom: 1rem;">
+                        <button onclick="window.history.back()" class="btn-back" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); border-radius: 0.375rem; color: white; cursor: pointer; transition: all 0.3s;">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Back
+                        </button>
+                    </div>
+                    <div class="hero-content">
+                        <div class="profile-image-container">
+                            <div class="profile-image" style="background-image: url('https://drive.google.com/thumbnail?id=1GTlcNOrfI6sNnsdyhpHIKz-BPuc-oaMx&sz=w1200'); background-size: cover; background-position: center;"></div>
+                            <div class="status-badge">
+                                <i class="fas fa-circle"></i> Available
+                            </div>
+                        </div>
+                        <div class="hero-text">
+                            <h1 class="hero-title">Techwizbiz</h1>
+                            <p class="hero-subtitle">Director of Patient Experience &amp; Interface Systems</p>
+                            <p class="hero-description">
+                                UX Systems Strategist | Accessibility Advocate | Mobile Interaction Specialist
+                            </p>
+                            <div class="profile-badges">
+                                <span>UX Strategy</span>
+                                <span>Accessibility</span>
+                                <span>Interaction Design</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h1>Techwizbiz</h1>
-                <p class="subtitle">Director of Patient Experience & Interface Systems</p>
-                
-                <!-- Add your custom content here -->
-                <div class="director-content">
-                    <p>Welcome to my profile page. This page is under construction.</p>
+            </section>
+
+            <section class="about-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-user-circle"></i> About Me
+                        </h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="about-content">
+                        <p class="about-text">
+                            As Director of Patient Experience &amp; Interface Systems, I design and govern the patient journey from onboarding to repeat prescription flows. I focus on clarity, trust, and speed while maintaining medical context and compliance cues in every interaction.
+                        </p>
+                        <p class="about-text">
+                            I lead interface standards for accessibility, mobile usability, and communication quality across key touchpoints. My role ensures patients can navigate care confidently with fewer errors and faster task completion.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="responsibilities-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-tasks"></i> Key Responsibilities
+                        </h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="responsibilities-grid">
+                        <div class="responsibility-card animate-in">
+                            <div class="card-icon database"><i class="fas fa-sitemap"></i></div>
+                            <h3 class="card-title">Interface Architecture</h3>
+                            <p class="card-description">I design page and component structures that guide patients clearly through medication discovery and checkout paths.</p>
+                        </div>
+                        <div class="responsibility-card animate-in">
+                            <div class="card-icon security"><i class="fas fa-universal-access"></i></div>
+                            <h3 class="card-title">Accessibility Standards</h3>
+                            <p class="card-description">I enforce accessible interaction patterns and content legibility so every patient can use the platform confidently.</p>
+                        </div>
+                        <div class="responsibility-card animate-in">
+                            <div class="card-icon integration"><i class="fas fa-mobile-alt"></i></div>
+                            <h3 class="card-title">Mobile Experience Design</h3>
+                            <p class="card-description">I optimize mobile flows for quick actions such as refill requests, order tracking, and pharmacy communication.</p>
+                        </div>
+                        <div class="responsibility-card animate-in">
+                            <div class="card-icon storage"><i class="fas fa-comment-dots"></i></div>
+                            <h3 class="card-title">UX Content Governance</h3>
+                            <p class="card-description">I maintain consistent guidance, error messaging, and status language that improves clarity and reduces user mistakes.</p>
+                        </div>
+                        <div class="responsibility-card animate-in">
+                            <div class="card-icon review"><i class="fas fa-chart-bar"></i></div>
+                            <h3 class="card-title">Experience Analytics</h3>
+                            <p class="card-description">I monitor behavioral and completion metrics to continuously improve patient flow efficiency and confidence.</p>
+                        </div>
+                        <div class="responsibility-card animate-in">
+                            <div class="card-icon deployment"><i class="fas fa-sync-alt"></i></div>
+                            <h3 class="card-title">Cross-Page Consistency</h3>
+                            <p class="card-description">I coordinate reusable UI standards so the experience remains consistent from homepage to account and checkout.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="technologies-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-tools"></i> Technologies &amp; Tools
+                        </h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="tech-categories">
+                        <div class="tech-category">
+                            <h3 class="tech-category-title"><i class="fas fa-drafting-compass"></i> UX Systems</h3>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Information Architecture</span>
+                                <span class="tech-tag">Component Patterns</span>
+                                <span class="tech-tag">Interaction Flows</span>
+                                <span class="tech-tag">Journey Mapping</span>
+                            </div>
+                        </div>
+                        <div class="tech-category">
+                            <h3 class="tech-category-title"><i class="fas fa-universal-access"></i> Accessibility &amp; Quality</h3>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Accessible UI</span>
+                                <span class="tech-tag">Readable Content</span>
+                                <span class="tech-tag">Error Recovery UX</span>
+                                <span class="tech-tag">Consistency Audits</span>
+                            </div>
+                        </div>
+                        <div class="tech-category">
+                            <h3 class="tech-category-title"><i class="fas fa-tachometer-alt"></i> Performance UX</h3>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Task Completion Analytics</span>
+                                <span class="tech-tag">Mobile Optimization</span>
+                                <span class="tech-tag">UI Feedback Loops</span>
+                                <span class="tech-tag">Patient-Centered Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="achievements-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-trophy"></i> Project Achievements
+                        </h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="achievements-grid">
+                        <div class="achievement-card">
+                            <div class="achievement-icon"><i class="fas fa-bolt"></i></div>
+                            <h3 class="achievement-number">38%</h3>
+                            <p class="achievement-label">Faster Task Completion</p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon"><i class="fas fa-star"></i></div>
+                            <h3 class="achievement-number">4.8/5</h3>
+                            <p class="achievement-label">Patient UX Rating</p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon"><i class="fas fa-check-double"></i></div>
+                            <h3 class="achievement-number">AA</h3>
+                            <p class="achievement-label">Accessibility Target</p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon"><i class="fas fa-mobile-screen-button"></i></div>
+                            <h3 class="achievement-number">100%</h3>
+                            <p class="achievement-label">Responsive Coverage</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="skills-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-chart-line"></i> Core Competencies
+                        </h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="skills-container">
+                        <div class="skill-item">
+                            <div class="skill-info"><span class="skill-name">UX Strategy &amp; Interface Architecture</span><span class="skill-percentage">95%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span class="skill-name">Accessibility-First Design Standards</span><span class="skill-percentage">92%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 92%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span class="skill-name">Mobile Usability Optimization</span><span class="skill-percentage">90%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span class="skill-name">UX Writing &amp; User Guidance</span><span class="skill-percentage">88%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-envelope"></i> Get In Touch
+                        </h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="contact-content">
+                        <p class="contact-intro">
+                            If you want to improve patient experience, accessibility, or mobile workflows in healthcare interfaces, I am ready to collaborate.
+                        </p>
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <i class="fas fa-envelope-open-text"></i>
+                                <div class="method-details">
+                                    <h4>Email</h4>
+                                    <a href="mailto:techwizbiz@pharmacare.com">techwizbiz@pharmacare.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <i class="fab fa-github"></i>
+                                <div class="method-details">
+                                    <h4>GitHub</h4>
+                                    <a href="#" target="_blank">@techwizbiz-profile</a>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <i class="fab fa-linkedin"></i>
+                                <div class="method-details">
+                                    <h4>LinkedIn</h4>
+                                    <a href="#" target="_blank">Connect with me</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
-        
+
         <footer id="footer"></footer>
     </div>
 
     <div id="toast-container"></div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../../js/config.js"></script>
     <script type="module">
         import { initHeader } from '../../js/components/header.js';
         import { initFooter } from '../../js/components/footer.js';
-        
+
         document.addEventListener('DOMContentLoaded', () => {
             initHeader();
             initFooter();
+
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.responsibility-card, .achievement-card, .skill-item').forEach(el => {
+                observer.observe(el);
+            });
         });
-        
-        // Add your custom JavaScript here
     </script>
 </body>
 </html>

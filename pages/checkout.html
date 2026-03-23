@@ -54,9 +54,9 @@
 
           <h1>Checkout</h1>
 
-          <div class="grid grid-3" style="margin-top: 2rem">
-            <div style="grid-column: span 2">
-              <form id="checkout-form">
+          <div class="checkout-layout">
+            <div class="checkout-form-col">
+              <form id="checkout-form" class="checkout-form">
                 <h2>Shipping Information</h2>
                 <div class="form-group">
                   <label class="form-label">Full Name</label>
@@ -161,18 +161,14 @@
                   </div>
                 </div>
 
-                <button
-                  type="submit"
-                  class="btn btn-primary"
-                  style="width: 100%; margin-top: 1rem"
-                >
+                <button type="submit" class="btn btn-primary checkout-submit-btn">
                   Place Order
                 </button>
               </form>
             </div>
 
-            <div>
-              <div id="order-summary" style="position: sticky; top: 80px"></div>
+            <div class="checkout-summary-col">
+              <div id="order-summary" class="order-summary-card"></div>
             </div>
           </div>
         </section>

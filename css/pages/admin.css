@@ -1,33 +1,105 @@
 /* Admin Page Styles */
 
+.admin-page-section {
+    padding: 2rem 0;
+}
+
+.admin-tabs-wrap {
+    margin-top: 2rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.admin-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1.25rem 0;
+}
+
+.admin-table-wrap {
+    overflow-x: auto;
+}
+
+.admin-table-wrap.top-gap {
+    margin-top: 1.5rem;
+}
+
 .admin-table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     margin-top: 1rem;
     background: white;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    border-radius: 12px;
     overflow: hidden;
 }
 
 .admin-table th,
 .admin-table td {
-    padding: 0.75rem;
-    border: 1px solid var(--border-color);
+    padding: 0.75rem 0.8rem;
+    border-bottom: 1px solid #e8edf4;
     text-align: left;
+    vertical-align: middle;
 }
 
 .admin-table th {
-    background-color: var(--light-color);
-    font-weight: 600;
-}
-
-.admin-table button {
-    margin-right: 0.5rem;
+    background-color: #f8fbff;
+    font-weight: 700;
+    color: #334155;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
 .admin-table tbody tr:hover {
-    background-color: var(--light-color);
+    background-color: #f8fbff;
+}
+
+.admin-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    min-width: 160px;
+}
+
+.admin-table .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-weight: 700;
+    line-height: 1.1;
+    min-height: 34px;
+    min-width: 86px;
+}
+
+.admin-table .btn.btn-secondary {
+    border: 1px solid #d6deea;
+    background: #f8fafc;
+    color: #1f2937;
+}
+
+.admin-table .btn.btn-secondary:hover {
+    background: #eef4fb;
+    border-color: #c2d3e8;
+}
+
+.admin-table .btn.btn-danger {
+    border: 1px solid #f5b8c0;
+    background: #fff5f7;
+    color: #b91c1c;
+}
+
+.admin-table .btn.btn-danger:hover {
+    background: #ffe8ec;
+}
+
+#add-product-btn {
+    min-width: 144px;
+    border-radius: 9px;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.18);
 }
 
 /* Admin Tabs */
@@ -157,21 +229,51 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .admin-table-wrap {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
     .admin-table {
         font-size: 0.875rem;
+        width: max-content;
+    }
+
+    .admin-table th,
+    .admin-table td {
+        white-space: nowrap;
     }
     
     .admin-table th,
     .admin-table td {
-        padding: 0.5rem;
+        padding: 0.55rem;
+    }
+
+    .admin-actions {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: nowrap;
+        width: max-content;
+        min-width: max-content;
+    }
+
+    .admin-table .btn {
+        width: auto;
+        justify-content: center;
     }
     
     .admin-tab {
         padding: 0.5rem 1rem;
         font-size: 0.875rem;
+        flex: 0 0 auto;
+        white-space: nowrap;
     }
     
     .admin-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
         gap: 0.25rem;
     }
     

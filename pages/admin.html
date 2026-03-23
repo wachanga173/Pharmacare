@@ -15,7 +15,7 @@
         <header id="header"></header>
         
         <main class="container">
-            <section style="padding: 2rem 0;">
+            <section class="admin-page-section">
                 <button onclick="window.history.back()" class="btn-back btn-back-light" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: white; border: 1px solid #e5e7eb; border-radius: 0.375rem; color: #374151; cursor: pointer; transition: all 0.3s; box-shadow: 0 1px 2px rgba(0,0,0,0.05); margin-bottom: 1rem;">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -26,42 +26,44 @@
                 <h1>Admin Panel</h1>
                 
                 <!-- Tabs Navigation -->
-                <div class="admin-tabs" style="margin-top: 2rem; border-bottom: 2px solid #e5e7eb;">
+                <div class="admin-tabs-wrap">
+                    <div class="admin-tabs">
                     <button class="admin-tab active" data-tab="products">Products</button>
                     <button class="admin-tab" data-tab="orders">Orders</button>
                     <button class="admin-tab" data-tab="contacts">Contacts</button>
                     <button class="admin-tab" data-tab="users">Users</button>
+                    </div>
                 </div>
                 
                 <!-- Tab Contents -->
                 <div class="admin-tab-content">
                     <!-- Products Tab -->
                     <div id="products-tab" class="tab-pane active">
-                        <div style="display: flex; justify-content: flex-end; margin: 1.5rem 0;">
+                        <div class="admin-toolbar">
                             <button class="btn btn-primary" id="add-product-btn">Add Product</button>
                         </div>
-                        <div id="admin-products-table" style="overflow-x: auto;">
+                        <div id="admin-products-table" class="admin-table-wrap">
                             <p>Loading...</p>
                         </div>
                     </div>
                     
                     <!-- Orders Tab -->
                     <div id="orders-tab" class="tab-pane">
-                        <div id="admin-orders-table" style="margin-top: 1.5rem; overflow-x: auto;">
+                        <div id="admin-orders-table" class="admin-table-wrap top-gap">
                             <p>Loading...</p>
                         </div>
                     </div>
                     
                     <!-- Contacts Tab -->
                     <div id="contacts-tab" class="tab-pane">
-                        <div id="admin-contacts-table" style="margin-top: 1.5rem; overflow-x: auto;">
+                        <div id="admin-contacts-table" class="admin-table-wrap top-gap">
                             <p>Loading...</p>
                         </div>
                     </div>
                     
                     <!-- Users Tab -->
                     <div id="users-tab" class="tab-pane">
-                        <div id="admin-users-table" style="margin-top: 1.5rem; overflow-x: auto;">
+                        <div id="admin-users-table" class="admin-table-wrap top-gap">
                             <p>Loading...</p>
                         </div>
                     </div>

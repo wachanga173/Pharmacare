@@ -3,55 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samuel - Director Profile</title>
+    <title>Samuel - Chief Dispensing Officer</title>
     <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/components.css">
     <link rel="stylesheet" href="../../css/responsive.css">
-    <link rel="stylesheet" href="../../css/directors/samuel.css">
+    <link rel="stylesheet" href="../../css/directors/wachanga.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div id="app">
         <header id="header"></header>
-        
-        <main class="container">
-            <section style="padding: 3rem 0;">
-                <!-- Back Button -->
-                <div style="padding-bottom: 1.5rem;">
-                    <button onclick="window.history.back()" class="btn-back btn-back-light" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: white; border: 1px solid #e5e7eb; border-radius: 0.375rem; color: #374151; cursor: pointer; transition: all 0.3s; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        Back
-                    </button>
+
+        <main>
+            <section class="hero-section">
+                <div class="container">
+                    <div style="padding-bottom: 1rem;">
+                        <button onclick="window.history.back()" class="btn-back" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); border-radius: 0.375rem; color: white; cursor: pointer; transition: all 0.3s;">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Back
+                        </button>
+                    </div>
+
+                    <div class="hero-content">
+                        <div class="profile-image-container">
+                            <div class="profile-image" style="background-image: url('https://drive.google.com/thumbnail?id=1gOjgycXuUnCukc09Ub_S8QUlCr0tKBVd&sz=w1200'); background-size: cover; background-position: center;"></div>
+                            <div class="status-badge">
+                                <i class="fas fa-circle"></i> Available
+                            </div>
+                        </div>
+                        <div class="hero-text">
+                            <h1 class="hero-title">Samuel</h1>
+                            <p class="hero-subtitle">Chief Dispensing Officer</p>
+                            <p class="hero-description">
+                                Dispensing Accuracy Lead | Medication Release Workflow Coordinator | Patient Counseling Handoff Specialist
+                            </p>
+                            <div class="social-links">
+                                <a href="#" class="social-btn github" title="GitHub Profile"><i class="fab fa-github"></i></a>
+                                <a href="#" class="social-btn linkedin" title="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                                <a href="mailto:samuel@pharmacare.com" class="social-btn email" title="Email"><i class="fas fa-envelope"></i></a>
+                                <a href="../../index.html" class="social-btn portfolio" title="Pharmacare Home"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h1>Samuel</h1>
-                <p class="subtitle">Chief Dispensing Officer</p>
-                
-                <!-- Add your custom content here -->
-                <div class="director-content">
-                    <p>Welcome to my profile page. This page is under construction.</p>
+            </section>
+
+            <section class="about-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-user-circle"></i> About Me</h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="about-content">
+                        <p class="about-text">
+                            As Chief Dispensing Officer at Pharmacare, I oversee the final clinical and operational stage where verified prescriptions are safely released to patients. I coordinate dispensing checks, release sequencing, counseling handoff readiness, and workflow timing to maintain high reliability across every order.
+                        </p>
+                        <p class="about-text">
+                            I focus on patient safety, throughput consistency, and clear communication between pharmacists and patients. My role includes release-quality controls, peak-hour queue management, and operational escalation playbooks that keep medication handoffs accurate and traceable.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="responsibilities-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-tasks"></i> Key Responsibilities</h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="responsibilities-grid">
+                        <div class="responsibility-card animate-in">
+                            <div class="card-icon database"><i class="fas fa-barcode"></i></div>
+                            <h3 class="card-title">Medication Release Validation</h3>
+                            <p class="card-description">I enforce final release checks using barcode validation and order integrity controls before medicines are handed off.</p>
+                        </div>
+                        <div class="responsibility-card animate-in">
+                            <div class="card-icon security"><i class="fas fa-shield-alt"></i></div>
+                            <h3 class="card-title">Dispensing Safety Controls</h3>
+                            <p class="card-description">I maintain clinical safety checkpoints that reduce release errors and protect patients during high-volume dispensing windows.</p>
+                        </div>
+                        <div class="responsibility-card animate-in">
+                            <div class="card-icon integration"><i class="fas fa-project-diagram"></i></div>
+                            <h3 class="card-title">Queue Orchestration</h3>
+                            <p class="card-description">I balance dispensing queues by priority and workload so urgent and routine orders are processed predictably.</p>
+                        </div>
+                        <div class="responsibility-card animate-in">
+                            <div class="card-icon storage"><i class="fas fa-stopwatch"></i></div>
+                            <h3 class="card-title">SLA Performance Monitoring</h3>
+                            <p class="card-description">I monitor turnaround targets and trigger operational responses to keep medication release times within service goals.</p>
+                        </div>
+                        <div class="responsibility-card animate-in">
+                            <div class="card-icon review"><i class="fas fa-user-md"></i></div>
+                            <h3 class="card-title">Counseling Handoff Readiness</h3>
+                            <p class="card-description">I ensure pharmacists have complete context for patient counseling at pickup and release points.</p>
+                        </div>
+                        <div class="responsibility-card animate-in">
+                            <div class="card-icon deployment"><i class="fas fa-bell"></i></div>
+                            <h3 class="card-title">Pickup Communication Flow</h3>
+                            <p class="card-description">I manage readiness notifications and handoff communication so patients receive accurate release updates.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="technologies-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-tools"></i> Technologies &amp; Tools</h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="tech-categories">
+                        <div class="tech-category">
+                            <h3 class="tech-category-title"><i class="fas fa-pills"></i> Dispensing Operations</h3>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Release Validation</span>
+                                <span class="tech-tag">Barcode Checks</span>
+                                <span class="tech-tag">Queue Balancing</span>
+                                <span class="tech-tag">Incident Response</span>
+                            </div>
+                        </div>
+                        <div class="tech-category">
+                            <h3 class="tech-category-title"><i class="fas fa-chart-line"></i> Performance Management</h3>
+                            <div class="tech-tags">
+                                <span class="tech-tag">SLA Tracking</span>
+                                <span class="tech-tag">Cycle Time Monitoring</span>
+                                <span class="tech-tag">Peak-Hour Controls</span>
+                                <span class="tech-tag">Quality Assurance</span>
+                            </div>
+                        </div>
+                        <div class="tech-category">
+                            <h3 class="tech-category-title"><i class="fas fa-comments"></i> Patient Communication</h3>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Counseling Handoffs</span>
+                                <span class="tech-tag">Pickup Readiness</span>
+                                <span class="tech-tag">Operational Playbooks</span>
+                                <span class="tech-tag">Service Reliability</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="achievements-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-trophy"></i> Project Achievements</h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="achievements-grid">
+                        <div class="achievement-card">
+                            <div class="achievement-icon"><i class="fas fa-check-circle"></i></div>
+                            <h3 class="achievement-number">99.4%</h3>
+                            <p class="achievement-label">Dispense Accuracy</p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon"><i class="fas fa-clock"></i></div>
+                            <h3 class="achievement-number">&lt; 12 min</h3>
+                            <p class="achievement-label">Average Release Time</p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon"><i class="fas fa-satellite-dish"></i></div>
+                            <h3 class="achievement-number">24/7</h3>
+                            <p class="achievement-label">Order Monitoring</p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon"><i class="fas fa-link"></i></div>
+                            <h3 class="achievement-number">0</h3>
+                            <p class="achievement-label">Untracked Handoffs</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="skills-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-chart-line"></i> Core Competencies</h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="skills-container">
+                        <div class="skill-item">
+                            <div class="skill-info"><span class="skill-name">Dispensing Workflow Orchestration</span><span class="skill-percentage">95%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span class="skill-name">Release Quality Controls</span><span class="skill-percentage">92%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 92%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span class="skill-name">Queue Analytics &amp; Incident Response</span><span class="skill-percentage">90%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span class="skill-name">Patient Counseling Handoff Standards</span><span class="skill-percentage">88%</span></div>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-envelope"></i> Get In Touch
+                        </h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="contact-content">
+                        <p class="contact-intro">
+                            If you need help with dispensing workflow quality, medication release operations, or pharmacy handoff reliability, I am happy to collaborate.
+                        </p>
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <i class="fas fa-envelope-open-text"></i>
+                                <div class="method-details">
+                                    <h4>Email</h4>
+                                    <a href="mailto:samuel@pharmacare.com">samuel@pharmacare.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <i class="fab fa-github"></i>
+                                <div class="method-details">
+                                    <h4>GitHub</h4>
+                                    <a href="#" target="_blank">@samuel-profile</a>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <i class="fab fa-linkedin"></i>
+                                <div class="method-details">
+                                    <h4>LinkedIn</h4>
+                                    <a href="#" target="_blank">Connect with me</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
-        
+
         <footer id="footer"></footer>
     </div>
 
     <div id="toast-container"></div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../../js/config.js"></script>
+    <script src="../../js/main.js"></script>
     <script type="module">
         import { initHeader } from '../../js/components/header.js';
         import { initFooter } from '../../js/components/footer.js';
-        
+
         document.addEventListener('DOMContentLoaded', () => {
             initHeader();
             initFooter();
+
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.responsibility-card, .achievement-card, .skill-item').forEach(el => {
+                observer.observe(el);
+            });
         });
-        
-        // Add your custom JavaScript here
     </script>
 </body>
 </html>
