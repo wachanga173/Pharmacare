@@ -58,6 +58,7 @@
 	margin-bottom: 1.5rem;
 	color: white;
 	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.13);
+	[/* Isabell Wanjiku's profile page */
 	background: var(--primary-gradient);
 	transition: var(--transition);
 }
