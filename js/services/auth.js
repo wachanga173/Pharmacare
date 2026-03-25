@@ -137,7 +137,8 @@ export async function login(email, password) {
             .eq('id', data.user.id)
             .single();
         
-        const avatarUrl = await resolveAvatarUrl(supabase, profile?.avatar_url);
+        const avatarPath = profile?.avatar_url || '';
+        const avatarUrl = await resolveAvatarUrl(supabase, avatarPath);
 
         // Always check role from public.users
         const userRole = profile?.role || 'customer';
@@ -148,6 +149,7 @@ export async function login(email, password) {
             phone: profile?.phone || '',
             role: userRole,
             isAdmin: userRole === 'admin',
+            avatar_path: avatarPath,
             avatar_url: avatarUrl
         };
         // Store in localStorage for quick access
@@ -195,13 +197,17 @@ export async function getCurrentUser() {
         if (!session) return null;
         
         // Get full profile
+        const cachedUser = getFromStorage(CONFIG.STORAGE_KEYS.USER) || {};
+
         const { data: profile } = await supabase
             .from('users')
             .select('*')
             .eq('id', session.user.id)
             .single();
-        
-        const avatarUrl = await resolveAvatarUrl(supabase, profile?.avatar_url);
+
+        const avatarPath = profile?.avatar_url || cachedUser.avatar_path || '';
+        const resolvedAvatarUrl = await resolveAvatarUrl(supabase, avatarPath);
+        const avatarUrl = resolvedAvatarUrl || cachedUser.avatar_url || '';
 
         // Always check role from public.users
         const userRole = profile?.role || 'customer';
@@ -212,6 +218,7 @@ export async function getCurrentUser() {
             phone: profile?.phone || '',
             role: userRole,
             isAdmin: userRole === 'admin',
+            avatar_path: avatarPath,
             avatar_url: avatarUrl
         };
         // Update localStorage cache
@@ -318,10 +325,12 @@ export async function uploadProfilePhoto(file) {
         if (uploadError) throw uploadError;
 
         // Persist storage path in profile so a fresh signed URL can be generated per session.
-        await supabase
+        const { error: profileUpdateError } = await supabase
             .from('users')
             .update({ avatar_url: filePath })
             .eq('id', user.id);
+
+        if (profileUpdateError) throw profileUpdateError;
 
         const { data: signedData, error: signedUrlError } = await supabase.storage
             .from(PROFILE_BUCKET)
@@ -329,7 +338,18 @@ export async function uploadProfilePhoto(file) {
 
         if (signedUrlError) throw signedUrlError;
         
-        return { success: true, url: signedData?.signedUrl || '' };
+        const signedUrl = signedData?.signedUrl || '';
+        const cachedUser = getFromStorage(CONFIG.STORAGE_KEYS.USER);
+
+        if (cachedUser) {
+            saveToStorage(CONFIG.STORAGE_KEYS.USER, {
+                ...cachedUser,
+                avatar_path: filePath,
+                avatar_url: signedUrl
+            });
+        }
+
+        return { success: true, url: signedUrl };
     } catch (error) {
         console.error('Photo upload error:', error);
         return { success: false, error: error.message };
