@@ -2,6 +2,9 @@
 import { getFromStorage, saveToStorage } from '../utils/storage.js';
 import { hashPassword } from '../utils/helpers.js';
 
+const PROFILE_BUCKET = 'profile';
+const PROFILE_SIGNED_URL_TTL = 60 * 60;
+
 // Get Supabase client
 export function getSupabaseClient() {
     if (typeof window !== 'undefined' && window.supabase && window.CONFIG) {
@@ -16,6 +19,29 @@ export function getSupabaseClient() {
         );
     }
     return null;
+}
+
+async function resolveAvatarUrl(supabase, avatarValue) {
+    if (!avatarValue) return '';
+
+    if (/^https?:\/\//i.test(avatarValue)) {
+        return avatarValue;
+    }
+
+    const storagePath = avatarValue.startsWith(`${PROFILE_BUCKET}/`)
+        ? avatarValue.substring(PROFILE_BUCKET.length + 1)
+        : avatarValue;
+
+    const { data, error } = await supabase.storage
+        .from(PROFILE_BUCKET)
+        .createSignedUrl(storagePath, PROFILE_SIGNED_URL_TTL);
+
+    if (error) {
+        console.error('Avatar signed URL error:', error);
+        return '';
+    }
+
+    return data?.signedUrl || '';
 }
 
 // Register new user with Supabase Auth
@@ -111,6 +137,8 @@ export async function login(email, password) {
             .eq('id', data.user.id)
             .single();
         
+        const avatarUrl = await resolveAvatarUrl(supabase, profile?.avatar_url);
+
         // Always check role from public.users
         const userRole = profile?.role || 'customer';
         const userSession = {
@@ -120,7 +148,7 @@ export async function login(email, password) {
             phone: profile?.phone || '',
             role: userRole,
             isAdmin: userRole === 'admin',
-            avatar_url: profile?.avatar_url || ''
+            avatar_url: avatarUrl
         };
         // Store in localStorage for quick access
         saveToStorage(CONFIG.STORAGE_KEYS.USER, userSession);
@@ -173,6 +201,8 @@ export async function getCurrentUser() {
             .eq('id', session.user.id)
             .single();
         
+        const avatarUrl = await resolveAvatarUrl(supabase, profile?.avatar_url);
+
         // Always check role from public.users
         const userRole = profile?.role || 'customer';
         const userSession = {
@@ -182,7 +212,7 @@ export async function getCurrentUser() {
             phone: profile?.phone || '',
             role: userRole,
             isAdmin: userRole === 'admin',
-            avatar_url: profile?.avatar_url || ''
+            avatar_url: avatarUrl
         };
         // Update localStorage cache
         saveToStorage(CONFIG.STORAGE_KEYS.USER, userSession);
@@ -274,28 +304,32 @@ export async function uploadProfilePhoto(file) {
         const user = await getCurrentUser();
         if (!user) throw new Error('Not logged in');
         
-        const fileExt = file.name.split('.').pop();
-        const fileName = `${user.id}-${Date.now()}.${fileExt}`;
-        
-        // Upload to user-avatars bucket
+        const fileExt = (file.name.split('.').pop() || 'jpg').toLowerCase();
+        const filePath = `${user.id}/avatar-${Date.now()}.${fileExt}`;
+
+        // Upload to private profile bucket
         const { error: uploadError } = await supabase.storage
-            .from('user-avatars')
-            .upload(fileName, file, { upsert: true });
+            .from(PROFILE_BUCKET)
+            .upload(filePath, file, {
+                upsert: true,
+                contentType: file.type || 'image/jpeg'
+            });
         
         if (uploadError) throw uploadError;
-        
-        // Get public URL
-        const { data: { publicUrl } } = supabase.storage
-            .from('user-avatars')
-            .getPublicUrl(fileName);
-        
-        // Update user profile with avatar URL
+
+        // Persist storage path in profile so a fresh signed URL can be generated per session.
         await supabase
             .from('users')
-            .update({ avatar_url: publicUrl })
+            .update({ avatar_url: filePath })
             .eq('id', user.id);
+
+        const { data: signedData, error: signedUrlError } = await supabase.storage
+            .from(PROFILE_BUCKET)
+            .createSignedUrl(filePath, PROFILE_SIGNED_URL_TTL);
+
+        if (signedUrlError) throw signedUrlError;
         
-        return { success: true, url: publicUrl };
+        return { success: true, url: signedData?.signedUrl || '' };
     } catch (error) {
         console.error('Photo upload error:', error);
         return { success: false, error: error.message };
