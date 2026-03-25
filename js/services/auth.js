@@ -44,6 +44,32 @@ async function resolveAvatarUrl(supabase, avatarValue) {
     return data?.signedUrl || '';
 }
 
+async function findLatestAvatarPath(supabase, userId) {
+    if (!userId) return '';
+
+    const { data: files, error } = await supabase.storage
+        .from(PROFILE_BUCKET)
+        .list(userId, { limit: 100, sortBy: { column: 'name', order: 'desc' } });
+
+    if (error || !Array.isArray(files) || files.length === 0) {
+        if (error) {
+            console.error('Avatar list error:', error);
+        }
+        return '';
+    }
+
+    const avatarFiles = files.filter((file) => /^avatar-\d+\./i.test(file.name));
+    if (avatarFiles.length === 0) return '';
+
+    avatarFiles.sort((a, b) => {
+        const aTs = Number((a.name.match(/avatar-(\d+)\./i) || [])[1] || 0);
+        const bTs = Number((b.name.match(/avatar-(\d+)\./i) || [])[1] || 0);
+        return bTs - aTs;
+    });
+
+    return `${userId}/${avatarFiles[0].name}`;
+}
+
 // Register new user with Supabase Auth
 export async function register(userData) {
     const supabase = getSupabaseClient();
@@ -137,7 +163,10 @@ export async function login(email, password) {
             .eq('id', data.user.id)
             .single();
         
-        const avatarPath = profile?.avatar_url || '';
+        let avatarPath = profile?.avatar_url || '';
+        if (!avatarPath) {
+            avatarPath = await findLatestAvatarPath(supabase, data.user.id);
+        }
         const avatarUrl = await resolveAvatarUrl(supabase, avatarPath);
 
         // Always check role from public.users
@@ -205,7 +234,10 @@ export async function getCurrentUser() {
             .eq('id', session.user.id)
             .single();
 
-        const avatarPath = profile?.avatar_url || cachedUser.avatar_path || '';
+        let avatarPath = profile?.avatar_url || cachedUser.avatar_path || '';
+        if (!avatarPath) {
+            avatarPath = await findLatestAvatarPath(supabase, session.user.id);
+        }
         const resolvedAvatarUrl = await resolveAvatarUrl(supabase, avatarPath);
         const avatarUrl = resolvedAvatarUrl || cachedUser.avatar_url || '';
 
